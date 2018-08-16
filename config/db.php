@@ -4,7 +4,7 @@ return [
     'class' => 'yii\db\Connection',
     'dsn' => 'mysql:host=localhost;dbname=changexpress',
     'username' => 'root',
-    'password' => '3pasquaman3',
+    'password' => 'gigi2013',
     'charset' => 'utf8',
 
     // Schema cache options (for production environment)
