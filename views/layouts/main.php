@@ -55,7 +55,7 @@ AppAsset::register($this);
             ],
 
             //Menu della gestione dati
-            ['label' => 'Gestione Dati', 'url' => ['#'], 'items'=>[
+            ['label' => 'Amministra', 'url' => ['#'], 'items'=>[
               ['label' => 'Imposta Tagli Euro', 'url' => ['/tagli-euro/index']],
               ['label' => 'Gestione Valute', 'url' => ['/valute/index']],
               ['label' => 'Uffici', 'url' => ['/uffici/index']],
@@ -65,6 +65,7 @@ AppAsset::register($this);
               ['label' => 'Documenti Validi', 'url' => ['/documenti/index']],
               ['label' => 'Operatori di Cassa', 'url' => ['/operatori/index']],
               ['label' => 'Supporti Valute', 'url' => ['/supporti/index']],
+              ['label' => 'Calcolatore', 'url' => ['/site/calculator']],
 
             ]
           ],
