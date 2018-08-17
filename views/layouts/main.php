@@ -66,6 +66,7 @@ AppAsset::register($this);
               ['label' => 'Operatori di Cassa', 'url' => ['/operatori/index']],
               ['label' => 'Supporti Valute', 'url' => ['/supporti/index']],
               ['label' => 'Calcolatore', 'url' => ['/site/calculator']],
+              ['label' => 'Registrazione Clienti', 'url' => ['/site/clienti']],
 
             ]
           ],

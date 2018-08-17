@@ -41,6 +41,7 @@ class Clienti extends \yii\db\ActiveRecord
         return [
             [['dataNascita', 'scadenzaDoc'], 'safe'],
             ['nomeCliente', 'required', 'message' => 'Manca nome cliente'],
+            [['dataNascita', 'required', 'message' => 'Manca la data di nascita'], 'safe'],
             [['luogoNascita', 'residenteItalia', 'tipoDocumento', 'ente', 'luogoEmissione', 'provincia'], 'integer'],
             [['cognomeCliente', 'nazionalita', 'codFiscale', 'numeroDocumento'], 'string', 'max' => 255],
             [['sesso', 'fidelity'], 'string', 'max' => 45],
