@@ -124,4 +124,8 @@ class CambiController extends Controller
 
         throw new NotFoundHttpException('The requested page does not exist.');
     }
+    public function actionCalculator()
+    {
+        return $this->render('calculator');
+    }
 }

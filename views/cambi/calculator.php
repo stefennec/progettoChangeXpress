@@ -1,3 +1,22 @@
+<?php
+use yii\helpers\Html;
+use yii\widgets\ActiveForm;
+use app\models\Valute;
+
+?>
+<?php $form = ActiveForm::begin(); ?>
+<!-- dropdown transazione -->
+
+<?= $form->field($model, 'valuta')
+            ->label(false)
+            ->dropdownList(Valute::find()
+                            ->select(['isoCode', 'id'])
+                            ->indexBy('id')
+                            ->column(),
+                          ['prompt'=>'Seleziona Valuta']);
+   ?>
+<?php ActiveForm::end(); ?>
+
 <div class="container">
       <div class="row">
         <div class="col-md-6 mx-auto">
