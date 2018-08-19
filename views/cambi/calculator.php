@@ -3,10 +3,8 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use app\models\Valute;
 
-
 ?>
  
-
 <div class="container">
      <div class="row">
        <div class="col-md-6 mx-auto">
@@ -28,6 +26,7 @@ use app\models\Valute;
                             ->column(),
                           ['prompt'=>'Seleziona Valuta']);
    ?>
+    <?php ActiveForm::end(); ?>
              <div class="form-group">
                <div class="input-group">
                  <span class="input-group-addon">%</span>
@@ -41,14 +40,10 @@ use app\models\Valute;
                <input type="number" class="form-control" id="spesa" placeholder="Spesa Fissa">
              </div>
              <div class="forn-group">
-               <input type="submit" value="Calculate" class="btn btn-dark btn-block">
+               <input type="submit" value="Calculate" class="btn btn-success btn-block">
              </div>
            </form>
            <!-- LOADER -->
-
-           <div id="loading">
-             <img src="/img/loading.gif" alt="">
-           </div>
 
            <!-- RESULTS -->
            <div id="results" class="pt-4">
@@ -73,25 +68,7 @@ use app\models\Valute;
                  <input type="number" class="form-control" id="lordo-transazione" disabled>
                </div>
              </div>
-             <?= $form->field($model, 'descrizione')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'rateUfficialeAcquisto')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'rateUfficialeVendita')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'spreadAcquisto')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'spreadVendita')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'prezzoMedioAcquisto')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'prezzoMedioVendita')->textInput(['maxlength' => true]) ?>
-
-    <div class="form-group">
-        <?= Html::submitButton('Salva e stampa', ['class' => 'btn btn-success']) ?>
-    </div>
-
-    <?php ActiveForm::end(); ?>
            </div>
          </div>
        </div>
