@@ -18,6 +18,9 @@ use app\models\Valute;
    ?>
 <?php ActiveForm::end(); ?>
 
+<?= $this->render('_form', [
+        'model' => $model,
+    ]) ?>
 <div class="container">
       <div class="row">
         <div class="col-md-6 mx-auto">

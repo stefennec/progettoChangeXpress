@@ -126,6 +126,14 @@ class CambiController extends Controller
     }
     public function actionCalculator()
     {
-        return $this->render('calculator');
+        $model = new Cambi();
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'id' => $model->id]);
+        }
+
+        return $this->render('calculator', [
+            'model' => $model,
+        ]);
     }
 }
