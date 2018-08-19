@@ -40,17 +40,14 @@ AppAsset::register($this);
         'items' => [
             ['label' => 'Home', 'url' => ['/site/index']],
 
-            // Menu delle operazioni
-            ['label' => 'Operazioni', 'url' => ['#'], 'items'=>[
+            // // Menu delle operazioni
+            // ['label' => 'Operazioni', 'url' => ['#'], 'items'=>[
 
-            ]
-            ],
+            // ]
+            // ],
 
-            //Menù dei movimenti
-            ['label' => 'Movimenti', 'url' => ['#'], 'items'=>[
-
-            ]
-            ],
+            // //Menù dei movimenti
+            ['label' => 'Calcolatore', 'url' => ['/cambi/calculator']],
 
             //Menu della gestione dati
             ['label' => 'Amministra', 'url' => ['#'], 'items'=>[
@@ -67,8 +64,6 @@ AppAsset::register($this);
               ['label' => 'Documenti Validi', 'url' => ['/documenti/index']],
               ['label' => 'Operatori di Cassa', 'url' => ['/operatori/index']],
               ['label' => 'Supporti Valute', 'url' => ['/supporti/index']],
-              ['label' => 'Calcolatore', 'url' => ['/cambi/calculator']],
-              ['label' => 'Calcolatore', 'url' => ['/site/calculator']],
               ['label' => 'Registrazione Clienti', 'url' => ['/site/clienti']],
               ['label' => 'Ammanchi', 'url' => ['/ammanchi/index']],
               ['label' => 'Cassa1', 'url' => ['/cassa1/index']],
