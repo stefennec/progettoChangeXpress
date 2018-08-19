@@ -124,5 +124,18 @@ class TransazioniController extends Controller
 
         throw new NotFoundHttpException('The requested page does not exist.');
     }
-    
+
+    public function actionCalculator()
+    {
+        $model = new Transazioni();
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'id' => $model->id]);
+        }
+
+        return $this->render('calculator', [
+            'model' => $model,
+        ]);
+    }
+
 }

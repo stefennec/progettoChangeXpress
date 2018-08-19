@@ -47,7 +47,7 @@ AppAsset::register($this);
             // ],
 
             // //Menù dei movimenti
-            ['label' => 'Calcolatore', 'url' => ['/cambi/calculator']],
+            ['label' => 'Calcolatore', 'url' => ['/transazioni/calculator']],
 
             //Menu della gestione dati
             ['label' => 'Amministra', 'url' => ['#'], 'items'=>[

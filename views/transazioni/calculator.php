@@ -5,7 +5,7 @@ use app\models\Valute;
 
 
 ?>
- 
+
 
 <div class="container">
      <div class="row">
@@ -20,14 +20,7 @@ use app\models\Valute;
                </div>
              </div>
     <?php $form = ActiveForm::begin(); ?>
-             <?= $form->field($model, 'valuta')
-            ->label(false)
-            ->dropdownList(Valute::find()
-                            ->select(['isoCode', 'id'])
-                            ->indexBy('id')
-                            ->column(),
-                          ['prompt'=>'Seleziona Valuta']);
-   ?>
+             
              <div class="form-group">
                <div class="input-group">
                  <span class="input-group-addon">%</span>
@@ -75,17 +68,7 @@ use app\models\Valute;
              </div>
              <?= $form->field($model, 'descrizione')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'rateUfficialeAcquisto')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'rateUfficialeVendita')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'spreadAcquisto')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'spreadVendita')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'prezzoMedioAcquisto')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'prezzoMedioVendita')->textInput(['maxlength' => true]) ?>
 
     <div class="form-group">
         <?= Html::submitButton('Salva e stampa', ['class' => 'btn btn-success']) ?>
@@ -97,5 +80,3 @@ use app\models\Valute;
        </div>
      </div>
    </div>
-
-
