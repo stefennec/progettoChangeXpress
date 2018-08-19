@@ -4,12 +4,12 @@ document.getElementById('loan-form').addEventListener('submit', function(e){
   // Hide results
     document.getElementById('results').style.display = 'none';
 
-  //Show loader
+  //Show loader 
   document.getElementById('loading').style.display = 'block';
 
   setTimeout(calculateResults, 1000);
 
-  e.preventDefault()
+  e.preventDefault();
 });
 
 
@@ -18,7 +18,7 @@ document.getElementById('loan-form').addEventListener('submit', function(e){
 // calculate Result
 function calculateResults(e){
 
-
+    
 
   console.log('calculating');
 
@@ -28,7 +28,7 @@ function calculateResults(e){
   const years = document.getElementById('years');
   const monthlyPayment = document.getElementById('monthly-payment');
   const totalPayment = document.getElementById('total-payment');
-  const totalInterest = document.getElementById('total-interest');
+  const totalInterest = document.getElementById('total-interest'); 
 
   // creo la costante principal e con parseFloat passo una stringa da stringa a numero
   const principal = parseFloat(amount.value);
@@ -47,14 +47,14 @@ function calculateResults(e){
     // Hide results
     document.getElementById('results').style.display = 'block';
 
-    //Show loader
+    //Show loader 
     document.getElementById('loading').style.display = 'none';
   } else {
     showError('Please check your number');
   }
 
 
-
+ 
 }
 
 // Show error
@@ -63,7 +63,7 @@ function showError(error){
     // Hide results
     document.getElementById('results').style.display = 'none';
 
-    //Hide loader
+    //Hide loader 
     document.getElementById('loading').style.display = 'none';
 
     //Create a div

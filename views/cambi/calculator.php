@@ -7,13 +7,14 @@ use app\models\Valute;
 <?php $form = ActiveForm::begin(); ?>
 <!-- dropdown transazione -->
 
-<?= $form->field($model, 'valuta')
-            ->label(false)
-            ->dropdownList(Valute::find()
-                            ->select(['isoCode', 'id'])
-                            ->indexBy('id')
-                            ->column(),
-                          ['prompt'=>'Seleziona Valuta']);
+<?php
+// echo $form->field($model, 'valuta')
+//             ->label(false)
+//             ->dropdownList(Valute::find()
+//                             ->select(['isoCode', 'id'])
+//                             ->indexBy('id')
+//                             ->column(),
+//                           ['prompt'=>'Seleziona Valuta']);
    ?>
 <?php ActiveForm::end(); ?>
 
@@ -44,9 +45,9 @@ use app\models\Valute;
             </form>
             <!-- LOADER -->
 
-            <div id="loading">
-              <img src="loading.gif" alt="">
-            </div>
+            <!-- <div id="loading">
+              <img src="img/loading.gif" alt="">
+            </div> -->
 
             <!-- RESULTS -->
             <div id="results" class="pt-4">
