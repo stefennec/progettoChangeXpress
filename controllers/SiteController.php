@@ -125,16 +125,4 @@ class SiteController extends Controller
     {
         return $this->render('about');
     }
-<<<<<<< HEAD
-=======
-    public function actionCalculator()
-    {
-        return $this->render('calculator');
-    }
-
-    public function actionClienti()
-    {
-        return $this->render('clienti');
-    }
->>>>>>> 8a9ecbf054bd2dce53364ca62222377cda6051c1
 }
