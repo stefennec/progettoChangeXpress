@@ -49,7 +49,7 @@ AppAsset::register($this);
             //Menù dei movimenti
             ['label' => 'Calcolatore', 'url' => ['/transazioni/calculator']],
             //Form clienti
-            ['label' => 'Clienti', 'url' => ['/clienti/index']],
+            ['label' => 'Clienti', 'url' => ['/site/clienti']],
 
             //Menu della gestione dati
             ['label' => 'Amministra', 'url' => ['#'], 'items'=>[
