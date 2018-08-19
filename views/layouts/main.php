@@ -46,8 +46,10 @@ AppAsset::register($this);
             // ]
             // ],
 
-            // //Menù dei movimenti
+            //Menù dei movimenti
             ['label' => 'Calcolatore', 'url' => ['/transazioni/calculator']],
+            //Form clienti
+            ['label' => 'Clienti', 'url' => ['/clienti/index']],
 
             //Menu della gestione dati
             ['label' => 'Amministra', 'url' => ['#'], 'items'=>[
@@ -56,7 +58,6 @@ AppAsset::register($this);
               ['label' => 'Uffici', 'url' => ['/uffici/index']],
               ['label' => 'Banche', 'url' => ['/banche/index']],
               ['label' => 'Gestione Transazioni', 'url' => ['/transazioni/index']],
-              ['label' => 'Gestione Clienti', 'url' => ['/clienti/index']],
               ['label' => 'Cambi', 'url' => ['/cambi/index']],
               ['label' => 'Gestione Movimenti', 'url' => ['/movimenti/index']],
               ['label' => 'Area Cittadini', 'url' => ['/tipologia-nazioni/index']],
