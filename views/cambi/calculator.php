@@ -33,7 +33,6 @@ use app\models\Valute;
                             ->column(),
                           ['prompt'=>'Seleziona Valuta']);
    ?>
-
               <div class="form-group">
                 <div class="input-group">
                   <span class="input-group-addon">%</span>

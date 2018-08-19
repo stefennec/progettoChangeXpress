@@ -1,15 +1,15 @@
 // Listen for submit
 document.getElementById('loan-form').addEventListener('submit', function(e){
 
-  // Hide results
-    document.getElementById('results').style.display = 'none';
+ // Hide results
+   document.getElementById('results').style.display = 'none';
 
-  //Show loader 
-  document.getElementById('loading').style.display = 'block';
+ //Show loader
+ document.getElementById('loading').style.display = 'block';
 
-  setTimeout(calculateResults, 1000);
+ setTimeout(calculateResults, 1000);
 
-  e.preventDefault();
+ e.preventDefault();
 });
 
 
@@ -18,80 +18,83 @@ document.getElementById('loan-form').addEventListener('submit', function(e){
 // calculate Result
 function calculateResults(e){
 
-    
-
-  console.log('calculating');
-
-  // UI variables
-  const amount = document.getElementById('amount');
-  const interest = document.getElementById('interest');
-  const years = document.getElementById('years');
-  const monthlyPayment = document.getElementById('monthly-payment');
-  const totalPayment = document.getElementById('total-payment');
-  const totalInterest = document.getElementById('total-interest'); 
-
-  // creo la costante principal e con parseFloat passo una stringa da stringa a numero
-  const principal = parseFloat(amount.value);
-  const calculatedInterest = parseFloat(interest.value) / 100 / 12;
-  const calculatedPayments = parseFloat(years.value) * 12;
-
-  // Compute monthly payment
-  const x = Math.pow(1 + calculatedInterest, calculatedPayments);
-  const monthly = (principal*x*calculatedInterest)/(x-1);
-
-  if(isFinite(monthly)) {
-    monthlyPayment.value = monthly.toFixed(2);//al max 2 decimali
-    totalPayment.value = (monthly * calculatedPayments).toFixed(2);
-    totalInterest.value = ((monthly * calculatedPayments)-principal).toFixed(2);
-
-    // Hide results
-    document.getElementById('results').style.display = 'block';
-
-    //Show loader 
-    document.getElementById('loading').style.display = 'none';
-  } else {
-    showError('Please check your number');
-  }
 
 
- 
+ console.log('calculating');
+
+ // UI variables
+ const quantita = document.getElementById('quantita');
+ const rate = document.getElementById('rate');
+ const commissione = document.getElementById('commissione');
+ const spesa = document.getElementById('spesa');
+ const nettoTransazione = document.getElementById('netto-transazione');
+ const commissioneTransazione = document.getElementById('commissione-transazione');
+ const lordoTransazione = document.getElementById('lordo-transazione');
+
+ // creo la costante principal e con parseFloat passo una stringa da stringa a numero
+ const quantitaValuta = parseFloat(quantita.value);
+ const tassoRate = parseFloat(rate.value);
+ const commissionePercentuale = parseFloat(commissione.value);
+ const spesaFissa = parseFloat(spesa.value);
+
+ // Compute monthly payment
+ //const x = Math.pow(1 + calculatedInterest, calculatedPayments);
+ const monthly = (quantitaValuta/tassoRate);
+
+ if(isFinite(monthly)) {
+
+   commissioneTransazione.value = (monthly * (commissionePercentuale/100)).toFixed(2);
+   nettoTransazione.value = (monthly - (monthly * commissionePercentuale/100) - spesaFissa).toFixed(2);
+   lordoTransazione.value = monthly.toFixed(2);//al max 2 decimali
+
+   // Hide results
+   document.getElementById('results').style.display = 'block';
+
+   //Show loader
+   document.getElementById('loading').style.display = 'none';
+ } else {
+   showError('Please check your number');
+ }
+
+
+
 }
 
 // Show error
 function showError(error){
 
-    // Hide results
-    document.getElementById('results').style.display = 'none';
+   // Hide results
+   document.getElementById('results').style.display = 'none';
 
-    //Hide loader 
-    document.getElementById('loading').style.display = 'none';
+   //Hide loader
+   document.getElementById('loading').style.display = 'none';
 
-    //Create a div
-    const errorDiv = document.createElement('div');
+   //Create a div
+   const errorDiv = document.createElement('div');
 
-    // Get elements
-    const card = document.querySelector('.card');
-    const heading = document.querySelector('.heading');
+   // Get elements
+   const card = document.querySelector('.card');
+   const heading = document.querySelector('.heading');
 
 
-    // Add ClassName
-    errorDiv.className = 'alert alert-danger';
+   // Add ClassName
+   errorDiv.className = 'alert alert-danger';
 
-    //Add textNode and append to div
-    errorDiv.appendChild(document.createTextNode(error))
+   //Add textNode and append to div
+   errorDiv.appendChild(document.createTextNode(error))
 
-    // Insert Error above heading
-    card.insertBefore(errorDiv, heading);
+   // Insert Error above heading
+   card.insertBefore(errorDiv, heading);
 
-    // insertBefore->all'interno di un oggetto richiama quello che dico io prima di un altro
+   // insertBefore->all'interno di un oggetto richiama quello che dico io prima di un altro
 
-    // Clear error after 3 seconds
-    setTimeout(clearError, 3000)
+   // Clear error after 3 seconds
+   setTimeout(clearError, 3000)
 }
 
 
 
-    //after 3 second active the clearError
+   //after 3 second active the clearError
 function clearError(){
-    document.querySelector('.alert').remove();
+   document.querySelector('.alert').remove();
 }
