@@ -17,16 +17,7 @@ use app\models\Valute;
                  <input type="number" class="form-control" id="quantita" placeholder="quantitaValuta">
                </div>
              </div>
-    <?php $form = ActiveForm::begin(); ?>
-             <?= $form->field($model, 'valuta')
-            ->label(false)
-            ->dropdownList(Valute::find()
-                            ->select(['isoCode', 'id'])
-                            ->indexBy('id')
-                            ->column(),
-                          ['prompt'=>'Seleziona Valuta']);
-   ?>
-    <?php ActiveForm::end(); ?>
+             
              <div class="form-group">
                <div class="input-group">
                  <span class="input-group-addon">%</span>
@@ -40,7 +31,7 @@ use app\models\Valute;
                <input type="number" class="form-control" id="spesa" placeholder="Spesa Fissa">
              </div>
              <div class="forn-group">
-               <input type="submit" value="Calculate" class="btn btn-success btn-block">
+               <input type="submit" value="Calculate" class="btn btn-success">
              </div>
            </form>
            <!-- LOADER -->
@@ -68,11 +59,8 @@ use app\models\Valute;
                  <input type="number" class="form-control" id="lordo-transazione" disabled>
                </div>
              </div>
-
            </div>
          </div>
        </div>
      </div>
    </div>
-
-
