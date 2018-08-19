@@ -9,7 +9,7 @@ document.getElementById('loan-form').addEventListener('submit', function(e){
 
   setTimeout(calculateResults, 1000);
 
-  e.preventDefault()
+  e.preventDefault();
 });
 
 
@@ -23,26 +23,28 @@ function calculateResults(e){
   console.log('calculating');
 
   // UI variables
-  const amount = document.getElementById('amount');
-  const interest = document.getElementById('interest');
-  const years = document.getElementById('years');
-  const monthlyPayment = document.getElementById('monthly-payment');
-  const totalPayment = document.getElementById('total-payment');
-  const totalInterest = document.getElementById('total-interest');
+  const quantita = document.getElementById('quantita');
+  const rate = document.getElementById('rate');
+  const commissione = document.getElementById('commissione');
+  const spesa = document.getElementById('spesa');
+  const nettoTransazione = document.getElementById('netto-transazione');
+  const commissioneTransazione = document.getElementById('commissione-transazione');
+  const lordoTransazione = document.getElementById('lordo-transazione');
 
   // creo la costante principal e con parseFloat passo una stringa da stringa a numero
-  const principal = parseFloat(amount.value);
-  const calculatedInterest = parseFloat(interest.value) / 100 / 12;
-  const calculatedPayments = parseFloat(years.value) * 12;
+  const quantitaValuta = parseFloat(quantita.value);
+  const tassoRate = parseFloat(rate.value);
+  const commissionePercentuale = parseFloat(commissione.value);
+  const spesaFissa = parseFloat(spesa.value);
 
   // Compute monthly payment
-  const x = Math.pow(1 + calculatedInterest, calculatedPayments);
-  const monthly = (principal*x*calculatedInterest)/(x-1);
+  //const x = Math.pow(1 + calculatedInterest, calculatedPayments);
+  const monthly = (quantitaValuta/tassoRate);
 
   if(isFinite(monthly)) {
-    monthlyPayment.value = monthly.toFixed(2);//al max 2 decimali
-    totalPayment.value = (monthly * calculatedPayments).toFixed(2);
-    totalInterest.value = ((monthly * calculatedPayments)-principal).toFixed(2);
+    lordoTransazione.value = monthly.toFixed(2);//al max 2 decimali
+    commissioneTransazione.value = (monthly * commissione/100).toFixed(2);
+    nettoTransazione.value = ((monthly - commissioneTransazione-spesa).toFixed(2);
 
     // Hide results
     document.getElementById('results').style.display = 'block';

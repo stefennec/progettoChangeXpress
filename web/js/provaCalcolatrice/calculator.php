@@ -1,42 +1,26 @@
-<?php
-use yii\helpers\Html;
-use yii\widgets\ActiveForm;
-use app\models\Valute;
-
-?>
-<?php $form = ActiveForm::begin(); ?>
-<!-- dropdown transazione -->
-
-<?= $form->field($model, 'valuta')
-            ->label(false)
-            ->dropdownList(Valute::find()
-                            ->select(['isoCode', 'id'])
-                            ->indexBy('id')
-                            ->column(),
-                          ['prompt'=>'Seleziona Valuta']);
-   ?>
-<?php ActiveForm::end(); ?>
-
 <div class="container">
       <div class="row">
         <div class="col-md-6 mx-auto">
           <div class="card card-body text-center mt-5">
-            <h1 class="heading display-5 pb-3">Loan Calculator</h1>
+            <h1 class="heading display-5 pb-3">Acquisto Valute</h1>
             <form id="loan-form">
               <div class="form-group">
                 <div class="input-group">
                   <span class="input-group-addon">$</span>
-                  <input type="number" class="form-control" id="amount" placeholder="Loan Amount">
+                  <input type="number" class="form-control" id="quantita" placeholder="quantitaValuta">
                 </div>
               </div>
               <div class="form-group">
                 <div class="input-group">
                   <span class="input-group-addon">%</span>
-                  <input type="number" class="form-control" id="interest" placeholder="Interest">
+                  <input type="number" class="form-control" id="rate" placeholder="Cambio Applicato">
                 </div>
               </div>
               <div class="form-group">
-                <input type="number" class="form-control" id="years" placeholder="Years To Repay">
+                <input type="number" class="form-control" id="commissione" placeholder="Commissione Applicata">
+              </div>
+              <div class="form-group">
+                <input type="number" class="form-control" id="spesa" placeholder="Spesa Fissa">
               </div>
               <div class="forn-group">
                 <input type="submit" value="Calculate" class="btn btn-dark btn-block">
@@ -54,21 +38,21 @@ use app\models\Valute;
               <div class="form-group">
                 <div class="input-group">
                   <span class="input-group-addon">Monthly Payment</span>
-                  <input type="number" class="form-control" id="monthly-payment" disabled>
+                  <input type="number" class="form-control" id="netto-transazione" disabled>
                 </div>
               </div>
 
               <div class="form-group">
                 <div class="input-group">
                   <span class="input-group-addon">Total Payment</span>
-                  <input type="number" class="form-control" id="total-payment" disabled>
+                  <input type="number" class="form-control" id="commissione-transazione" disabled>
                 </div>
               </div>
 
               <div class="form-group">
                 <div class="input-group">
                   <span class="input-group-addon">Total Interest</span>
-                  <input type="number" class="form-control" id="total-interest" disabled>
+                  <input type="number" class="form-control" id="lordo-transazione" disabled>
                 </div>
               </div>
             </div>
@@ -76,3 +60,7 @@ use app\models\Valute;
         </div>
       </div>
     </div>
+
+    <script type="text/javascript">
+
+    </script>
