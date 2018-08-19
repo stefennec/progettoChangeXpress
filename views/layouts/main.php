@@ -42,15 +42,13 @@ AppAsset::register($this);
 
             // Menu delle operazioni
             ['label' => 'Operazioni', 'url' => ['#'], 'items'=>[
-              ['label' => 'Gestione Transazioni', 'url' => ['/transazioni/index']],
-              ['label' => 'Gestione Clienti', 'url' => ['/clienti/index']],
-              ['label' => 'Cambi', 'url' => ['/cambi/index']],
+
             ]
             ],
 
             //Menù dei movimenti
             ['label' => 'Movimenti', 'url' => ['#'], 'items'=>[
-              ['label' => 'Gestione Movimenti', 'url' => ['/movimenti/index']],
+
             ]
             ],
 
@@ -60,18 +58,25 @@ AppAsset::register($this);
               ['label' => 'Gestione Valute', 'url' => ['/valute/index']],
               ['label' => 'Uffici', 'url' => ['/uffici/index']],
               ['label' => 'Banche', 'url' => ['/banche/index']],
+              ['label' => 'Gestione Transazioni', 'url' => ['/transazioni/index']],
+              ['label' => 'Gestione Clienti', 'url' => ['/clienti/index']],
+              ['label' => 'Cambi', 'url' => ['/cambi/index']],
+              ['label' => 'Gestione Movimenti', 'url' => ['/movimenti/index']],
               ['label' => 'Area Cittadini', 'url' => ['/tipologia-nazioni/index']],
               ['label' => 'Autorità Documenti', 'url' => ['/enti/index']],
               ['label' => 'Documenti Validi', 'url' => ['/documenti/index']],
               ['label' => 'Operatori di Cassa', 'url' => ['/operatori/index']],
               ['label' => 'Supporti Valute', 'url' => ['/supporti/index']],
-<<<<<<< HEAD
               ['label' => 'Calcolatore', 'url' => ['/cambi/calculator']],
-=======
               ['label' => 'Calcolatore', 'url' => ['/site/calculator']],
               ['label' => 'Registrazione Clienti', 'url' => ['/site/clienti']],
->>>>>>> 8a9ecbf054bd2dce53364ca62222377cda6051c1
-
+              ['label' => 'Ammanchi', 'url' => ['/ammanchi/index']],
+              ['label' => 'Cassa1', 'url' => ['/cassa1/index']],
+              ['label' => 'Cassa2', 'url' => ['/cassa2/index']],
+              ['label' => 'Cassaforte', 'url' => ['/cassaforte/index']],
+              ['label' => 'Comuni', 'url' => ['/comuni/index']],
+              ['label' => 'Transazioni per Cliente', 'url' => ['/transazioni-clienti/index']],
+              ['label' => 'Supporto Valute', 'url' => ['/valute-supporto/index']],
             ]
           ],
             Yii::$app->user->isGuest ? (
