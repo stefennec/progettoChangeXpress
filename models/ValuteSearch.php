@@ -20,6 +20,7 @@ class ValuteSearch extends Valute
         return [
             [['id'], 'integer'],
             [['nome', 'isoCode'], 'safe'],
+            [['RateUfficialeAcquisto', 'RateUfficialeVendita'], 'number'],
         ];
     }
 
@@ -60,6 +61,8 @@ class ValuteSearch extends Valute
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
+            'RateUfficialeAcquisto' => $this->RateUfficialeAcquisto,
+            'RateUfficialeVendita' => $this->RateUfficialeVendita,
         ]);
 
         $query->andFilterWhere(['like', 'nome', $this->nome])

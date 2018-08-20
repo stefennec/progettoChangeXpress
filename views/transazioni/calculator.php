@@ -17,13 +17,31 @@ use app\models\Valute;
                  <input type="number" class="form-control" id="quantita" placeholder="quantitaValuta">
                </div>
              </div>
-             
+
+            <div class="transazioni-form">
+
+            <?php $form = ActiveForm::begin(); ?>
+
+            <?= $form->field($model, 'valuta')
+                    ->label(false)
+                    ->dropdownList(Valute::find()
+                                    ->select(['isoCode', 'id','nome'])
+                                    ->indexBy('id')
+                                    ->column(),
+                                  ['prompt'=>'Seleziona Valuta']);
+            ?>
+             <!-- dove sparare il valore della valuta -->
+              <div class="form-group">
+               <input type="number" class="form-control" id="valoreCambio" placeholder="Cambio applicato">
+             </div>
              <div class="form-group">
                <div class="input-group">
                  <span class="input-group-addon">%</span>
                  <input type="number" class="form-control" id="rate" placeholder="Cambio Applicato">
                </div>
              </div>
+            
+            
              <div class="form-group">
                <input type="number" class="form-control" id="commissione" placeholder="Commissione Applicata">
              </div>
@@ -31,7 +49,7 @@ use app\models\Valute;
                <input type="number" class="form-control" id="spesa" placeholder="Spesa Fissa">
              </div>
              <div class="forn-group">
-               <input type="submit" value="Calculate" class="btn btn-success">
+               <input type="submit" value="Calcola il cambio" class="btn btn-success">
              </div>
            </form>
            <!-- LOADER -->
@@ -59,6 +77,13 @@ use app\models\Valute;
                  <input type="number" class="form-control" id="lordo-transazione" disabled>
                </div>
              </div>
+             <div class="form-group">
+                    <?= Html::submitButton('Save', ['class' => 'btn btn-danger btn-block']) ?>
+                </div>
+
+                <?php ActiveForm::end(); ?>
+
+            </div>
            </div>
          </div>
        </div>

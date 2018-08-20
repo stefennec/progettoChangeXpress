@@ -10,6 +10,8 @@ use Yii;
  * @property int $id
  * @property string $nome
  * @property string $isoCode
+ * @property string $RateUfficialeAcquisto
+ * @property string $RateUfficialeVendita
  */
 class Valute extends \yii\db\ActiveRecord
 {
@@ -27,6 +29,8 @@ class Valute extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
+            [['RateUfficialeAcquisto', 'RateUfficialeVendita'], 'required'],
+            [['RateUfficialeAcquisto', 'RateUfficialeVendita'], 'number'],
             [['nome'], 'string', 'max' => 255],
             [['isoCode'], 'string', 'max' => 3],
         ];
@@ -41,6 +45,8 @@ class Valute extends \yii\db\ActiveRecord
             'id' => 'ID',
             'nome' => 'Nome',
             'isoCode' => 'Iso Code',
+            'RateUfficialeAcquisto' => 'Rate Ufficiale Acquisto',
+            'RateUfficialeVendita' => 'Rate Ufficiale Vendita',
         ];
     }
 

@@ -14,7 +14,14 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'ora')->textInput() ?>
 
-    <?= $form->field($model, 'valuta')->textInput() ?>
+    <?= $form->field($model, 'valuta')
+            ->label(false)
+            ->dropdownList(Valute::find()
+                            ->select(['isoCode', 'id'])
+                            ->indexBy('id')
+                            ->column(),
+                          ['prompt'=>'Seleziona Valuta']);
+   ?>
 
     <?= $form->field($model, 'supporto')->textInput() ?>
 

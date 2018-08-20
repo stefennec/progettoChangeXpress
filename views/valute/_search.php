@@ -13,9 +13,6 @@ use yii\widgets\ActiveForm;
     <?php $form = ActiveForm::begin([
         'action' => ['index'],
         'method' => 'get',
-        'options' => [
-            'data-pjax' => 1
-        ],
     ]); ?>
 
     <?= $form->field($model, 'id') ?>
@@ -23,6 +20,10 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'nome') ?>
 
     <?= $form->field($model, 'isoCode') ?>
+
+    <?= $form->field($model, 'RateUfficialeAcquisto') ?>
+
+    <?= $form->field($model, 'RateUfficialeVendita') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>

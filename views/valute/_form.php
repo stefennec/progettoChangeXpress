@@ -16,6 +16,10 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'isoCode')->textInput(['maxlength' => true]) ?>
 
+    <?= $form->field($model, 'RateUfficialeAcquisto')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($model, 'RateUfficialeVendita')->textInput(['maxlength' => true]) ?>
+
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
     </div>
