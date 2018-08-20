@@ -58,4 +58,8 @@ class Stati extends \yii\db\ActiveRecord
     {
         return new StatiQuery(get_called_class());
     }
+
+    public static function getStati(){
+      return self::find()->select(['nome_stati', 'id_stati'])->indexBy('id_stati')->column();
+    }
 }

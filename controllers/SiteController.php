@@ -125,8 +125,5 @@ class SiteController extends Controller
     {
         return $this->render('about');
     }
-    public function actionClienti()
-    {
-        return $this->render('clienti');
-    }
+    
 }

@@ -105,4 +105,18 @@ class Comuni extends \yii\db\ActiveRecord
     {
         return new ComuniQuery(get_called_class());
     }
+
+    public function getItalia(){
+      return $this->hasOne(Stati::className(),['id'=> 118]);
+    }
+
+    public static function getSubCatList($cat_id){
+        $subCategories = self::find()
+          ->select(['id', 'comune'])
+          ->where()
+          ->asArray()
+          ->all();
+
+          return $subCategories;
+    }
 }

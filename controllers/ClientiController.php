@@ -5,6 +5,10 @@ namespace app\controllers;
 use Yii;
 use app\models\Clienti;
 use app\models\ClientiSearch;
+use app\models\Comuni;
+use app\models\Province;
+use app\models\Stati;
+use app\models\Enti;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -62,7 +66,7 @@ class ClientiController extends Controller
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-    public function actionCreate()
+    /*public function actionCreate()
     {
         $model = new Clienti();
 
@@ -73,7 +77,7 @@ class ClientiController extends Controller
         return $this->render('create', [
             'model' => $model,
         ]);
-    }
+    }*/
 
     /**
      * Updates an existing Clienti model.
@@ -124,4 +128,18 @@ class ClientiController extends Controller
 
         throw new NotFoundHttpException('The requested page does not exist.');
     }
+
+    public function actionClienti()
+    {
+      $model = new Clienti();
+
+      if ($model->load(Yii::$app->request->post()) && $model->save()) {
+          return $this->redirect(['view', 'id' => $model->id]);
+      }
+
+      return $this->render('clienti', [
+          'model' => $model,
+      ]);
+    }
+
 }
