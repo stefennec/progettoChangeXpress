@@ -4,7 +4,7 @@ use yii\widgets\ActiveForm;
 use app\models\Valute;
 
 ?>
- 
+
 <div class="container">
      <div class="row">
        <div class="col-md-6 mx-auto">
@@ -25,14 +25,29 @@ use app\models\Valute;
             <?= $form->field($model, 'valuta')
                     ->label(false)
                     ->dropdownList(Valute::find()
-                                    ->select(['isoCode', 'id','nome'])
+                                    ->select(['isoCode', 'id', 'RateUfficialeAcquisto'])
                                     ->indexBy('id')
                                     ->column(),
-                                  ['prompt'=>'Seleziona Valuta','class' => 'your_class', 'id' => 'your_id']);
+                                  ['prompt'=>'Seleziona Valuta','class' => 'your_class', 'id' => 'activitySelector']);
             ?>
+              <script>
+          // Variabli iniziali
+          var selectorValuta = document.getElementById('activitySelector');
+              //    console.log(dateOfWeek);
+          // funzione che scatena gli eventi
+          loadEventListeners();
+
+          // function for loadAllEvent
+          function loadEventListeners(){
+            selectorValuta.addEventListener("change", function(e) {
+              valueMoneyJs=e;
+            console.log(valueMoneyJs);
+          });
+          }
+        </script>
 
              <!-- dove sparare il valore della valuta -->
-              <div class="form-group">
+              <div class="form-group" id="fillFieldValuta">
                <input type="number" class="form-control" id="valoreCambio" placeholder="Cambio applicato">
              </div>
              <div class="form-group">
@@ -90,3 +105,6 @@ use app\models\Valute;
        </div>
      </div>
    </div>
+
+ 
+
