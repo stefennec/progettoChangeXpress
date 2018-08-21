@@ -64,7 +64,7 @@ AppAsset::register($this);
               ['label' => 'Documenti', 'url' => ['/documenti/index']],
               ['label' => 'Operatori', 'url' => ['/operatori/index']],
               ['label' => 'Supporti', 'url' => ['/supporti/index']],
-              ['label' => 'Registrazione Clienti', 'url' => ['/site/clienti']],
+              ['label' => 'Registrazione Clienti', 'url' => ['/clienti/index']],
               ['label' => 'Ammanchi', 'url' => ['/ammanchi/index']],
               ['label' => 'Cassa1', 'url' => ['/cassa1/index']],
               ['label' => 'Cassa2', 'url' => ['/cassa2/index']],
