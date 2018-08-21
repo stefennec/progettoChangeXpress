@@ -28,8 +28,9 @@ use app\models\Valute;
                                     ->select(['isoCode', 'id','nome'])
                                     ->indexBy('id')
                                     ->column(),
-                                  ['prompt'=>'Seleziona Valuta']);
+                                  ['prompt'=>'Seleziona Valuta','class' => 'your_class', 'id' => 'your_id']);
             ?>
+
              <!-- dove sparare il valore della valuta -->
               <div class="form-group">
                <input type="number" class="form-control" id="valoreCambio" placeholder="Cambio applicato">
