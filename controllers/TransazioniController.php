@@ -137,5 +137,28 @@ class TransazioniController extends Controller
             'model' => $model,
         ]);
     }
+    // save the PDF
+    public function actionReport($id) {
+        
+        // trovare proprio quel model sennò resta vuoto
+        $model = $this->findModel($id);
+        $idOrder = $model->id_order;
+        
+        $mpdf = new \Mpdf\Mpdf();
+
+        $stylesheet = file_get_contents('css/stylePdf.css');
+
+        $mpdf->WriteHTML($stylesheet,1);
+
+        $mpdf->WriteHTML($this->renderPartial('transazionecreatepdf', [
+        'model' => $model]),2);
+
+
+
+            $mpdf->Output($idOrder.'.pdf', 'D');/*Insert D al posto di I(visualizza in browser) per il Download */
+    exit;
+
+    
+    }
 
 }
