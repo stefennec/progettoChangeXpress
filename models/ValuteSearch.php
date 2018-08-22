@@ -19,7 +19,7 @@ class ValuteSearch extends Valute
     {
         return [
             [['id'], 'integer'],
-            [['nome', 'isoCode'], 'safe'],
+            [['nome', 'isoCode', 'imgBandiera'], 'safe'],
             [['RateUfficialeAcquisto', 'RateUfficialeVendita'], 'number'],
         ];
     }
@@ -66,7 +66,8 @@ class ValuteSearch extends Valute
         ]);
 
         $query->andFilterWhere(['like', 'nome', $this->nome])
-            ->andFilterWhere(['like', 'isoCode', $this->isoCode]);
+            ->andFilterWhere(['like', 'isoCode', $this->isoCode])
+            ->andFilterWhere(['like', 'imgBandiera', $this->imgBandiera]);
 
         return $dataProvider;
     }

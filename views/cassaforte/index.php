@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
+use app\models\Valute;
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\CassaforteSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -24,10 +25,23 @@ $this->params['breadcrumbs'][] = $this->title;
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+            //['class' => 'yii\grid\SerialColumn'],
 
             'idValuta',
-            'valuta',
+
+            ['attribute'=>'valuta',
+            'format'=>'raw',
+            'value'=> function($model,$key,$index){
+              if($model->valuta==null)
+                return "-";
+              $idCode=$model->valuta;
+              $nomeCode=Valute::find()
+              ->where(['id'=>$idCode])->one();
+              if($nomeCode)
+              return $nomeCode->isoCode;
+              else
+              return "Stato Inesistente";
+            }],
             'quantita',
             'controvalore',
             'prezzoMedio',

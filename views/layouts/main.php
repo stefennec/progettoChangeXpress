@@ -1,114 +1,65 @@
 <?php
+use yii\helpers\Html;
 
 /* @var $this \yii\web\View */
 /* @var $content string */
 
-use app\widgets\Alert;
-use yii\helpers\Html;
-use yii\bootstrap\Nav;
-use yii\bootstrap\NavBar;
-use yii\widgets\Breadcrumbs;
-use app\assets\AppAsset;
 
-AppAsset::register($this);
-?>
-<?php $this->beginPage() ?>
-<!DOCTYPE html>
-<html lang="<?= Yii::$app->language ?>">
-<head>
-    <meta charset="<?= Yii::$app->charset ?>">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <?= Html::csrfMetaTags() ?>
-    <title><?= Html::encode($this->title) ?></title>
-    <?php $this->head() ?>
-</head>
-<body>
-<?php $this->beginBody() ?>
+if (Yii::$app->controller->action->id === 'login') {
+/**
+ * Do not use this code in your template. Remove it.
+ * Instead, use the code  $this->layout = '//main-login'; in your controller.
+ */
+    echo $this->render(
+        'main-login',
+        ['content' => $content]
+    );
+} else {
 
-<div class="wrap">
-    <?php
-    NavBar::begin([
-        'brandLabel' => Yii::$app->name,
-        'brandUrl' => Yii::$app->homeUrl,
-        'options' => [
-            'class' => 'navbar-inverse navbar-fixed-top',
-        ],
-    ]);
-    echo Nav::widget([
-        'options' => ['class' => 'navbar-nav navbar-right'],
-        'items' => [
-            ['label' => 'Home', 'url' => ['/site/index']],
+    if (class_exists('backend\assets\AppAsset')) {
+        backend\assets\AppAsset::register($this);
+    } else {
+        app\assets\AppAsset::register($this);
+    }
 
-            // // Menu delle operazioni
-            // ['label' => 'Operazioni', 'url' => ['#'], 'items'=>[
+    dmstr\web\AdminLteAsset::register($this);
 
-            // ]
-            // ],
-
-            //Menù dei movimenti
-            ['label' => 'Calcolatore', 'url' => ['/transazioni/calculator']],
-            //Form clienti
-            ['label' => 'Clienti', 'url' => ['/clienti/clienti']],
-
-            //Menu della gestione dati
-            ['label' => 'Amministra', 'url' => ['#'], 'items'=>[
-              ['label' => 'Tagli Euro', 'url' => ['/tagli-euro/index']],
-              ['label' => 'Valute', 'url' => ['/valute/index']],
-              ['label' => 'Uffici', 'url' => ['/uffici/index']],
-              ['label' => 'Banche', 'url' => ['/banche/index']],
-              ['label' => 'Transazioni', 'url' => ['/transazioni/index']],
-              ['label' => 'Movimenti', 'url' => ['/movimenti/index']],
-              ['label' => 'Tipologia Nazioni', 'url' => ['/tipologia-nazioni/index']],
-              ['label' => 'Enti', 'url' => ['/enti/index']],
-              ['label' => 'Documenti', 'url' => ['/documenti/index']],
-              ['label' => 'Operatori', 'url' => ['/operatori/index']],
-              ['label' => 'Supporti', 'url' => ['/supporti/index']],
-              ['label' => 'Registrazione Clienti', 'url' => ['/clienti/index']],
-              ['label' => 'Ammanchi', 'url' => ['/ammanchi/index']],
-              ['label' => 'Cassa1', 'url' => ['/cassa1/index']],
-              ['label' => 'Cassa2', 'url' => ['/cassa2/index']],
-              ['label' => 'Cassaforte', 'url' => ['/cassaforte/index']],
-              ['label' => 'Comuni', 'url' => ['/comuni/index']],
-              ['label' => 'Transazioni Cliente', 'url' => ['/transazioni-clienti/index']],
-              ['label' => 'Supporto Valute', 'url' => ['/valute-supporto/index']],
-            ]
-          ],
-            Yii::$app->user->isGuest ? (
-                ['label' => 'Login', 'url' => ['/site/login']]
-            ) : (
-                '<li>'
-                . Html::beginForm(['/site/logout'], 'post')
-                . Html::submitButton(
-                    'Logout (' . Yii::$app->user->identity->username . ')',
-                    ['class' => 'btn btn-link logout']
-                )
-                . Html::endForm()
-                . '</li>'
-            )
-        ],
-    ]);
-    NavBar::end();
+    $directoryAsset = Yii::$app->assetManager->getPublishedUrl('@vendor/almasaeed2010/adminlte/dist');
     ?>
+    <?php $this->beginPage() ?>
+    <!DOCTYPE html>
+    <html lang="<?= Yii::$app->language ?>">
+    <head>
+        <meta charset="<?= Yii::$app->charset ?>"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <?= Html::csrfMetaTags() ?>
+        <title><?= Html::encode($this->title) ?></title>
+        <?php $this->head() ?>
+    </head>
+    <body class="hold-transition skin-blue sidebar-mini">
+    <?php $this->beginBody() ?>
+    <div class="wrapper">
 
-    <div class="container">
-        <?= Breadcrumbs::widget([
-            'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-        ]) ?>
-        <?= Alert::widget() ?>
-        <?= $content ?>
+        <?= $this->render(
+            'header.php',
+            ['directoryAsset' => $directoryAsset]
+        ) ?>
+
+        <?= $this->render(
+            'left.php',
+            ['directoryAsset' => $directoryAsset]
+        )
+        ?>
+
+        <?= $this->render(
+            'content.php',
+            ['content' => $content, 'directoryAsset' => $directoryAsset]
+        ) ?>
+
     </div>
-</div>
 
-<footer class="footer">
-    <div class="container">
-        <p class="pull-left">&copy; ChangeXpress <?= date('Y') ?></p>
-
-        <p class="pull-right"><?= Yii::powered() ?></p>
-    </div>
-</footer>
-
-<?php $this->endBody() ?>
-</body>
-</html>
-<?php $this->endPage() ?>
+    <?php $this->endBody() ?>
+    </body>
+    </html>
+    <?php $this->endPage() ?>
+<?php } ?>

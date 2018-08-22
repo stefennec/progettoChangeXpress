@@ -12,6 +12,7 @@ use Yii;
  * @property string $isoCode
  * @property string $RateUfficialeAcquisto
  * @property string $RateUfficialeVendita
+ * @property string $imgBandiera
  */
 class Valute extends \yii\db\ActiveRecord
 {
@@ -29,9 +30,9 @@ class Valute extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['RateUfficialeAcquisto', 'RateUfficialeVendita'], 'required'],
+            [['RateUfficialeAcquisto', 'RateUfficialeVendita', 'imgBandiera'], 'required'],
             [['RateUfficialeAcquisto', 'RateUfficialeVendita'], 'number'],
-            [['nome'], 'string', 'max' => 255],
+            [['nome', 'imgBandiera'], 'string', 'max' => 255],
             [['isoCode'], 'string', 'max' => 3],
         ];
     }
@@ -47,6 +48,7 @@ class Valute extends \yii\db\ActiveRecord
             'isoCode' => 'Iso Code',
             'RateUfficialeAcquisto' => 'Rate Ufficiale Acquisto',
             'RateUfficialeVendita' => 'Rate Ufficiale Vendita',
+            'imgBandiera' => 'Img Bandiera',
         ];
     }
 

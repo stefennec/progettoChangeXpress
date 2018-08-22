@@ -124,4 +124,33 @@ class CassaforteController extends Controller
 
         throw new NotFoundHttpException('The requested page does not exist.');
     }
+
+    public function actionEuro()
+    {
+      $model = new Cassaforte();
+
+      if ($model->load(Yii::$app->request->post()) && $model->save()) {
+          return $this->redirect(['view', 'id' => $model->id]);
+      }
+
+      return $this->render('euro', [
+          'model' => $model,
+      ]);
+    }
+
+    public function actionDollari()
+    {
+      $model = new Cassaforte();
+
+      if ($model->load(Yii::$app->request->post()) && $model->save()) {
+          return $this->redirect(['view', 'id' => $model->id]);
+      }
+
+      return $this->render('dollari', [
+          'model' => $model,
+      ]);
+
+      // $query = new \yii\db\Query();
+      // $quantitaUsd = $query->select('quantita')->where(['valuta'=>51])->one();
+    }
 }
