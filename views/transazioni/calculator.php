@@ -47,9 +47,9 @@ use app\models\Valute;
           function loadEventListeners(){
             selectorValuta.addEventListener("change", function(e) {
               
-              var entireValue = selectorValuta.options[selectorValuta.selectedIndex].innerHTML;
+            var entireValue = selectorValuta.options[selectorValuta.selectedIndex].innerHTML;
               
-              var str = entireValue;
+            var str = entireValue;
             var slug = str.split(' ').pop();
             // slug=parseFloat(slug).toFixed(10,5);
 
