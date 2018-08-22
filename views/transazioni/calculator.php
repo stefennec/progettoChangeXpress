@@ -19,48 +19,52 @@ use app\models\Valute;
              </div>
 
             <div class="transazioni-form">
+            
 
             <?php $form = ActiveForm::begin(); ?>
 
             <?= $form->field($model, 'valuta')
                     ->label(false)
                     ->dropdownList(Valute::find()
-                                    ->select(['isoCode', 'id', 'RateUfficialeAcquisto'])
+                                    ->select(['isoCode', 'id','nome', 'RateUfficialeAcquisto'])
+                                    ->select(['concat(isoCode,\' \',RateUfficialeAcquisto), id'])
                                     ->indexBy('id')
                                     ->column(),
                                   ['prompt'=>'Seleziona Valuta','class' => 'your_class', 'id' => 'activitySelector']);
             ?>
+            <div class="form-group">
+               <input type="text" class="form-control" id="fillFieldValuta" placeholder="Commissione Applicata">
+             </div>
               <script>
+
           // Variabli iniziali
           var selectorValuta = document.getElementById('activitySelector');
-              //    console.log(dateOfWeek);
+
           // funzione che scatena gli eventi
           loadEventListeners();
 
           // function for loadAllEvent
           function loadEventListeners(){
             selectorValuta.addEventListener("change", function(e) {
-              valueMoneyJs=e;
-            console.log(valueMoneyJs);
+              
+              var entireValue = selectorValuta.options[selectorValuta.selectedIndex].innerHTML;
+              
+              var str = entireValue;
+            var slug = str.split(' ').pop();
+            // slug=parseFloat(slug).toFixed(10,5);
+
+
+          document.getElementById('fillFieldValuta').value=slug;
+          console.log(slug);
+
           });
           }
         </script>
-
              <!-- dove sparare il valore della valuta -->
-              <div class="form-group" id="fillFieldValuta">
-               <input type="number" class="form-control" id="valoreCambio" placeholder="Cambio applicato">
-             </div>
-             <div class="form-group">
-               <div class="input-group">
-                 <span class="input-group-addon">%</span>
-                 <input type="number" class="form-control" id="rate" placeholder="Cambio Applicato">
-               </div>
-             </div>
+              
             
             
-             <div class="form-group">
-               <input type="number" class="form-control" id="commissione" placeholder="Commissione Applicata">
-             </div>
+             
              <div class="form-group">
                <input type="number" class="form-control" id="spesa" placeholder="Spesa Fissa">
              </div>
