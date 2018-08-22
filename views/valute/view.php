@@ -33,6 +33,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'isoCode',
             'RateUfficialeAcquisto',
             'RateUfficialeVendita',
+            'imgBandiera',
         ],
     ]) ?>
 
