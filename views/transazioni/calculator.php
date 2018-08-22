@@ -33,7 +33,7 @@ use app\models\Valute;
                                   ['prompt'=>'Seleziona Valuta','class' => 'your_class', 'id' => 'activitySelector']);
             ?>
             <div class="form-group">
-               <input type="text" class="form-control" id="fillFieldValuta" placeholder="Commissione Applicata">
+               <input type="text" class="form-control" id="commissione" placeholder="Commissione Applicata">
              </div>
               <script>
 
@@ -54,7 +54,7 @@ use app\models\Valute;
             // slug=parseFloat(slug).toFixed(10,5);
 
 
-          document.getElementById('fillFieldValuta').value=slug;
+          document.getElementById('commissione').value=slug;
           console.log(slug);
 
           });

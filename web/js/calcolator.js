@@ -23,23 +23,23 @@ document.getElementById('loan-form').addEventListener('submit', function(e){
   console.log('calculating');
  
   // UI variables
-  const quantita = document.getElementById('quantita');
-  const rate = document.getElementById('rate');
-  const commissione = document.getElementById('commissione');
-  const spesa = document.getElementById('spesa');
-  const nettoTransazione = document.getElementById('netto-transazione');
-  const commissioneTransazione = document.getElementById('commissione-transazione');
-  const lordoTransazione = document.getElementById('lordo-transazione');
+  var quantita = document.getElementById('quantita');
+       rate = document.getElementById('rate');
+       commissione = document.getElementById('commissione');
+       spesa = document.getElementById('spesa');
+       nettoTransazione = document.getElementById('netto-transazione');
+       commissioneTransazione = document.getElementById('commissione-transazione');
+       lordoTransazione = document.getElementById('lordo-transazione');
  
   // creo la costante principal e con parseFloat passo una stringa da stringa a numero
-  const quantitaValuta = parseFloat(quantita.value);
-  const tassoRate = parseFloat(rate.value);
-  const commissionePercentuale = parseFloat(commissione.value);
-  const spesaFissa = parseFloat(spesa.value);
+       quantitaValuta = parseFloat(quantita.value);
+       tassoRate = parseFloat(rate.value);
+       commissionePercentuale = parseFloat(commissione.value);
+       spesaFissa = parseFloat(spesa.value);
  
   // Compute monthly payment
   //const x = Math.pow(1 + calculatedInterest, calculatedPayments);
-  const monthly = (quantitaValuta/tassoRate);
+       monthly = (quantitaValuta/tassoRate);
  
   if(isFinite(monthly)) {
  
