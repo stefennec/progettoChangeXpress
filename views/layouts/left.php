@@ -39,6 +39,10 @@
                     //Form clienti
                     ['label' => 'Clienti', 'url' => ['/clienti/clienti']],
 
+                    //Conteggio Cassaforte
+                    ['label' => 'Conteggio Euro', 'url' => ['/cassaforte/euro']],
+                    ['label' => 'Conteggio Dollari', 'url' => ['/cassaforte/dollari']],
+
                     [
                         'label' => 'Amministra',
                         'icon' => 'share',
@@ -63,7 +67,7 @@
                           ['label' => 'Cassaforte', 'url' => ['/cassaforte/index']],
                           ['label' => 'Comuni', 'url' => ['/comuni/index']],
                           ['label' => 'Transazioni Cliente', 'url' => ['/transazioni-clienti/index']],
-                          
+
                         ],
                     ],
                 ],
