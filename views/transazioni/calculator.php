@@ -16,6 +16,8 @@ use app\models\TipologiaNazioni;
              <div class="form-group">
                <div class="input-group">
 <?php
+$time=date_default_timezone_set('Europe/Rome');
+
 $data=time();
 $data=date('H:i:s', $data)
 
@@ -108,8 +110,18 @@ $data=date('H:i:s', $data)
         </script>
              <!-- dove sparare il valore della valuta -->
 
+        
           
+        <div class="form-group">
+             <div class="input-group">
+                 <!-- Netto al Cliente -->
+                 <?= $form->field($model, 'valuta')
+                          ->textInput(['maxlength' => true,
+                                       'class' => 'form-control',
+                                       'placeholder'=>'Valuta-Sarà only read',
+                                        'id' => 'valutaCodice']) ?>
 
+               </div>
 
              <div class="form-group">
              <div class="input-group">
@@ -163,6 +175,27 @@ $data=date('H:i:s', $data)
                  <!-- Lordo -->
                  <?= $form->field($model, 'lordo')
                           ->label('Lordo')
+                          ->textInput(['maxlength' => true, 
+                                      'id' => 'lordo-transazione']) ?>
+               </div>
+
+               <!-- Lordo -->
+               <?= $form->field($model, 'idCliente')
+                          ->label('Il nome del cliente')
+                          ->textInput(['maxlength' => true, 
+                                      'id' => 'lordo-transazione']) ?>
+               </div>
+
+               <!-- Lordo -->
+               <?= $form->field($model, 'operatore')
+                          ->label('Il num operatore')
+                          ->textInput(['maxlength' => true, 
+                                      'id' => 'lordo-transazione']) ?>
+               </div>
+
+               <!-- Lordo -->
+               <?= $form->field($model, 'fidelityCliente')
+                          ->label('/')
                           ->textInput(['maxlength' => true, 
                                       'id' => 'lordo-transazione']) ?>
                </div>
