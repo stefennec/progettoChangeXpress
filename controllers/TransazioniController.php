@@ -137,13 +137,26 @@ class TransazioniController extends Controller
             'model' => $model,
         ]);
     }
+
+    public function actionCalculatorVendita()
+    {
+        $model = new Transazioni();
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'id' => $model->id]);
+        }
+
+        return $this->render('calculator-vendita', [
+            'model' => $model,
+        ]);
+    }
     // save the PDF
     // public function actionReport($id) {
-        
+
     //     // trovare proprio quel model sennò resta vuoto
     //     $model = $this->findModel($id);
     //     $idOrder = $model->id_order;
-        
+
     //     $mpdf = new \Mpdf\Mpdf();
 
     //     $stylesheet = file_get_contents('css/stylePdf.css');
@@ -158,7 +171,7 @@ class TransazioniController extends Controller
     //         $mpdf->Output($idOrder.'.pdf', 'D');/*Insert D al posto di I(visualizza in browser) per il Download */
     // exit;
 
-    
+
     // }
 
 }

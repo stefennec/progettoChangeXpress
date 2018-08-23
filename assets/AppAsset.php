@@ -24,6 +24,8 @@ class AppAsset extends AssetBundle
     ];
     public $js = [
         'js/calcolator.js',
+        'js/calcolatorVendita.js',
+        'js/contaEuro.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',

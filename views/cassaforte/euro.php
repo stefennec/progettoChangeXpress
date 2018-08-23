@@ -19,7 +19,7 @@ use yii\db\Query;
         <div class="panel-body text-center">
           <h2>Tagli EURO</h2>
 
-            <form class="text-center">
+            <form class="text-center" id="euroCalcolatore">
 
               <div class="row">
                 <div class="col-lg-6">
@@ -159,9 +159,18 @@ use yii\db\Query;
                       <span class="input-group-addon">TOTALE:</span>
                       <input type="number" id="totaleCombinato" class="form-control" placeholder="">
                   </div>
+
+                  <br>
+
+                  <div class="input-group input-group-lg text-center">
+                      <input type="submit" name="" value="Calcola Totali" class="btn-danger">
+                  </div>
                   <br>
                   <div class="inline">
                     <p>DATABASE</p>
+                  </div>
+                  <div class="">
+                  
                   </div>
                 </div>
               </div>
