@@ -5,7 +5,7 @@ use app\models\Valute;
 use app\models\TipologiaNazioni;
 
 
-?>
+  $form = ActiveForm::begin(); ?>
 
 <div class="container">
      <div class="row">
@@ -15,15 +15,40 @@ use app\models\TipologiaNazioni;
            <form id="loan-form">
              <div class="form-group">
                <div class="input-group">
-                 <span class="input-group-addon">$</span>
-                 <input type="number" class="form-control" id="quantita" placeholder="quantitaValuta">
+<?php
+$data=time();
+$data=date('H:i:s', $data)
+
+?>
+              <!-- quantita -->
+              <div class="input-group">
+                    <?php echo 
+                      $form->field($model, 'ora')
+                                ->label('Ora')
+                                ->textInput(['maxlength' => true,
+                                            'value' => $data,
+                                            'placeholder'=>'Quantita Valuta',
+                                              'id' => 'ora']) ?>
+                 <!-- Netto al Cliente -->
+                 <?php echo 
+                 $form->field($model, 'netto')
+                          ->label('Spese')
+                          ->textInput(['maxlength' => true,
+                                       'class' => 'form-control',
+                                       'placeholder'=>'Quantita Valuta',
+                                        'id' => 'quantita']) ?>
+               </div>
+
+             </div>
+                 <!-- <span class="input-group-addon">$</span> -->
+                 <!-- <input type="number" class="form-control" id="quantita" placeholder="quantitaValuta"> -->
                </div>
              </div>
 
             <div class="transazioni-form">
 
 
-            <?php $form = ActiveForm::begin(); ?>
+            
 
             <?= $form->field($model, 'valuta')
                     ->label(false)
@@ -35,12 +60,28 @@ use app\models\TipologiaNazioni;
                                   ['prompt'=>'Seleziona Valuta','class' => 'your_class', 'id' => 'activitySelector']);
             ?>
             <div class="form-group">
-               <input type="text" class="form-control" id="rate" placeholder="Rate Applicato">
+               <?php echo 
+                 $form->field($model, 'cambio')
+                          ->label('Rate applicato')
+                          ->textInput(['maxlength' => true,
+                                       'class' => 'form-control',
+                                       'placeholder'=>'Rate Applicato',
+                                        'id' => 'rate']) ?>
              </div>
             <div class="form-group">
-               <input type="text" class="form-control" id="commissione" placeholder="Commissione Applicata">
+            <?php echo 
+                 $form->field($model, 'percentuale')
+                          ->label('Commissione Applicata')
+                          ->textInput(['maxlength' => true,
+                                       'class' => 'form-control',
+                                       'placeholder'=>'Percentuale di commissione',
+                                        'id' => 'rate']) ?>
              </div>
               <script>
+
+
+
+
 
           // Variabli iniziali
           var selectorValuta = document.getElementById('activitySelector');
@@ -67,11 +108,21 @@ use app\models\TipologiaNazioni;
         </script>
              <!-- dove sparare il valore della valuta -->
 
-
+          
 
 
              <div class="form-group">
-               <input type="number" class="form-control" id="spesa" placeholder="Spesa Fissa">
+             <div class="input-group">
+                 <!-- Netto al Cliente -->
+                 <?= $form->field($model, 'spese')
+                          ->label('Spese')
+                          ->textInput(['maxlength' => true,
+                                       'class' => 'form-control',
+                                       'placeholder'=>'Spesa Fissa',
+                                        'id' => 'spesa']) ?>
+
+               </div>
+
              </div>
              <div class="form-group">
                <?= $form->field($model, 'tipologiaNazioneCliente')
@@ -83,43 +134,43 @@ use app\models\TipologiaNazioni;
                                      ['prompt'=>'Seleziona Area Cliente']);
               ?>
              </div>
-             <div class="forn-group">
+             <div class="form-group">
                <input type="submit" value="Calcola il cambio" class="btn btn-success">
              </div>
            </form>
            <!-- LOADER -->
 
            <!-- RESULTS -->
-           <div id="results" class="pt-4">
-             <h5>Results</h5>
-             <div class="form-group">
-               <div class="input-group">
-                 <span class="input-group-addon">Netto al Cliente</span>
-                 <input type="number" class="form-control" id="netto-transazione" disabled>
-               </div>
-             </div>
 
-             <div class="form-group">
                <div class="input-group">
-                 <span class="input-group-addon">Commissione in €</span>
-                 <input type="number" class="form-control" id="commissione-transazione" disabled>
-               </div>
-             </div>
+                 <!-- Netto al Cliente -->
+                 <?= $form->field($model, 'netto')
+                          ->label('Results')
+                          ->textInput(['maxlength' => true, 
+                                        'id' => 'netto-transazione']) ?>
 
-             <div class="form-group">
-               <div class="input-group">
-                 <span class="input-group-addon">Lordo</span>
-                 <input type="number" class="form-control" id="lordo-transazione" disabled>
                </div>
-             </div>
+
+            <div class="input-group">
+                 <!-- Commissioni -->
+                 <?= $form->field($model, 'commissioni')
+                          ->label('Commissione in €')    
+                          ->textInput(['maxlength' => true, 
+                                         'id' => 'commissione-transazione']) ?>
+               </div>
+
+               <div class="input-group">
+                 <!-- Lordo -->
+                 <?= $form->field($model, 'lordo')
+                          ->label('Lordo')
+                          ->textInput(['maxlength' => true, 
+                                      'id' => 'lordo-transazione']) ?>
+               </div>
+
              <div class="form-group">
                 <?= Html::a('Salva & Stampa', ['create', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
                 </div>
-
-                
-
                 <?php ActiveForm::end(); ?>
-
             </div>
            </div>
          </div>

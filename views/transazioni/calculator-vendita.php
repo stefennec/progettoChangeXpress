@@ -83,7 +83,7 @@ use app\models\TipologiaNazioni;
                                      ['prompt'=>'Seleziona Area Cliente']);
               ?>
              </div>
-             <div class="forn-group">
+             <div class="form-group">
                <input type="submit" value="Calcola il cambio" class="btn btn-success">
              </div>
            </form>
