@@ -35,7 +35,8 @@
                     ['label' => 'Debug', 'icon' => 'dashboard', 'url' => ['/debug']],
                     ['label' => 'Login', 'url' => ['site/login'], 'visible' => Yii::$app->user->isGuest],
                     //Menù Calcolatrice
-                    ['label' => 'Calcolatore', 'url' => ['/transazioni/calculator']],
+                    ['label' => 'Calcolatore Acquisto', 'url' => ['/transazioni/calculator']],                    
+                    ['label' => 'Calcolatore Vendita', 'url' => ['/transazioni/calculator-vendita']],
                     //Form clienti
                     ['label' => 'Clienti', 'url' => ['/clienti/clienti']],
 
