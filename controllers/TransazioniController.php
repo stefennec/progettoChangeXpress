@@ -166,9 +166,7 @@ class TransazioniController extends Controller
         $mpdf->WriteHTML($this->renderPartial('transazionecreatepdf', [
         'model' => $model]),2);
 
-
-
-            $mpdf->Output($idOrder.'.pdf', 'D');/*Insert D al posto di I(visualizza in browser) per il Download */
+        $mpdf->Output($idOrder.'.pdf', 'D');/*Insert D al posto di I(visualizza in browser) per il Download */
     exit;
 
 

@@ -113,8 +113,10 @@ use app\models\TipologiaNazioni;
                </div>
              </div>
              <div class="form-group">
-                    <?= Html::submitButton('Save', ['class' => 'btn btn-danger btn-block']) ?>
+                <?= Html::a('Salva & Stampa', ['create', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
                 </div>
+
+                
 
                 <?php ActiveForm::end(); ?>
 
