@@ -11,8 +11,8 @@ use app\models\TipologiaNazioni;
      <div class="row">
        <div class="col-md-6 mx-auto">
          <div class="card card-body text-center mt-5">
-           <h1 class="heading display-5 pb-3">Acquisto Valute</h1>
-           <form id="loan-form">
+           <h1 class="heading display-5 pb-3">MCV - Cash Advance</h1>
+           <form id="mcv-form">
              <div class="form-group">
                <div class="input-group">
 <?php
@@ -24,13 +24,15 @@ $data=date('H:i:s', $data)
 ?>
               <!-- quantita -->
               <div class="input-group">
-                    <?php echo
-                      $form->field($model, 'ora')
-                                ->label('Ora')
-                                ->textInput(['maxlength' => true,
-                                            'value' => $data,
-                                            'placeholder'=>'Quantita Valuta',
-                                              'id' => 'ora']) ?>
+                    <?php
+                    // echo
+                    //   $form->field($model, 'ora')
+                    //             ->label('Ora')
+                    //             ->textInput(['maxlength' => true,
+                    //                         'value' => $data,
+                    //                         'placeholder'=>'Quantita Valuta',
+                    //                           'id' => 'ora'])
+                                               ?>
                  <!-- Netto al Cliente -->
                  <?php echo
                  $form->field($model, 'netto')
@@ -38,7 +40,7 @@ $data=date('H:i:s', $data)
                           ->textInput(['maxlength' => true,
                                        'class' => 'form-control',
                                        'placeholder'=>'Quantita Valuta',
-                                        'id' => 'quantita']) ?>
+                                        'id' => 'quantitaMcv']) ?>
                </div>
 
              </div>
@@ -55,8 +57,8 @@ $data=date('H:i:s', $data)
             <?= $form->field($model, 'valuta')
                     ->label(false)
                     ->dropdownList(Valute::find()
-                                    ->select(['isoCode', 'id','nome', 'RateUfficialeAcquisto'])
-                                    ->select(['concat(isoCode,\' \',RateUfficialeAcquisto), id'])
+                                    ->select(['isoCode', 'id','nome', 'RateUfficialeAcquisto'])->where(['id'=>54])
+                                    ->select(['concat(isoCode,\' \',RateUfficialeAcquisto), id'])->where(['id'=>54])
                                     ->indexBy('id')
                                     ->column(),
                                   ['prompt'=>'Seleziona Valuta','class' => 'your_class', 'id' => 'activitySelector']);
@@ -68,7 +70,7 @@ $data=date('H:i:s', $data)
                           ->textInput(['maxlength' => true,
                                        'class' => 'form-control',
                                        'placeholder'=>'Rate Applicato',
-                                        'id' => 'rate']) ?>
+                                        'id' => 'rateMcv']) ?>
              </div>
             <div class="form-group">
             <?php echo
@@ -77,7 +79,7 @@ $data=date('H:i:s', $data)
                           ->textInput(['maxlength' => true,
                                        'class' => 'form-control',
                                        'placeholder'=>'Percentuale di commissione',
-                                        'id' => 'commissione']) ?>
+                                        'id' => 'commissioneMcv']) ?>
              </div>
               <script>
 
@@ -93,7 +95,7 @@ $data=date('H:i:s', $data)
 
           // function for loadAllEvent
           function loadEventListeners(){
-            selectorValuta.addEventListener("change", function(e) {
+            selectorValuta.addEventListener("change", function(m) {
 
             var entireValue = selectorValuta.options[selectorValuta.selectedIndex].innerHTML;
 
@@ -102,7 +104,7 @@ $data=date('H:i:s', $data)
             // slug=parseFloat(slug).toFixed(10,5);
 
 
-          document.getElementById('rate').value=slug;
+          document.getElementById('rateMcv').value=slug;
           console.log(slug);
 
           });
@@ -131,7 +133,7 @@ $data=date('H:i:s', $data)
                           ->textInput(['maxlength' => true,
                                        'class' => 'form-control',
                                        'placeholder'=>'Spesa Fissa',
-                                        'id' => 'spesa']) ?>
+                                        'id' => 'spesaMcv']) ?>
 
                </div>
 
@@ -149,6 +151,9 @@ $data=date('H:i:s', $data)
              <div class="form-group">
                <input type="submit" value="Calcola il cambio" class="btn btn-success">
              </div>
+             <div class="form-group">
+               <input type="button" value="Calcola il cambio" onclick="calculateResultsMcv()" class="btn btn-success">
+             </div>
            </form>
            <!-- LOADER -->
 
@@ -159,7 +164,7 @@ $data=date('H:i:s', $data)
                  <?= $form->field($model, 'netto')
                           ->label('Results')
                           ->textInput(['maxlength' => true,
-                                        'id' => 'netto-transazione']) ?>
+                                        'id' => 'nettoTransazioneMcv']) ?>
 
                </div>
 
@@ -168,7 +173,7 @@ $data=date('H:i:s', $data)
                  <?= $form->field($model, 'commissioni')
                           ->label('Commissione in €')
                           ->textInput(['maxlength' => true,
-                                         'id' => 'commissione-transazione']) ?>
+                                         'id' => 'commissioneTransazioneMcv']) ?>
                </div>
 
                <div class="input-group">
@@ -176,28 +181,28 @@ $data=date('H:i:s', $data)
                  <?= $form->field($model, 'lordo')
                           ->label('Lordo')
                           ->textInput(['maxlength' => true,
-                                      'id' => 'lordo-transazione']) ?>
+                                      'id' => 'lordoTransazioneMcv']) ?>
                </div>
 
-               <!-- Lordo -->
+               <!-- id cliente -->
                <?= $form->field($model, 'idCliente')
                           ->label('Il nome del cliente')
                           ->textInput(['maxlength' => true,
-                                      'id' => 'lordo-transazione']) ?>
+                                      'id' => '']) ?>
                </div>
 
-               <!-- Lordo -->
+               <!-- operatore -->
                <?= $form->field($model, 'operatore')
                           ->label('Il num operatore')
                           ->textInput(['maxlength' => true,
-                                      'id' => 'lordo-transazione']) ?>
+                                      'id' => '']) ?>
                </div>
 
-               <!-- Lordo -->
+               <!-- Cliente -->
                <?= $form->field($model, 'fidelityCliente')
                           ->label('/')
                           ->textInput(['maxlength' => true,
-                                      'id' => 'lordo-transazione']) ?>
+                                      'id' => '']) ?>
                </div>
 
              <div class="form-group">

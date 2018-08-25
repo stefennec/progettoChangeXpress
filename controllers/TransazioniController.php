@@ -150,6 +150,22 @@ class TransazioniController extends Controller
             'model' => $model,
         ]);
     }
+
+    // Funzione per la calcolatrice MCV
+
+    public function actionCalculatorMcv()
+    {
+        $model = new Transazioni();
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'id' => $model->id]);
+        }
+
+        return $this->render('calculator-mcv', [
+            'model' => $model,
+        ]);
+    }
+
     // save the PDF
     public function actionReport($id) {
 

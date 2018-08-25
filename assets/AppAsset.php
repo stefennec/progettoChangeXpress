@@ -24,6 +24,7 @@ class AppAsset extends AssetBundle
     ];
     public $js = [
         'js/calcolator.js',
+        'js/calcolatorMcv.js',
         'js/calcolatorVendita.js',
         'js/contaEuro.js',
         'js/contaDollari.js',

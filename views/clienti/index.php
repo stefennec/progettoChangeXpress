@@ -13,7 +13,7 @@ use app\models\Comuni;
 /* @var $searchModel app\models\ClientiSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Clientis';
+$this->title = 'Lista Clienti ';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="clienti-index">
@@ -105,7 +105,7 @@ $this->params['breadcrumbs'][] = $this->title;
               return $nomeLuogo->comune;
             }],
             'scadenzaDoc',
-            
+
             ['attribute'=>'provincia',
             'format'=>'raw',
             'value'=> function($model,$key,$index){

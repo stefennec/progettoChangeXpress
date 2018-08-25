@@ -7,7 +7,7 @@ use yii\widgets\Pjax;
 /* @var $searchModel app\models\TipologiaNazioniSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Tipologia Nazionis';
+$this->title = 'Area Cliente';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="tipologia-nazioni-index">
@@ -17,16 +17,16 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Tipologia Nazioni', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Aggiungi Area Cliente', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
-
-            'id',
+            // ['class' => 'yii\grid\SerialColumn'],
+            //
+            // 'id',
             'tipologia',
 
             ['class' => 'yii\grid\ActionColumn'],
