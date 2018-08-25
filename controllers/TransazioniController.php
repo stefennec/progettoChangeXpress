@@ -9,7 +9,6 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use app\models\Valute;
-use kartik\mpdf\Pdf;
 use mPDF;
 
 /**
@@ -164,7 +163,7 @@ class TransazioniController extends Controller
               
               $idTransazione = $model->id;
               
-              $mpdf = new \Mpdf\Mpdf();
+              $mpdf=new \Mpdf\Mpdf(['format' => [80, 80]]);
 
               $stylesheet = file_get_contents('css/stylePdf.css');
 
