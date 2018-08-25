@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use yii\db\ActiveRecord;
 use yii\helpers\Url;
 use yii\helpers\ArrayHelper;
 use app\models\Cassaforte;
@@ -54,26 +55,26 @@ use yii\db\Query;
                 </div>
                 <div class="col-lg-6">
                   <div class="input-group input-group-lg text-center">
-                      <input type="number" id="totale100USD" class="form-control" placeholder="">
+                      <input type="number" id="totale100USD" class="form-control" readonly placeholder="">
                   </div>
                   <div class="input-group input-group-lg text-center">
-                      <input type="number" id="totale50USD" class="form-control" placeholder="">
+                      <input type="number" id="totale50USD" class="form-control" readonly placeholder="">
                   </div>
                   <div class="input-group input-group-lg text-center">
-                      <input type="number" id="totale20USD" class="form-control" placeholder="">
+                      <input type="number" id="totale20USD" class="form-control" readonly placeholder="">
                   </div>
                   <div class="input-group input-group-lg text-center">
 
-                      <input type="number" id="totale10USD" class="form-control" placeholder="">
+                      <input type="number" id="totale10USD" class="form-control" readonly placeholder="">
                   </div>
                   <div class="input-group input-group-lg text-center">
-                      <input type="number" id="totale5USD" class="form-control" placeholder="">
+                      <input type="number" id="totale5USD" class="form-control" readonly placeholder="">
                   </div>
                   <div class="input-group input-group-lg text-center">
-                      <input type="number" id="totale2USD" class="form-control" placeholder="">
+                      <input type="number" id="totale2USD" class="form-control" readonly placeholder="">
                   </div>
                   <div class="input-group input-group-lg text-center">
-                      <input type="number" id="totale1USD" class="form-control" placeholder="">
+                      <input type="number" id="totale1USD" class="form-control" readonly placeholder="">
                   </div>
                   <br>
                   <div class="input-group input-group-lg text-center">
@@ -85,13 +86,23 @@ use yii\db\Query;
                       <input type="number" id="totaleStock" value="0" class="form-control" placeholder="">
                   </div>
                   <div class="input-group input-group-lg text-center">
-                      <p>
-                      TOTALE IN DATABASE </p>
+
+                     <?php
+
+                     // $query = Cassaforte::find()->where(['valuta'=>51]);
+                     //
+                     // echo $query->quantita;
+
+                      $sql = 'SELECT quantita FROM Cassaforte WHERE valuta=51';
+                      $quantitaUSD = Cassaforte::findBySql($sql);
+                      $results = $quantitaUSD;
+                      echo $results;
+                     ?>
                   </div>
                 </div>
                 <div class="input-group input-group-lg text-center">
                     <span class="input-group-addon">TOTALE CALCOLATO SUL MOMENTO $</span>
-                    <input type="number" id="totaleCombinatoDollari" class="form-control" placeholder="">
+                    <input type="number" id="totaleCombinatoDollari" readonly class="form-control" placeholder="">
                 </div>
               </div>
               <div class="input-group input-group-lg text-center">

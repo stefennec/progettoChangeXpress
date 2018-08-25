@@ -96,68 +96,68 @@ use yii\db\Query;
                 </div>
                 <div class="col-lg-4">
                   <div class="input-group input-group-lg text-center">
-                      <input type="number" id="totale500" class="form-control" placeholder="">
+                      <input type="number" id="totale500" readonly class="form-control" placeholder="">
 
                   </div>
                   <div class="input-group input-group-lg text-center">
-                      <input type="number" id="totale200" class="form-control" placeholder="">
+                      <input type="number" id="totale200" readonly class="form-control" placeholder="">
                   </div>
                   <div class="input-group input-group-lg text-center">
-                      <input type="number" id="totale100" class="form-control" placeholder="">
+                      <input type="number" id="totale100" readonly class="form-control" placeholder="">
                   </div>
                   <div class="input-group input-group-lg text-center">
-                      <input type="number" id="totale50" class="form-control" placeholder="">
+                      <input type="number" id="totale50" readonly class="form-control" placeholder="">
                   </div>
                   <div class="input-group input-group-lg text-center">
-                      <input type="number" id="totale20" class="form-control" placeholder="">
+                      <input type="number" id="totale20" readonly class="form-control" placeholder="">
                   </div>
                   <div class="input-group input-group-lg text-center">
-                      <input type="number" id="totale10" class="form-control" placeholder="">
+                      <input type="number" id="totale10" readonly class="form-control" placeholder="">
                   </div>
                   <div class="input-group input-group-lg text-center">
-                      <input type="number" id="totale5" class="form-control" placeholder="">
+                      <input type="number" id="totale5" readonly class="form-control" placeholder="">
                   </div>
                   <br>
                   <div class="input-group input-group-lg text-center">
                       <span class="input-group-addon">Di cui in Banconote:</span>
-                      <input type="number" id="totaleBanconote" class="form-control" placeholder="">
+                      <input type="number" id="totaleBanconote" readonly class="form-control" placeholder="">
                   </div>
                   <br>
                   <div class="input-group input-group-lg text-center">
-                      <input type="number" id="totale2" class="form-control" placeholder="">
+                      <input type="number" id="totale2" readonly class="form-control" placeholder="">
                   </div>
                   <div class="input-group input-group-lg text-center">
-                      <input type="number" id="totale1" class="form-control" placeholder="">
+                      <input type="number" id="totale1" readonly class="form-control" placeholder="">
                   </div>
                   <div class="input-group input-group-lg text-center">
-                      <input type="number" id="totale050" class="form-control" placeholder="">
+                      <input type="number" id="totale050" readonly class="form-control" placeholder="">
                   </div>
                   <div class="input-group input-group-lg text-center">
-                      <input type="number" id="totale020" class="form-control" placeholder="">
+                      <input type="number" id="totale020" readonly class="form-control" placeholder="">
                   </div>
                   <div class="input-group input-group-lg text-center">
-                      <input type="number" id="totale010" class="form-control" placeholder="">
+                      <input type="number" id="totale010" readonly class="form-control" placeholder="">
                   </div>
                   <div class="input-group input-group-lg text-center">
-                      <input type="number" id="totale005" class="form-control" placeholder="">
+                      <input type="number" id="totale005" readonly class="form-control" placeholder="">
                   </div>
                   <div class="input-group input-group-lg text-center">
-                      <input type="number" id="totale002" class="form-control" placeholder="">
+                      <input type="number" id="totale002" readonly class="form-control" placeholder="">
                   </div>
                   <div class="input-group input-group-lg text-center">
-                      <input type="number" id="totale001" class="form-control" placeholder="">
+                      <input type="number" id="totale001" readonly class="form-control" placeholder="">
                   </div>
                   <br>
                   <div class="input-group input-group-lg text-center">
                       <span class="input-group-addon">Di cui in Monete:</span>
-                      <input type="number" id="totaleMonete" class="form-control" placeholder="">
+                      <input type="number" id="totaleMonete" readonly class="form-control" placeholder="">
                   </div>
 
                   <br>
 
                   <div class="input-group input-group-lg text-center">
                       <span class="input-group-addon">TOTALE:</span>
-                      <input type="number" id="totaleCombinato" class="form-control" placeholder="">
+                      <input type="number" id="totaleCombinato" readonly class="form-control" placeholder="">
                   </div>
 
                   <br>
@@ -170,7 +170,7 @@ use yii\db\Query;
                     <p>DATABASE</p>
                   </div>
                   <div class="">
-                  
+
                   </div>
                 </div>
               </div>
