@@ -149,14 +149,14 @@ class TransazioniController extends Controller
             'model' => $model,
         ]);
     }
-    public function actionCreateandprint()
+    public function actionCreateandprintacquisto()
     {
         $model = new Transazioni();
 
         if ($model->load(Yii::$app->request->post())) {
           $time=date_default_timezone_set('Europe/Rome');
           $data=time();
-          $data=date('H:i:s', $data);
+          $data=date('Y-m-d H:i:s', $data);
           
           $model->ora=$data;
           
@@ -170,7 +170,7 @@ class TransazioniController extends Controller
 
               $mpdf->WriteHTML($stylesheet,1);
 
-              $mpdf->WriteHTML($this->renderPartial('ordercreatepdf', [
+              $mpdf->WriteHTML($this->renderPartial('ordercreatepdfacquisto', [
               'model' => $model]),2);
 
 

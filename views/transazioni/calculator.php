@@ -112,7 +112,7 @@ use app\models\TipologiaNazioni;
                     'id' => 'lordo-transazione']) ?>
 
 <div class="form-group">
-      <?= Html::a("Conferma la transazione", ['createandprint'], [
+      <?= Html::a("Conferma la transazione", ['createandprintacquisto'], [
                   'class' => 'btn btn-success btn-lg btn-block',
                   'data' => [
                       'confirm' => 'Sei sicuro di confermare la transazione?',
