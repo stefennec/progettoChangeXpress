@@ -8,6 +8,9 @@ use app\models\TransazioniSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use app\models\Valute;
+use kartik\mpdf\Pdf;
+use mPDF;
 
 /**
  * TransazioniController implements the CRUD actions for Transazioni model.
@@ -127,16 +130,12 @@ class TransazioniController extends Controller
 
     public function actionCalculator()
     {
-        $model = new Transazioni();
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
-        }
-
-        return $this->render('calculator', [
-            'model' => $model,
-        ]);
-    }
+    $model = new Transazioni();
+  
+    return $this->render('calculator', [
+        'model' => $model,
+    ]);
+  }
 
     public function actionCalculatorVendita()
     {
@@ -150,6 +149,7 @@ class TransazioniController extends Controller
             'model' => $model,
         ]);
     }
+<<<<<<< HEAD
 
     // Funzione per la calcolatrice MCV
 
@@ -172,20 +172,46 @@ class TransazioniController extends Controller
         // trovare proprio quel model sennò resta vuoto
         $model = $this->findModel($id);
         $idOrder = $model->id_order;
+=======
+    public function actionCreateandprintacquisto()
+    {
+        $model = new Transazioni();
+>>>>>>> eb95913cecd8a80edb742b9d7aed3a8651bc7d02
 
-        $mpdf = new \Mpdf\Mpdf();
+        if ($model->load(Yii::$app->request->post())) {
+          $time=date_default_timezone_set('Europe/Rome');
+          $data=time();
+          $data=date('Y-m-d H:i:s', $data);
+          
+          $model->ora=$data;
+          
+      $model->save();
+              
+              $idTransazione = $model->id;
+              
+              $mpdf = new \Mpdf\Mpdf();
 
-        $stylesheet = file_get_contents('css/stylePdf.css');
+              $stylesheet = file_get_contents('css/stylePdf.css');
 
-        $mpdf->WriteHTML($stylesheet,1);
+              $mpdf->WriteHTML($stylesheet,1);
 
-        $mpdf->WriteHTML($this->renderPartial('transazionecreatepdf', [
-        'model' => $model]),2);
-
-        $mpdf->Output($idOrder.'.pdf', 'D');/*Insert D al posto di I(visualizza in browser) per il Download */
-    exit;
+              $mpdf->WriteHTML($this->renderPartial('ordercreatepdfacquisto', [
+              'model' => $model]),2);
 
 
-     }
+
+          $mpdf->Output($idTransazione.'.pdf', 'I');/*Insert D al posto di I(visualizza in browser) per il Download */
+            return $this->redirect(['view', 'id' => $model->id]);
+        }
+        
+        //se il model è vuoto torna all'indice        
+        $searchModel = new TransazioniSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        
+        return $this->render('index', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+    }
 
 }
