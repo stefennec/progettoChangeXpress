@@ -8,6 +8,9 @@ use app\models\TransazioniSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use app\models\Valute;
+use kartik\mpdf\Pdf;
+use mPDF;
 
 /**
  * TransazioniController implements the CRUD actions for Transazioni model.
@@ -127,16 +130,12 @@ class TransazioniController extends Controller
 
     public function actionCalculator()
     {
-        $model = new Transazioni();
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
-        }
-
-        return $this->render('calculator', [
-            'model' => $model,
-        ]);
-    }
+    $model = new Transazioni();
+  
+    return $this->render('calculator', [
+        'model' => $model,
+    ]);
+  }
 
     public function actionCalculatorVendita()
     {
@@ -150,26 +149,23 @@ class TransazioniController extends Controller
             'model' => $model,
         ]);
     }
-    // save the PDF
-    public function actionReport($id) {
+    public function actionCreateandprint()
+    {
+        $model = new Transazioni();
 
-        // trovare proprio quel model sennò resta vuoto
-        $model = $this->findModel($id);
-        $idOrder = $model->id_order;
-
-        $mpdf = new \Mpdf\Mpdf();
-
-        $stylesheet = file_get_contents('css/stylePdf.css');
-
-        $mpdf->WriteHTML($stylesheet,1);
-
-        $mpdf->WriteHTML($this->renderPartial('transazionecreatepdf', [
-        'model' => $model]),2);
-
-        $mpdf->Output($idOrder.'.pdf', 'D');/*Insert D al posto di I(visualizza in browser) per il Download */
-    exit;
-
-
-     }
+        if ($model->load(Yii::$app->request->post())) {
+              $model->save();
+            return $this->redirect(['view', 'id' => $model->id]);
+        }
+        
+        //se il model è vuoto torna all'indice        
+        $searchModel = new TransazioniSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        
+        return $this->render('index', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+    }
 
 }

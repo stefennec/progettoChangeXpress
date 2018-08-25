@@ -2,6 +2,8 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use app\models\Valute;
+
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Transazioni */
@@ -12,7 +14,7 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'ora')->textInput() ?>
+    <!-- <?= $form->field($model, 'ora')->textInput() ?> -->
 
     <?= $form->field($model, 'valuta')
             ->label(false)
