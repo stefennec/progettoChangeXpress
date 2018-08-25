@@ -31,9 +31,9 @@ use app\models\TipologiaNazioni;
                          'class' => 'form-control',
                          'placeholder'=>'Rate Applicato',
                           'id' => 'rate']) ?>
+                          
   <!-- qui inizia il js per prendersi i tassi di cambio in automatico -->
       <script>
-
     // Variabli iniziali
     var selectorValuta = document.getElementById('activitySelector');
 
@@ -50,49 +50,34 @@ use app\models\TipologiaNazioni;
     var slug = str.split(' ').pop();
     // slug=parseFloat(slug).toFixed(10,5);
 
-
     document.getElementById('rate').value=slug;
     console.log(slug);
-
     });
     }
     </script>
 
-        <div class="form-group">
-             <div class="input-group">
                  <!-- Netto al Cliente -->
-                 <?= $form->field($model, 'valuta')
-                          ->textInput(['maxlength' => true,
-                                       'class' => 'form-control',
-                                       'placeholder'=>'Valuta-Sarà only read',
-                                        'id' => 'valutaCodice']) ?>
+<?= $form->field($model, 'commissioni')
+        ->textInput(['maxlength' => true,
+                     'class' => 'form-control',
+                     'placeholder'=>'Commissione',
+                      'id' => 'valutaCodice']) ?>
 
-               </div>
+ <?= $form->field($model, 'spese')
+          ->label('Spese')
+          ->textInput(['maxlength' => true,
+                       'class' => 'form-control',
+                       'placeholder'=>'Spesa Fissa',
+                        'id' => 'spesa']) ?>
 
-             <div class="form-group">
-             <div class="input-group">
-                 <!-- Netto al Cliente -->
-                 <?= $form->field($model, 'spese')
-                          ->label('Spese')
-                          ->textInput(['maxlength' => true,
-                                       'class' => 'form-control',
-                                       'placeholder'=>'Spesa Fissa',
-                                        'id' => 'spesa']) ?>
-
-               </div>
-
-             </div>
-             <div class="form-group">
-               <?= $form->field($model, 'tipologiaNazioneCliente')
-                       ->label('Area Cliente:')
-                       ->dropdownList(TipologiaNazioni::find()
-                                       ->select(['tipologia', 'id'])
-                                       ->indexBy('id')
-                                       ->column(),
-                                     ['prompt'=>'Seleziona Area Cliente']);
-              ?>
-             </div>
-           <!-- LOADER -->
+ <?= $form->field($model, 'tipologiaNazioneCliente')
+         ->label('Area Cliente:')
+         ->dropdownList(TipologiaNazioni::find()
+                         ->select(['tipologia', 'id'])
+                         ->indexBy('id')
+                         ->column(),
+                       ['prompt'=>'Seleziona Area Cliente']);
+?>
 
 <div class="form-group">
   <input type="submit" value="Calcola il cambio" class="btn btn-success">

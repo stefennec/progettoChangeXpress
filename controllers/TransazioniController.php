@@ -163,7 +163,16 @@ class TransazioniController extends Controller
               
               $idTransazione = $model->id;
               
-              $mpdf=new \Mpdf\Mpdf(['format' => [80, 80]]);
+              $mpdf=new \Mpdf\Mpdf([
+                'format' => [80, 80],
+                'margin_left' => 1,
+                'margin_right' => 1,
+                'margin_top' => 1,
+                'margin_bottom' => 1,
+                'margin_header' => 0,
+                'margin_footer' => 0,
+                'orientation' => 'P',
+              ]);
 
               $stylesheet = file_get_contents('css/stylePdf.css');
 

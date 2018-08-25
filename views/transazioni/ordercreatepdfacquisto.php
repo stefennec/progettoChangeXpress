@@ -9,6 +9,13 @@ $supporto=$model->supporto;
 $quantita=$model->quantita;
 $cambio=$model->cambio;
 $netto=$model->netto;
+// echo $id;
+// echo $ora;
+// echo $valuta;
+// echo $supporto;
+// echo $quantita;
+// echo $cambio;
+
 ?>
 
 <body>

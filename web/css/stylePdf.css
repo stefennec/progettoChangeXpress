@@ -1,11 +1,11 @@
 
-/* tabella dettagli documento*/
+tabella dettagli documento*/
     .containerdetail{
       margin-bottom: 5px;
     }
-    table.tabledetail{
+     table.tabledetail{
       border-collapse: collapse; 
-      width: 22cm;
+      width: 100%;
     }
     .tabledetail td{
       border: solid 1px #000; 
