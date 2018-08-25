@@ -154,7 +154,28 @@ class TransazioniController extends Controller
         $model = new Transazioni();
 
         if ($model->load(Yii::$app->request->post())) {
-              $model->save();
+          $time=date_default_timezone_set('Europe/Rome');
+          $data=time();
+          $data=date('H:i:s', $data);
+          
+          $model->ora=$data;
+          
+      $model->save();
+              
+              $idTransazione = $model->id;
+              
+              $mpdf = new \Mpdf\Mpdf();
+
+              $stylesheet = file_get_contents('css/stylePdf.css');
+
+              $mpdf->WriteHTML($stylesheet,1);
+
+              $mpdf->WriteHTML($this->renderPartial('ordercreatepdf', [
+              'model' => $model]),2);
+
+
+
+          $mpdf->Output($idTransazione.'.pdf', 'I');/*Insert D al posto di I(visualizza in browser) per il Download */
             return $this->redirect(['view', 'id' => $model->id]);
         }
         
