@@ -149,34 +149,9 @@ class TransazioniController extends Controller
             'model' => $model,
         ]);
     }
-<<<<<<< HEAD
-
-    // Funzione per la calcolatrice MCV
-
-    public function actionCalculatorMcv()
-    {
-        $model = new Transazioni();
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
-        }
-
-        return $this->render('calculator-mcv', [
-            'model' => $model,
-        ]);
-    }
-
-    // save the PDF
-    public function actionReport($id) {
-
-        // trovare proprio quel model sennò resta vuoto
-        $model = $this->findModel($id);
-        $idOrder = $model->id_order;
-=======
     public function actionCreateandprintacquisto()
     {
         $model = new Transazioni();
->>>>>>> eb95913cecd8a80edb742b9d7aed3a8651bc7d02
 
         if ($model->load(Yii::$app->request->post())) {
           $time=date_default_timezone_set('Europe/Rome');
@@ -196,7 +171,7 @@ class TransazioniController extends Controller
               $mpdf->WriteHTML($stylesheet,1);
 
               $mpdf->WriteHTML($this->renderPartial('ordercreatepdfacquisto', [
-              'model' => $model]),2);
+              'model' => $model,]),2);
 
 
 
