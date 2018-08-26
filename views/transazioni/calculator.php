@@ -4,18 +4,33 @@ use yii\widgets\ActiveForm;
 use app\models\Valute;
 use app\models\Supporti;
 use app\models\TipologiaNazioni;
-
- $form = ActiveForm::begin(); 
- 
  ?>
- <?php echo 
+
+
+
+
+
+
+
+<?php
+ $form = ActiveForm::begin([
+   'options' => [
+                'id'=>'acquisto-form'
+             ]
+ ]);
+
+ ?>
+
+
+
+ <?php echo
  $form->field($model, 'quantita')
           ->label('Quantita')
           ->textInput(['maxlength' => true,
                        'class' => 'form-control',
                        'placeholder'=>'Quantita Valuta',
                         'id' => 'quantita']) ?>
-                        
+
  <?= $form->field($model, 'valuta')
          ->label(false)
          ->dropdownList(Valute::find()
@@ -24,14 +39,14 @@ use app\models\TipologiaNazioni;
                          ->column(),
                        ['prompt'=>'Seleziona Valuta','class' => 'your_class', 'id' => 'activitySelector']);
  ?>
- <?php echo 
+ <?php echo
    $form->field($model, 'cambio')
             ->label('Rate applicato')
             ->textInput(['maxlength' => true,
                          'class' => 'form-control',
                          'placeholder'=>'Rate Applicato',
                           'id' => 'rate']) ?>
-                          
+
   <!-- qui inizia il js per prendersi i tassi di cambio in automatico -->
       <script>
     // Variabli iniziali
@@ -61,7 +76,7 @@ use app\models\TipologiaNazioni;
         ->textInput(['maxlength' => true,
                      'class' => 'form-control',
                      'placeholder'=>'Commissione',
-                      'id' => 'valutaCodice']) ?>
+                      'id' => 'commissione']) ?>
 
  <?= $form->field($model, 'spese')
           ->label('Spese')
@@ -80,24 +95,26 @@ use app\models\TipologiaNazioni;
 ?>
 
 <div class="form-group">
-  <input type="submit" value="Calcola il cambio" class="btn btn-success">
+  <input type="button"  onclick="calculateResults()"  value="Calcola il cambio"  class="btn btn-success">
 </div>
-  
+
 
 <!-- Netto al Cliente -->
 <?= $form->field($model, 'netto')
          ->label('Results')
-         ->textInput(['maxlength' => true, 
-                       // 'readonly' => true, 
+         ->textInput(['maxlength' => true,
+                       // 'readonly' => true,
                        'id' => 'netto-transazione']) ?>
+
 <?= $form->field($model, 'commissioni')
-        ->label('Commissione in €')    
-        ->textInput(['maxlength' => true, 
-                      // 'readonly' => true, 
+        ->label('Commissione in €')
+        ->textInput(['maxlength' => true,
+                      // 'readonly' => true,
                        'id' => 'commissione-transazione']) ?>
+
 <?= $form->field($model, 'lordo')
         ->label('Lordo')
-        ->textInput(['maxlength' => true, 
+        ->textInput(['maxlength' => true,
                       // 'readonly' => true,
                     'id' => 'lordo-transazione']) ?>
 

@@ -1,5 +1,5 @@
 // Listen for submit
-document.getElementById('loan-form').addEventListener('submit', function(e){
+document.getElementById('loan-form').addEventListener('submit', function(v){
 
   // Hide results
     document.getElementById('results').style.display = 'none';
@@ -7,45 +7,45 @@ document.getElementById('loan-form').addEventListener('submit', function(e){
   //Show loader
   // document.getElementById('loading').style.display = 'block';
 
-  setTimeout(calculateResults);
+  setTimeout(calculateResultsVendita);
 
-  e.preventDefault();
+  v.preventDefault();
  });
 
 
 
 
  // calculate Result
- function calculateResults(e){
+ function calculateResultsVendita(v){
 
 
 
   console.log('calculating');
 
   // UI variables
-  var quantita = document.getElementById('quantitaVendita');
-       rate = document.getElementById('rateVendita');
-       commissione = document.getElementById('commissioneVendita');
-       spesa = document.getElementById('spesaVendita');
-       nettoTransazione = document.getElementById('netto-transazioneVendita');
-       commissioneTransazione = document.getElementById('commissione-transazioneVendita');
-       lordoTransazione = document.getElementById('lordo-transazioneVendita');
+  var quantitaVendita = document.getElementById('quantitaVendita');
+       rateVendita = document.getElementById('rateVendita');
+       commissioneVendita = document.getElementById('commissioneVendita');
+       spesaVendita = document.getElementById('spesaVendita');
+       nettoTransazioneVendita = document.getElementById('netto-transazioneVendita');
+       commissioneTransazioneVendita = document.getElementById('commissione-transazioneVendita');
+       lordoTransazioneVendita = document.getElementById('lordo-transazioneVendita');
 
   // creo la costante principal e con parseFloat passo una stringa da stringa a numero
-       quantitaValuta = parseFloat(quantitaVendita.value);
-       tassoRate = parseFloat(rateVendita.value);
-       commissionePercentuale = parseFloat(commissioneVendita.value);
-       spesaFissa = parseFloat(spesaVendita.value);
+       quantitaValutaVendita = parseFloat(quantitaVendita.value);
+       tassoRateVendita = parseFloat(rateVendita.value);
+       commissionePercentualeVendita = parseFloat(commissioneVendita.value);
+       spesaFissaVendita = parseFloat(spesaVendita.value);
 
   // Compute monthly payment
   //const x = Math.pow(1 + calculatedInterest, calculatedPayments);
-       monthly = (quantitaValuta*tassoRate);
+       monthlyVendita = (quantitaValutaVendita*tassoRateVendita);
 
-  if(isFinite(monthly)) {
+  if(isFinite(monthlyVendita)) {
 
-    commissioneTransazione.value = (monthly * (commissionePercentuale/100)).toFixed(2);
-    nettoTransazione.value = (monthly - (monthly * commissionePercentuale/100) - spesaFissa).toFixed(2);
-    lordoTransazione.value = monthly.toFixed(2);//al max 2 decimali
+    commissioneTransazione.value = (monthlyVendita * (commissionePercentualeVendita/100)).toFixed(2);
+    nettoTransazione.value = (monthlyVendita - (monthlyVendita * commissionePercentualeVendita/100) - spesaFissaVendita).toFixed(2);
+    lordoTransazione.value = monthlyVendita.toFixed(2);//al max 2 decimali
 
     // Hide results
     document.getElementById('results').style.display = 'block';
