@@ -130,7 +130,7 @@ class TransazioniController extends Controller
     public function actionCalculator()
     {
     $model = new Transazioni();
-  
+
     return $this->render('calculator', [
         'model' => $model,
     ]);
@@ -148,6 +148,20 @@ class TransazioniController extends Controller
             'model' => $model,
         ]);
     }
+
+    public function actionCalculatorMcv()
+    {
+        $model = new Transazioni();
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'id' => $model->id]);
+        }
+
+        return $this->render('calculator-mcv', [
+            'model' => $model,
+        ]);
+    }
+
     public function actionCreateandprintacquisto()
     {
         $model = new Transazioni();
@@ -156,13 +170,13 @@ class TransazioniController extends Controller
           $time=date_default_timezone_set('Europe/Rome');
           $data=time();
           $data=date('Y-m-d H:i:s', $data);
-          
+
           $model->ora=$data;
-          
+
       $model->save();
-              
+
               $idTransazione = $model->id;
-              
+
               $mpdf=new \Mpdf\Mpdf([
                 'format' => [80, 80],
                 'margin_left' => 1,
@@ -186,11 +200,11 @@ class TransazioniController extends Controller
           $mpdf->Output($idTransazione.'.pdf', 'I');/*Insert D al posto di I(visualizza in browser) per il Download */
             return $this->redirect(['view', 'id' => $model->id]);
         }
-        
-        //se il model è vuoto torna all'indice        
+
+        //se il model è vuoto torna all'indice
         $searchModel = new TransazioniSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-        
+
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,

@@ -18,13 +18,18 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <p>
         <?= Html::a('Create Valute', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Stampa Listino Cambi', ['listinocambi'], ['class' => 'btn btn-primary',
+        'data' => [
+          'confirm' => 'Aggiornato correttamente il listino cambi?',
+          'method' => 'post',
+          ]]) ?>
     </p>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            
+
             'nome',
             'isoCode',
             'RateUfficialeAcquisto',

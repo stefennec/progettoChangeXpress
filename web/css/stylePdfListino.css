@@ -1,0 +1,24 @@
+.headingRow2{
+ border-bottom: 2px solid black
+
+}
+
+.aggiornamento{
+  border: solid 2px black;
+  margin-bottom: 25px;
+}
+
+.aggiornamento p {
+  margin-left: 25px;
+  font-weight: bold;
+}
+
+.condizioni{
+  border: solid 2px black;
+  margin-top: 25px;
+}
+
+.condizioni p {
+  margin-left: 25px;
+  font-weight: bold;
+}
