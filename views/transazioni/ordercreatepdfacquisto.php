@@ -16,10 +16,13 @@ $netto=$model->netto;
 // echo $quantita;
 // echo $cambio;
 
+$entireValuta=Valute::find()
+  ->where(['id'=>$valuta])->one();
+
+$nomeValuta=$entireValuta->nome;
 ?>
 
 <body>
-  <?= $valuta;?>
 <!-- dati documento -->
 <div class="containerdetail">
     <table class="tabledetail" style="page-break-inside:avoid">
@@ -44,7 +47,7 @@ $netto=$model->netto;
             <td> <?php echo $ora.'      1CASSA'; ?></td>
           </tr>
           <tr>
-            <td>Out:  EUR <?php $quantita; ?> </td>
+            <td>In:  EUR <?php echo $quantita; ?> </td>
           </tr>
           <tr>
             <td>The service was provided according the italian law and to the conditions exposed in the office on the monitor price list and legal notice.</td>
@@ -53,7 +56,7 @@ $netto=$model->netto;
             <td>The client, whose data are below, declares under her/his own responsability to be the actual customer. He declares not to be politically exposed and not to have close ties with politically exposed people. He/She declared also that it does not engage in money laundering or terrorist financing.</td>
           </tr>
           <tr>
-            <td>Out: <?php echo $valuta.' '.$netto; ?> </td>
+            <td>Out: <?php echo $nomeValuta.' '.$netto; ?> </td>
           </tr>
       </tbody>
     </table>

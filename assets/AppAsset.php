@@ -21,6 +21,7 @@ class AppAsset extends AssetBundle
     public $baseUrl = '@web';
     public $css = [
         'css/site.css',
+        'css/progressbar.css',
     ];
     public $js = [
         'js/calcolator.js',
@@ -28,6 +29,7 @@ class AppAsset extends AssetBundle
         'js/calcolatorVendita.js',
         'js/contaEuro.js',
         'js/contaDollari.js',
+        'js/progressbar.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',
