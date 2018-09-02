@@ -39,7 +39,7 @@ use kartik\widgets\DatePicker;
         </div>
 	</div>
 <?php 
-print_r($model);
+// print_r($model);
  ?>  
 <div class="container row">
   <div class="col-xs-10">
@@ -57,14 +57,19 @@ print_r($model);
         </thead>
         <tbody>
           <tr>
-            <td><?php echo $model->nomeCliente ?></td>
-            <td><?php echo $model->cognomeCliente ?></td>
-            <td><?php echo $model->dataNascita ?></td>
-            <td><?php echo $model->nazionalita ?></td>
-            <td><?php echo $model->luogoNascita ?></td>
-            <td><?php echo $model->tipoDocumento ?></td>
-            <td><?php echo $model->numeroDocumento ?></td>
-          </tr>
+            <?php 
+            // print_r($personaCliente);
+            forEach($personaCliente as $singleClient){
+             ?>
+              <td><?php echo $singleClient->nomeCliente ?></td>
+              <td><?php echo $singleClient->cognomeCliente ?></td>
+              <td><?php echo $singleClient->dataNascita ?></td>
+              <td><?php echo $singleClient->nazionalita ?></td>
+              <td><?php echo $singleClient->luogoNascita ?></td>
+              <td><?php echo $singleClient->tipoDocumento ?></td>
+              <td><?php echo $singleClient->numeroDocumento ?></td>
+            </tr>
+        <?php } ?>
         </tbody>
       </table>
     </div> 

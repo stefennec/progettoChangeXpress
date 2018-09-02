@@ -146,6 +146,7 @@ class ClientiController extends Controller
         if($personaCliente){
           return $this->render('oldcliente', [
               'model' => $model,
+              'personaCliente' => $personaCliente
           ]);
         }else{
           Yii::$app->session->setFlash('info','Il cliente non è mai stato registrato, pregasi registrarlo');
