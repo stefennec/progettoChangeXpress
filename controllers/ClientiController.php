@@ -131,17 +131,44 @@ class ClientiController extends Controller
 
     public function actionNewcliente()
     {
-      Yii::$app->session->setFlash('info','Il cliente non è mai stato registrato, pregasi registrarlo');
-      
       $model = new Clienti();
+      
+      
 
-      if ($model->load(Yii::$app->request->post()) && $model->save()) {
-          return $this->redirect(['view', 'id' => $model->id]);
+       if ($model->load(Yii::$app->request->post())) {
+         
+         
+         $personaCliente = Clienti::find()
+             ->andWhere(['nomeCliente'=> $model->nomeCliente])
+             ->andWhere(['cognomeCliente'=> $model->cognomeCliente])
+             ->all();
+             
+        if($personaCliente){
+          return $this->render('update', [
+              'model' => $model,
+          ]);
+        }else{
+          Yii::$app->session->setFlash('info','Il cliente non è mai stato registrato, pregasi registrarlo');
+          
+          return $this->render('newcliente', [
+              'model' => $model,
+          ]);
+        }
+
+             
+         
+      }
+      // se si accede indipendentemente senza passare dal post va all'index
+      else{
+        $searchModel = new ClientiSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        return $this->render('index', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
       }
 
-      return $this->render('newcliente', [
-          'model' => $model,
-      ]);
     }
 // Open page find cliente
 public function actionFindcliente()
