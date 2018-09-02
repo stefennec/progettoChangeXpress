@@ -141,5 +141,12 @@ class ClientiController extends Controller
           'model' => $model,
       ]);
     }
-
+// Open page find cliente
+public function actionFindcliente()
+{
+  $model = new Clienti();
+  return $this->render('findcliente', [
+      'model' => $model,
+  ]);
+}
 }
