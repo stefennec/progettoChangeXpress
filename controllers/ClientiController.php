@@ -136,7 +136,7 @@ class ClientiController extends Controller
       
 
        if ($model->load(Yii::$app->request->post())) {
-         
+
          
          $personaCliente = Clienti::find()
              ->andWhere(['nomeCliente'=> $model->nomeCliente])
@@ -144,7 +144,7 @@ class ClientiController extends Controller
              ->all();
              
         if($personaCliente){
-          return $this->render('update', [
+          return $this->render('oldcliente', [
               'model' => $model,
           ]);
         }else{
