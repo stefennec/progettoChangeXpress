@@ -39,7 +39,8 @@
                     ['label' => 'Calcolatore Vendita', 'url' => ['/transazioni/calculator-vendita']],
                     ['label' => 'Calcolatore MCV', 'url' => ['/transazioni/calculator-mcv']],
                     //Form clienti
-                    ['label' => 'Clienti', 'url' => ['/clienti/clienti']],
+                    ['label' => 'Clienti', 'url' => ['/clienti/newcliente']],
+                    ['label' => 'Start new Transition', 'url' => ['/clienti/findcliente']],
 
                     //Conteggio Cassaforte
                     ['label' => 'Conteggio Euro', 'url' => ['/cassaforte/euro']],

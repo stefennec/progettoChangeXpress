@@ -129,15 +129,17 @@ class ClientiController extends Controller
         throw new NotFoundHttpException('The requested page does not exist.');
     }
 
-    public function actionClienti()
+    public function actionNewcliente()
     {
+      Yii::$app->session->setFlash('info','Il cliente non è mai stato registrato, pregasi registrarlo');
+      
       $model = new Clienti();
 
       if ($model->load(Yii::$app->request->post()) && $model->save()) {
           return $this->redirect(['view', 'id' => $model->id]);
       }
 
-      return $this->render('clienti', [
+      return $this->render('newcliente', [
           'model' => $model,
       ]);
     }
@@ -145,6 +147,7 @@ class ClientiController extends Controller
 public function actionFindcliente()
 {
   $model = new Clienti();
+  
   return $this->render('findcliente', [
       'model' => $model,
   ]);
