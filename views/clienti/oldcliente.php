@@ -68,6 +68,20 @@ use kartik\widgets\DatePicker;
               <td><?php echo $singleClient->luogoNascita ?></td>
               <td><?php echo $singleClient->tipoDocumento ?></td>
               <td><?php echo $singleClient->numeroDocumento ?></td>
+              <td><?php 
+            $form = ActiveForm::begin(); ?>
+                        <?php echo $form->field($model, 'id')
+                                        ->textInput(['readonly' => true,'value' => $singleClient->id, ]) ?>
+            <?= Html::a("Scegli questo cliente", ['transazioni/calculator'], [
+                'class' => 'btn btn-success btn',
+                'data' => [
+                    'method' => 'post',
+                ],
+            ]) ?>
+        <?php 
+            ActiveForm::end();
+        ?>
+              </td>
             </tr>
         <?php } ?>
         </tbody>

@@ -35,12 +35,13 @@
                     ['label' => 'Debug', 'icon' => 'dashboard', 'url' => ['/debug']],
                     ['label' => 'Login', 'url' => ['site/login'], 'visible' => Yii::$app->user->isGuest],
                     //Menù Calcolatrice
+                    ['label' => 'Start new Transition', 'url' => ['/clienti/findcliente']],
                     ['label' => 'Calcolatore Acquisto', 'url' => ['/transazioni/calculator']],
                     ['label' => 'Calcolatore Vendita', 'url' => ['/transazioni/calculator-vendita']],
                     ['label' => 'Calcolatore MCV', 'url' => ['/transazioni/calculator-mcv']],
                     //Form clienti
                     ['label' => 'Clienti', 'url' => ['/clienti/newcliente']],
-                    ['label' => 'Start new Transition', 'url' => ['/clienti/findcliente']],
+                    
 
                     //Conteggio Cassaforte
                     ['label' => 'Conteggio Euro', 'url' => ['/cassaforte/euro']],
