@@ -1,0 +1,25 @@
+.datiUfficio p{
+  clear: both;
+
+}
+
+.intestazione{
+  float: left;
+  box-sizing: border-box;
+  width: 66%;
+}
+
+.header{
+  display: inline-block;
+}
+
+.clearfix{
+  overflow: auto;
+}
+
+.datiUfficio{
+  display: inline;
+  box-sizing: border-box;
+  width: 33%;
+  float: right;
+}

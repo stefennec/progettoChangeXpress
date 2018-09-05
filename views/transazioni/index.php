@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
+use yii\widgets\ActiveForm;
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\TransazioniSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -18,6 +19,20 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <p>
         <?= Html::a('Create Transazioni', ['create'], ['class' => 'btn btn-success']) ?>
+        <?php
+         $form = ActiveForm::begin([
+           'options' => [
+                        'id'=>'stampa-trx'
+                     ]
+         ]);
+
+         ?>
+        <?= Html::a('Stampa Transazioni Giornaliere', ['stampatransazionigiornaliere'], ['class' => 'btn btn-primary',
+        'data' => [
+          'confirm' => 'Data Corretta?',
+          'method' => 'post',
+          ]]) ?>
+          <?php ActiveForm::end(); ?>
     </p>
 
     <?= GridView::widget([

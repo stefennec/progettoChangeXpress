@@ -19,6 +19,11 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <p>
         <?= Html::a('Create Cassaforte', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Stampa Situazione Cassa', ['situazionecassa'], ['class' => 'btn btn-primary',
+        'data' => [
+          'confirm' => 'Stampare situazione cassa?',
+          'method' => 'post',
+          ]]) ?>
     </p>
 
     <?= GridView::widget([

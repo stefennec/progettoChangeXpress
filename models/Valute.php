@@ -60,4 +60,8 @@ class Valute extends \yii\db\ActiveRecord
     {
         return new ValuteQuery(get_called_class());
     }
+
+    public function getCassaforte(){
+      return $this->hasOne(Cassaforte::className(), ['idValuta' => 'id']);
+    }
 }

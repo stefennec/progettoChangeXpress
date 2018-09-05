@@ -60,4 +60,8 @@ class Cassaforte extends \yii\db\ActiveRecord
     {
         return new CassaforteQuery(get_called_class());
     }
+
+    public function getValute(){
+      return $this->hasOne(Valute::className(), ['id' => 'idValuta']);
+    }
 }

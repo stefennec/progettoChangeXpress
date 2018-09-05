@@ -211,4 +211,24 @@ class TransazioniController extends Controller
         ]);
     }
 
+    public function actionStampatransazionigiornaliere(){
+      $mpdf=new \Mpdf\Mpdf([
+        'format' => 'A4',
+        'margin_left' => 5,
+        'margin_right' => 5,
+        'margin_top' => 5,
+        'margin_bottom' => 5,
+        'margin_header' => 0,
+        'margin_footer' => 0,
+        'orientation' => 'L',
+      ]);
+
+      $stylesheet = file_get_contents('css/stylePdfTransazioniGiornaliere.css');
+
+      $mpdf->WriteHTML($stylesheet,1);
+
+      $mpdf->WriteHTML($this->renderPartial('listatransazionigiornaliere'));
+      $mpdf->Output('listinoTransazioni.pdf', 'I');
+    }
+
 }

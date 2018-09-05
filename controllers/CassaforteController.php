@@ -153,4 +153,28 @@ class CassaforteController extends Controller
       // $query = new \yii\db\Query();
       // $quantitaUsd = $query->select('quantita')->where(['valuta'=>51])->one();
     }
+
+    public function actionSituazionecassa(){
+
+        // $listino = yii::$app->request->get('listino');
+        $mpdf=new \Mpdf\Mpdf([
+          'format' => 'A4',
+          'margin_left' => 5,
+          'margin_right' => 5,
+          'margin_top' => 5,
+          'margin_bottom' => 5,
+          'margin_header' => 0,
+          'margin_footer' => 0,
+          'orientation' => 'P',
+        ]);
+
+        $stylesheet = file_get_contents('css/stylePdfSituazioneCassa.css');
+
+        $mpdf->WriteHTML($stylesheet,1);
+
+        $mpdf->WriteHTML($this->renderPartial('situazioneCassa'));
+        $mpdf->Output('stampaSituazioneCassa.pdf', 'I');
+
+
+    }
 }
