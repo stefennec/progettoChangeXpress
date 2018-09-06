@@ -5,6 +5,11 @@ use app\models\Valute;
 use app\models\Supporti;
 use app\models\TipologiaNazioni;
  ?>
+ <?php  
+ $valueId=""
+ 
+ 
+ ?>
  <div class="row form-group">
          <div class="col-xs-12">
              <ul class="nav nav-pills nav-justified thumbnail setup-panel">
@@ -123,6 +128,12 @@ use app\models\TipologiaNazioni;
 
 <?= $form->field($model, 'lordo')
         ->label('Lordo')
+        ->textInput(['maxlength' => true,
+                      // 'readonly' => true,
+                    'id' => 'lordo-transazione']) ?>
+                    
+<?= $form->field($model, 'idCliente')
+        ->label('Id Cliente')
         ->textInput(['maxlength' => true,
                       // 'readonly' => true,
                     'id' => 'lordo-transazione']) ?>
