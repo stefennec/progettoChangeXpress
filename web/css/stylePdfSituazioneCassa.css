@@ -23,3 +23,13 @@
   width: 33%;
   float: right;
 }
+
+.totaliSituazione{
+  border: solid 2px black;
+  margin-top: 25px;
+}
+
+.totaliSituazione p{
+  margin-left: 25px;
+  font-weight: bold;
+}

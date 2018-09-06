@@ -17,8 +17,8 @@ use app\models\Valute;
   <h3>Partita IVA: 04483570273</h3>
   <p>changexpressandglobalservice@gmail.com </p>
   <div class="aggiornamento">
-    <p>Listino Cambio aggiornato alle: </p>
-    <p>Rate List - last update: </p>
+    <p>Listino Cambio aggiornato alle: <strong><?php echo date("d/m/Y H:i:s"); ?></strong></p>
+    <p>Rate List - last update: <strong><?php echo date("d/m/Y H:i:s A"); ?></strong> </p>
   </div>
     <table class="tabledetail" style="page-break-inside:avoid" cellspacing="5" cellpadding="3">
       <tr class="headingRow1">
