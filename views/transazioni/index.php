@@ -4,6 +4,9 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
 use yii\widgets\ActiveForm;
+use kartik\widgets\DatePicker;
+use app\models\Transazioni;
+
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\TransazioniSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -27,6 +30,7 @@ $this->params['breadcrumbs'][] = $this->title;
          ]);
 
          ?>
+
         <?= Html::a('Stampa Transazioni Giornaliere', ['stampatransazionigiornaliere'], ['class' => 'btn btn-primary',
         'data' => [
           'confirm' => 'Data Corretta?',

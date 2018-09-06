@@ -1,0 +1,43 @@
+.datiUfficio p{
+  clear: both;
+
+}
+
+table{
+  width: 100%;
+}
+
+.intestazione{
+  float: left;
+  box-sizing: border-box;
+  width: 66%;
+}
+
+.header{
+  display: inline-block;
+}
+
+.clearfix{
+  overflow: auto;
+}
+
+.datiUfficio{
+  display: inline;
+  box-sizing: border-box;
+  width: 33%;
+  float: right;
+}
+
+th{
+  border-bottom: 2px solid black;
+}
+
+.totaliTransazioni{
+  border: solid 2px black;
+  margin-top: 25px;
+}
+
+.totaliTransazioni p{
+  margin-left: 25px;
+  font-weight: bold;
+}
