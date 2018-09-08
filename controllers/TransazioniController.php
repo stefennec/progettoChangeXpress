@@ -127,13 +127,15 @@ class TransazioniController extends Controller
         throw new NotFoundHttpException('The requested page does not exist.');
     }
 
-    public function actionCalculator()
+    public function actionCalculator($id)
     {
-    $model = new Transazioni();
-
-    return $this->render('calculator', [
+    
+      $model = new Transazioni();
+        
+      return $this->render('calculator', [
         'model' => $model,
-    ]);
+        'idClient'=>$id,
+      ]);
   }
 
     public function actionCalculatorVendita()

@@ -6,8 +6,9 @@ use app\models\Supporti;
 use app\models\TipologiaNazioni;
  ?>
  <?php  
- $valueId=""
  
+ $valueIdClient=$idClient;
+ echo 'l id è :'.$valueIdClient;
  
  ?>
  <div class="row form-group">
@@ -135,8 +136,9 @@ use app\models\TipologiaNazioni;
 <?= $form->field($model, 'idCliente')
         ->label('Id Cliente')
         ->textInput(['maxlength' => true,
-                      // 'readonly' => true,
-                    'id' => 'lordo-transazione']) ?>
+                    'readonly' => true,
+                    'value' => $valueIdClient,
+                    ]) ?>
 
 <div class="form-group">
       <?= Html::a("Conferma la transazione", ['createandprintacquisto'], [

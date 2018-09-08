@@ -69,18 +69,16 @@ use kartik\widgets\DatePicker;
               <td><?php echo $singleClient->tipoDocumento ?></td>
               <td><?php echo $singleClient->numeroDocumento ?></td>
               <td><?php 
-            $form = ActiveForm::begin(); ?>
-                        <?php echo $form->field($model, 'id')
-                                        ->textInput(['readonly' => true,'value' => $singleClient->id, ]) ?>
-            <?= Html::a("Scegli questo cliente", ['transazioni/calculator'], [
+            ?>
+                                        
+          <!-- il Cancella -->
+            <?= Html::a(Yii::t('app', 'Scegli questo cliente'), ['transazioni/calculator', 'id' => $singleClient->id], [
                 'class' => 'btn btn-success btn',
                 'data' => [
+                    'confirm' => Yii::t('app', 'Sei sicuro di voler scegliere quest utente?'),
                     'method' => 'post',
                 ],
             ]) ?>
-        <?php 
-            ActiveForm::end();
-        ?>
               </td>
             </tr>
         <?php } ?>
