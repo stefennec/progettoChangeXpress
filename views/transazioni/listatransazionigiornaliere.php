@@ -1,6 +1,8 @@
 <?php
 use app\models\Transazioni;
 
+//dove dentro  a post(x) va messo il nome dell'input field
+$result=  Yii::$app->request->post('lista_transazioni_giornaliere');
 
 
  ?>
@@ -22,6 +24,8 @@ use app\models\Transazioni;
       <p>Data: <strong><?php echo date("d/m/Y"); ?></strong> </p>
     </div>
   </div>
+
+
 
 
     <table class="tabledetail" style="page-break-inside:avoid" cellspacing="5" cellpadding="3">
@@ -50,7 +54,11 @@ use app\models\Transazioni;
       $findTransazioni = Transazioni::find()
       // ->select('date(ora) as ora')
        // ->where(['=','ora',date('2018-08-25 22:27:39')])
-       ->where()
+
+       //funzionante ma manca il post e prende solo l'ora precisa.
+       // ->where(['ora'=>'2018-08-25 22:27:39'])
+
+       ->where(['like','ora',$result])
 
       // ->joinWith(['valute']) Yii::$app->request->post(
       ->all();
@@ -99,11 +107,11 @@ use app\models\Transazioni;
             <td></td>
             <td></td>
             <td></td>
-            <td><strong><?php echo Transazioni::find()->sum('spese'); ?>€</strong></td>
+            <td><strong><?php echo Transazioni::find()->where(['like','ora',$result])->sum('spese'); ?>€</strong></td>
             <td></td>
-            <td><strong><?php echo Transazioni::find()->sum('netto'); ?>€</strong></td>
-            <td><strong><?php echo Transazioni::find()->sum('commissioni'); ?>€</strong></td>
-            <td><strong><?php echo Transazioni::find()->sum('lordo'); ?>€</strong></td>
+            <td><strong><?php echo Transazioni::find()->where(['like','ora',$result])->sum('netto'); ?>€</strong></td>
+            <td><strong><?php echo Transazioni::find()->where(['like','ora',$result])->sum('commissioni'); ?>€</strong></td>
+            <td><strong><?php echo Transazioni::find()->where(['like','ora',$result])->sum('lordo'); ?>€</strong></td>
             <td></td>
             <td></td>
             <td></td>

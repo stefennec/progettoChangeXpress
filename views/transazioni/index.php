@@ -37,8 +37,8 @@ $this->params['breadcrumbs'][] = $this->title;
 
             <?php echo '<label>Stampa lista Transazioni</label>';
                 echo DatePicker::widget([
-                	'name' => 'check_issue_date',
-                  'value'=>date('d-m-Y'),
+                	'name' => 'lista_transazioni_giornaliere',
+                  'value'=>date('Y-m-d'),
                 	'options' => ['placeholder' => 'Seleziona data transazioni ...'],
                 	'pluginOptions' => [
                 		'format' => 'dd-M-yyyy',
