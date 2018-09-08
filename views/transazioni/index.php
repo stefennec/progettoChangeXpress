@@ -41,7 +41,7 @@ $this->params['breadcrumbs'][] = $this->title;
                   'value'=>date('Y-m-d'),
                 	'options' => ['placeholder' => 'Seleziona data transazioni ...'],
                 	'pluginOptions' => [
-                		'format' => 'dd-M-yyyy',
+                		'format' => 'yyyy-mm-dd',
                 		'todayHighlight' => true
                 	]
                 ]); ?>
