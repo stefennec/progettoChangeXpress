@@ -128,34 +128,45 @@ class TransazioniController extends Controller
         throw new NotFoundHttpException('The requested page does not exist.');
     }
 
-
-
-
-
-    public function actionCalculator($id = null)
-    {
-    if($id){
-      $modelTransazioni = new Transazioni();
-        
-      return $this->render('calculator', [
-        'model' => $modelTransazioni,
-        'idClient'=>$id,
-      ]);  
-    }else{
+// Crea una nuova transazione con un nuovo id cliente
+    public function actionCalculator($id = null){
       $modelClienti = new Clienti();
       $modelTransazioni = new Transazioni();
-
-      if ($modelClienti->load(Yii::$app->request->post()) && $modelClienti->save()){
-
-          return $this->render('calculator', [
-            'model' => $modelTransazioni,
-            'idClient'=>$modelClienti->id,
-          ]);
-        }
-      }  
+      
+    if($id){
+      return $this->render('calculator', [
+              'model' => $modelTransazioni,
+              'idClient'=>$id,
+      ]);  
+    // }else if($modelClienti->load(Yii::$app->request->post()) && $modelClienti->save()){
+    // 
+    //       return $this->render('calculator', [
+    //         'model' => $modelTransazioni,
+    //         'idClient'=>$modelClienti->id,
+    //       ]);
+        }else{
+        return $this->render('calculator', [
+          'model' => $modelTransazioni,
+        ]);
+      }
     }
-
-
+    
+    public function actionChoosecalculator($id = null){
+      $modelClienti = new Clienti();
+      $modelTransazioni = new Transazioni();
+      if($id){
+          return $this->render('choosecalculator', [
+                  'model' => $modelTransazioni,
+                  'idClient'=>$id,
+          ]);  
+      }else{
+        $modelClienti->load(Yii::$app->request->post()) && $modelClienti->save();
+            return $this->render('choosecalculator', [
+              'model' => $modelTransazioni,
+              'idClient'=>$modelClienti->id,
+            ]);
+          }
+        }
 
 
 

@@ -71,8 +71,8 @@ use kartik\widgets\DatePicker;
               <td><?php 
             ?>
                                         
-          <!-- il Cancella -->
-            <?= Html::a(Yii::t('app', 'Scegli questo cliente'), ['transazioni/calculator', 'id' => $singleClient->id], [
+          <!-- il porta l'id da un altra parte -->
+            <?= Html::a(Yii::t('app', 'Scegli questo cliente'), ['transazioni/choosecalculator', 'id' => $singleClient->id], [
                 'class' => 'btn btn-success btn',
                 'data' => [
                     'confirm' => Yii::t('app', 'Sei sicuro di voler scegliere quest utente?'),

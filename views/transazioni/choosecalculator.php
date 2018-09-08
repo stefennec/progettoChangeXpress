@@ -3,7 +3,6 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
-
 ?>
 <!-- progress bar -->
 <div class="row form-group">
@@ -13,7 +12,7 @@ use yii\widgets\ActiveForm;
                   <h4 class="list-group-item-heading">Step 1</h4>
                   <p class="list-group-item-text">Inserire nome & cognome</p>
               </a></li>
-              <li class="active"><a href="#step-2">
+              <li class="disabled"><a href="#step-2">
                   <h4 class="list-group-item-heading">Step 2</h4>
                   <p class="list-group-item-text">Scegliere cliente già registrato</p>
               </a></li>
@@ -32,6 +31,27 @@ use yii\widgets\ActiveForm;
             </ul>
         </div>
 	</div>
-<?php 
-// print_r($model);
- ?>  
+<!-- il porta l'id da un altra parte -->
+  <?= Html::a(Yii::t('app', 'Scegli la calcolatrice DI PROVA ORA'), ['transazioni/calculator', 'id' => $idClient], [
+      'class' => 'btn btn-success btn',
+      'data' => [
+          'confirm' => Yii::t('app', 'Sei sicuro di voler scegliere questa calcolatrice?'),
+          'method' => 'post',
+      ],
+  ]) ?>
+  <!-- il porta l'id da un altra parte -->
+    <?= Html::a(Yii::t('app', 'Scegli la calcolatrice Compra'), ['transazioni/calculator', 'id' => $idClient], [
+        'class' => 'btn btn-success btn',
+        'data' => [
+            'confirm' => Yii::t('app', 'Sei sicuro di voler scegliere questa calcolatrice?'),
+            'method' => 'post',
+        ],
+    ]) ?>
+    <!-- il porta l'id da un altra parte -->
+      <?= Html::a(Yii::t('app', 'Scegli la calcolatrice MVC'), ['transazioni/calculator', 'id' => $idClient], [
+          'class' => 'btn btn-success btn',
+          'data' => [
+              'confirm' => Yii::t('app', 'Sei sicuro di voler scegliere questa calcolatrice?'),
+              'method' => 'post',
+          ],
+      ]) ?>

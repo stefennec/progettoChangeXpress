@@ -211,7 +211,7 @@ use kartik\widgets\DatePicker;
               </div>
             </div>
             <div class="form-group">
-              <?= Html::a("Registra e vai alla calcolatrice", ['transazioni/calculator'], [
+              <?= Html::a("Registra e vai alla calcolatrice", ['transazioni/choosecalculator'], [
                   'class' => 'btn btn-success btn-lg',
                   'data' => [
                       'method' => 'post',
