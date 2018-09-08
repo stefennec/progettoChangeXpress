@@ -49,7 +49,8 @@ use app\models\Transazioni;
 
       $findTransazioni = Transazioni::find()
       // ->select('date(ora) as ora')
-       ->where(['=','ora',date('2018-08-25 22:27:39')])
+       // ->where(['=','ora',date('2018-08-25 22:27:39')])
+       ->where()
 
       // ->joinWith(['valute']) Yii::$app->request->post(
       ->all();

@@ -5,6 +5,7 @@ namespace app\controllers;
 use Yii;
 use app\models\Transazioni;
 use app\models\TransazioniSearch;
+use app\models\Clienti;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -127,16 +128,40 @@ class TransazioniController extends Controller
         throw new NotFoundHttpException('The requested page does not exist.');
     }
 
-    public function actionCalculator($id)
-    {
 
-      $model = new Transazioni();
+
+
+
+    public function actionCalculator($id = null)
+    {
+    if($id){
+      $modelTransazioni = new Transazioni();
 
       return $this->render('calculator', [
-        'model' => $model,
+        'model' => $modelTransazioni,
         'idClient'=>$id,
       ]);
-  }
+    }else{
+      $modelClienti = new Clienti();
+      $modelTransazioni = new Transazioni();
+
+      if ($modelClienti->load(Yii::$app->request->post()) && $modelClienti->save()){
+
+          return $this->render('calculator', [
+            'model' => $modelTransazioni,
+            'idClient'=>$modelClienti->id,
+          ]);
+        }
+      }
+    }
+
+
+
+
+
+
+
+
 
     public function actionCalculatorVendita()
     {
@@ -233,5 +258,16 @@ class TransazioniController extends Controller
       $mpdf->WriteHTML($this->renderPartial('listatransazionigiornaliere'));
       $mpdf->Output('listinoTransazioni.pdf', 'I');
     }
+
+      // When a newclient is to register
+      // public function actionRegisternewclient(){
+      //
+      //
+      //   return $this->render('create', [
+      //       'model' => $model,
+      //   ]);
+      // }
+
+
 
 }
