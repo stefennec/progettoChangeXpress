@@ -132,11 +132,7 @@ class ClientiController extends Controller
     public function actionNewcliente()
     {
       $model = new Clienti();
-      
-      
-
        if ($model->load(Yii::$app->request->post())) {
-
          
          $personaCliente = Clienti::find()
              ->andWhere(['nomeCliente'=> $model->nomeCliente])
@@ -154,10 +150,7 @@ class ClientiController extends Controller
           return $this->render('newcliente', [
               'model' => $model,
           ]);
-        }
-
-             
-         
+        }   
       }
       // se si accede indipendentemente senza passare dal post va all'index
       else{
@@ -169,15 +162,29 @@ class ClientiController extends Controller
             'dataProvider' => $dataProvider,
         ]);
       }
-
     }
+    public function actionRegisterNewClient(){
+      $model = new Clienti();
+
+      if ($model->load(Yii::$app->request->post()) && $model->save()) {
+          return $this->redirect(['view', 'id' => $model->id]);
+      }
+      
+      return $this->render('create', [
+          'model' => $model,
+      ]);
+      
+    }
+    
+    
+    
 // Open page find cliente
-public function actionFindcliente()
-{
-  $model = new Clienti();
-  
-  return $this->render('findcliente', [
-      'model' => $model,
-  ]);
-}
+    public function actionFindcliente()
+    {
+      $model = new Clienti();
+      
+      return $this->render('findcliente', [
+          'model' => $model,
+      ]);
+    }
 }

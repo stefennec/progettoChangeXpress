@@ -29,14 +29,14 @@ use app\models\TipologiaNazioni;
              </ul>
          </div>
  	</div>
-<?php
- $form = ActiveForm::begin([
-   'options' => [
-                'id'=>'acquisto-form'
-             ]
- ]);
+  <?php
+   $form = ActiveForm::begin([
+     'options' => [
+                  'id'=>'acquisto-form'
+               ]
+   ]);
 
- ?> 
+   ?> 
 
  <?php echo
  $form->field($model, 'quantita')

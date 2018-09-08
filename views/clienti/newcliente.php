@@ -210,10 +210,10 @@ use kartik\widgets\DatePicker;
               </div>
             </div>
             <div class="form-group">
-              <?= Html::submitButton('Registra', ['class' => 'btn btn-success btn-block']) ?>
+              <?= Html::submitButton('Registra', ['class' => 'btn btn-success']) ?>
             </div>
             <div class="form-group">
-              <input type="submit" value="Annulla" class="btn btn-danger btn-block">
+              <input type="submit" value="Annulla" class="btn btn-danger">
             </div>
             <?php ActiveForm::end(); ?>
           </div>
