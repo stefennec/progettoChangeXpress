@@ -42,6 +42,7 @@ use kartik\widgets\DatePicker;
         <h1>Registrazione Cliente</h1>
         <div class="row">
           <div class="form">
+            
             <?php $form = ActiveForm::begin(); ?>
             <div class="col-md-6">
               <div class="form-group">
@@ -210,7 +211,12 @@ use kartik\widgets\DatePicker;
               </div>
             </div>
             <div class="form-group">
-              <?= Html::submitButton('Registra', ['class' => 'btn btn-success']) ?>
+              <?= Html::a("Registra e vai alla calcolatrice", ['transazioni/calculator'], [
+                  'class' => 'btn btn-success btn-lg',
+                  'data' => [
+                      'method' => 'post',
+                  ],
+              ]) ?>
             </div>
             <div class="form-group">
               <input type="submit" value="Annulla" class="btn btn-danger">

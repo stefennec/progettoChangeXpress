@@ -39,13 +39,13 @@ class Clienti extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['dataNascita', 'scadenzaDoc'], 'safe'],
+            //[['dataNascita', 'scadenzaDoc'], 'safe'],
             ['nomeCliente', 'required', 'message' => 'Manca nome cliente'],
             ['numeroDocumento', 'required', 'message' => 'Manca numero Documento'],
             ['cognomeCliente', 'required', 'message' => 'Manca cognome cliente'],
             ['sesso', 'required', 'message' => 'Selezionare Sesso'],
             ['residenteItalia', 'required', 'message' => 'Residenza da Verificare'],            
-            ['dataNascita', 'required', 'message' => 'Manca la data di nascita'],
+            // ['dataNascita', 'required', 'message' => 'Manca la data di nascita'],
             [['residenteItalia', 'tipoDocumento', 'ente', 'luogoEmissione', 'provincia'], 'integer'],
             [['cognomeCliente', 'nazionalita', 'codFiscale', 'numeroDocumento','luogoNascita',], 'string', 'max' => 255],
             [['sesso', 'fidelity'], 'string', 'max' => 45],

@@ -163,20 +163,6 @@ class ClientiController extends Controller
         ]);
       }
     }
-    public function actionRegisterNewClient(){
-      $model = new Clienti();
-
-      if ($model->load(Yii::$app->request->post()) && $model->save()) {
-          return $this->redirect(['view', 'id' => $model->id]);
-      }
-      
-      return $this->render('create', [
-          'model' => $model,
-      ]);
-      
-    }
-    
-    
     
 // Open page find cliente
     public function actionFindcliente()
