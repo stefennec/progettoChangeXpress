@@ -22,20 +22,34 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <p>
         <?= Html::a('Create Transazioni', ['create'], ['class' => 'btn btn-success']) ?>
-        <?php
-         $form = ActiveForm::begin([
-           'options' => [
-                        'id'=>'stampa-trx'
-                     ]
-         ]);
 
-         ?>
 
-        <?= Html::a('Stampa Transazioni Giornaliere', ['stampatransazionigiornaliere'], ['class' => 'btn btn-primary',
-        'data' => [
-          'confirm' => 'Data Corretta?',
-          'method' => 'post',
-          ]]) ?>
+
+
+          <?php
+           $form = ActiveForm::begin([
+             'options' => [
+                          'id'=>'stampa-trx'
+                       ]
+           ]);
+
+           ?>
+
+            <?php echo '<label>Stampa lista Transazioni</label>';
+                echo DatePicker::widget([
+                	'name' => 'check_issue_date',
+                  'value'=>date('d-m-Y'),
+                	'options' => ['placeholder' => 'Seleziona data transazioni ...'],
+                	'pluginOptions' => [
+                		'format' => 'dd-M-yyyy',
+                		'todayHighlight' => true
+                	]
+                ]); ?>
+            <?= Html::a('Stampa Transazioni Giornaliere', ['stampatransazionigiornaliere'], ['class' => 'btn btn-primary',
+            'data' => [
+              'confirm' => 'Data Corretta?',
+              'method' => 'post',
+              ]]) ?>
           <?php ActiveForm::end(); ?>
     </p>
 

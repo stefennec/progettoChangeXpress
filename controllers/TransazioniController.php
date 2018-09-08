@@ -129,9 +129,9 @@ class TransazioniController extends Controller
 
     public function actionCalculator($id)
     {
-    
+
       $model = new Transazioni();
-        
+
       return $this->render('calculator', [
         'model' => $model,
         'idClient'=>$id,
@@ -214,6 +214,7 @@ class TransazioniController extends Controller
     }
 
     public function actionStampatransazionigiornaliere(){
+      Yii::$app->request->post();
       $mpdf=new \Mpdf\Mpdf([
         'format' => 'A4',
         'margin_left' => 5,

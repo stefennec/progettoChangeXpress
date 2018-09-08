@@ -1,6 +1,8 @@
 <?php
 use app\models\Transazioni;
 
+
+
  ?>
 
 
@@ -46,9 +48,13 @@ use app\models\Transazioni;
       <?php
 
       $findTransazioni = Transazioni::find()
+      // ->select('date(ora) as ora')
+       ->where(['=','ora',date('2018-08-25 22:27:39')])
 
-      // ->joinWith(['valute'])
+      // ->joinWith(['valute']) Yii::$app->request->post(
       ->all();
+
+
 
 
 
@@ -60,11 +66,12 @@ use app\models\Transazioni;
 
       <?php foreach ($transazioni as $transazione) {
         // code...
+        $formatter = \Yii::$app->formatter;
 
        ?>
 
        <tr>
-         <td><?php echo $transazione->ora; ?></td>
+         <td><?php echo $formatter->asTime($transazione->ora) ; ?></td>
          <td><?php echo $transazione->id; ?></td>
          <td>#</td>
          <td><?php echo $transazione->valuta; ?></td>
@@ -107,6 +114,8 @@ use app\models\Transazioni;
     <div class="totaliTransazioni">
 
       <p>Totale Spesa Fissa:  </p>
+
+
 
     </div>
 </div>
