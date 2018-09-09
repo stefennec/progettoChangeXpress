@@ -39,15 +39,15 @@ use app\models\Valute;
 
        $findValute = Cassaforte::find()
 
-       // ->joinWith(['valute'])
-       ->innerJoin('Valute', 'Cassaforte.idValuta = Valute.id')
+       ->joinWith(['valute'])
+       // ->innerJoin('Valute', 'Cassaforte.idValuta = Valute.id')
        ->where(['idValuta'=>[2,5,9,10,12,13,14,16,18,19,20,52,33,34,38,44,45,51]])->all();
 
-       $findIsoCode = Valute::find()
-       ->where(['id'=>[2,5,9,10,12,13,14,16,18,19,20,52,33,34,38,44,45,51]])->all();
+       // $findIsoCode = Valute::find()
+       // ->where(['id'=>[2,5,9,10,12,13,14,16,18,19,20,52,33,34,38,44,45,51]])->all();
 
        $valute = $findValute;
-
+       $formatter = \Yii::$app->formatter;
        // $sum = $valute->sum('controvalore'); ?>
 
 
@@ -58,8 +58,8 @@ use app\models\Valute;
         ?>
 
        <tr>
-         <td>Cassaforte</td>
-         <td><?php echo $valuta->valuta; ?></td>
+         <td></td>
+         <td><?php echo $valuta->valute->isoCode; ?></td>
          <td><?php echo $valuta->quantita; ?></td>
          <td><?php echo $valuta->controvalore; ?>€</td>
          <td><?php echo $valuta->prezzoMedio; ?></td>
