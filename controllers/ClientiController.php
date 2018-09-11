@@ -161,12 +161,9 @@ class ClientiController extends Controller
       }
       // se si accede indipendentemente senza passare dal post va all'index
       else{
-        $searchModel = new ClientiSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-
-        return $this->render('index', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
+        
+        return $this->render('newcliente', [
+            'model' => $model,
         ]);
       }
     }

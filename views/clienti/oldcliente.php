@@ -86,13 +86,12 @@ use kartik\widgets\DatePicker;
       </table>
       <div class="row form-group">
               <div class="col-xs-4 mx-auto">
-                  <?php //echo Html::a(Yii::t('app', 'Inserisci un nuovo cliente'), ['transazioni/newcliente', 'nomeIntero' => $singleClient->nomeCliente.$singleClient->cognomeCliente], [
-                      //'class' => 'btn btn-info btn-block',
-                      //'data' => [
-                        //  'method' => 'post',
-                  //     ],
-                  // ]) 
-                  ?>
+                  <?= Html::a("Inserisci un nuovo cliente", ['clienti/newcliente'], [
+                      'class' => 'btn btn-success btn-lg',
+                      'data' => [
+                          'method' => 'post',
+                      ],
+                  ]) ?>
               </div>
             </div>
     </div> 

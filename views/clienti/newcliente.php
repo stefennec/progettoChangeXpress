@@ -47,18 +47,19 @@ use kartik\widgets\DatePicker;
             <?php $form = ActiveForm::begin(); ?>
             <div class="col-md-6">
               <div class="form-group">
+                
       <!-- Name New cliente -->
-                <?= $form->field($model, 'nomeCliente')
-                ->textInput(['maxlength' => true, 'readonly' => true])
+                <?php echo $form->field($model, 'nomeCliente')
+                ->textInput(['maxlength' => true, 'readonly' => false])
                 ->label('Nome Cliente:')
                ?>
               </div>
   <!-- Cognome New cliente -->
               <div class="form-group">
-                <?= $form->field($model, 'cognomeCliente')
-                ->textInput(['maxlength' => true, 'readonly' => true])
-                ->label('Cognome Cliente:')
-               ?>
+                  <?= $form->field($model, 'cognomeCliente')
+                  ->textInput(['maxlength' => true, 'readonly' => false])
+                  ->label('Cognome Cliente:')
+                 ?>
               </div>
               <div class="row">
               <div class="col-md-3">
