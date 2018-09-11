@@ -84,5 +84,16 @@ use kartik\widgets\DatePicker;
         <?php } ?>
         </tbody>
       </table>
+      <div class="row form-group">
+              <div class="col-xs-4 mx-auto">
+                  <?php //echo Html::a(Yii::t('app', 'Inserisci un nuovo cliente'), ['transazioni/newcliente', 'nomeIntero' => $singleClient->nomeCliente.$singleClient->cognomeCliente], [
+                      //'class' => 'btn btn-info btn-block',
+                      //'data' => [
+                        //  'method' => 'post',
+                  //     ],
+                  // ]) 
+                  ?>
+              </div>
+            </div>
     </div> 
  </div> 

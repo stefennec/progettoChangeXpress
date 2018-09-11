@@ -89,20 +89,25 @@ use yii\db\Query;
 
                      <?php
 
-                     // $query = Cassaforte::find()->where(['valuta'=>51]);
-                     //
-                     // echo $query->quantita;
+                     $query = Cassaforte::find()->where(['valuta'=>51])->one();
 
-                      $sql = 'SELECT quantita FROM Cassaforte WHERE valuta=51';
-                      $quantitaUSD = Cassaforte::findBySql($sql);
-                      $results = $quantitaUSD;
-                      echo $results;
+                    $risultatoQuery = $query;
+
+                      // $sql = 'SELECT quantita FROM Cassaforte WHERE valuta=51';
+                      // $quantitaUSD = Cassaforte::findBySql($sql);
+                      // $results = $quantitaUSD;
+                      // echo $results;
+                      // var_dump($risultatoQuery);
+
+
                      ?>
                   </div>
                 </div>
                 <div class="input-group input-group-lg text-center">
                     <span class="input-group-addon">TOTALE CALCOLATO SUL MOMENTO $</span>
                     <input type="number" id="totaleCombinatoDollari" readonly class="form-control" placeholder="">
+                    <span class="input-group-addon">TOTALE IN CASSAFORTE $</span>
+                    <input type="number" id="totaleCombinatoDollari" value="<?php echo $risultatoQuery->quantita; ?>" readonly class="form-control" placeholder="">
                 </div>
               </div>
               <div class="input-group input-group-lg text-center">

@@ -159,6 +159,15 @@ use yii\db\Query;
                       <span class="input-group-addon">TOTALE:</span>
                       <input type="number" id="totaleCombinato" readonly class="form-control" placeholder="">
                   </div>
+                  <?php
+                  $query = Cassaforte::find()->where(['valuta'=>1])->one();
+                  // per pulire la query è leggerla dobbiamo fare il passaggio di creare un variabile il cui valore è il risultato della query
+                 $risultatoQuery = $query;
+                   ?>
+                  <div class="input-group input-group-lg text-center">
+                      <span class="input-group-addon">EURO CASSAFORTE:</span>
+                      <input type="number" id="totaleCassaforte" value="<?php echo $risultatoQuery->quantita; ?>" readonly class="form-control" placeholder="">
+                  </div>
 
                   <br>
 
@@ -167,7 +176,7 @@ use yii\db\Query;
                   </div>
                   <br>
                   <div class="inline">
-                    <p>DATABASE</p>
+
                   </div>
                   <div class="">
 

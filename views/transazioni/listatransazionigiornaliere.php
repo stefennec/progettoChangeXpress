@@ -1,6 +1,10 @@
 <?php
 use app\models\Transazioni;
 
+//dove dentro  a post(x) va messo il nome dell'input field
+$result=  Yii::$app->request->post('lista_transazioni_giornaliere');
+
+
  ?>
 
 
@@ -11,15 +15,17 @@ use app\models\Transazioni;
   <div class="header">
     <div class="intestazione">
       <h3 class="titolo">LISTA GIORNALIERA DELLE TRANSAZIONI</h3>
-
+      <p>Data: <strong><?php echo date($result); ?></strong> </p>
 
     </div>
     <div class="datiUfficio">
       <p>ChangeXpress & Global Service Srl</p>
       <p>Castello 4861 - 30122 Venezia</p>
-      <p>Data: <strong><?php echo date("d/m/Y"); ?></strong> </p>
+
     </div>
   </div>
+
+
 
 
     <table class="tabledetail" style="page-break-inside:avoid" cellspacing="5" cellpadding="3">
@@ -46,28 +52,45 @@ use app\models\Transazioni;
       <?php
 
       $findTransazioni = Transazioni::find()
+      // ->select('date(ora) as ora')
+       // ->where(['=','ora',date('2018-08-25 22:27:39')])
 
-      // ->joinWith(['valute'])
+       //funzionante ma manca il post e prende solo l'ora precisa.
+       // ->where(['ora'=>'2018-08-25 22:27:39'])
+
+       ->where(['like','ora',$result])
+
+      ->joinWith(['valute'])
       ->all();
 
 
 
+
+
+
+
+
+
       $transazioni = $findTransazioni;
+      $i=0;
 
       // $sum = $valute->sum('controvalore'); ?>
 
 
 
       <?php foreach ($transazioni as $transazione) {
-        // code...
+        $i++;
+        $formatter = \Yii::$app->formatter;
+
 
        ?>
 
        <tr>
-         <td><?php echo $transazione->ora; ?></td>
+         <td><?php echo $formatter->asTime($transazione->ora) ; ?></td>
          <td><?php echo $transazione->id; ?></td>
-         <td>#</td>
-         <td><?php echo $transazione->valuta; ?></td>
+         <td><?php echo $i; ?></td>
+         <!-- per visualizzare il nome della valuta al posto del numero each dell loop deve richiamare il model a cui transazioni è relazionato e poi questo deve richiamare il valore che si desidera -->
+         <td><?php echo $transazione->valute->isoCode; ?></td>
          <td><?php echo $transazione->supporto; ?></td>
          <td><?php echo $transazione->quantita; ?></td>
          <td><?php echo $transazione->cambio; ?></td>
@@ -91,11 +114,11 @@ use app\models\Transazioni;
             <td></td>
             <td></td>
             <td></td>
-            <td><strong><?php echo Transazioni::find()->sum('spese'); ?>€</strong></td>
+            <td><strong><?php echo Transazioni::find()->where(['like','ora',$result])->sum('spese'); ?>€</strong></td>
             <td></td>
-            <td><strong><?php echo Transazioni::find()->sum('netto'); ?>€</strong></td>
-            <td><strong><?php echo Transazioni::find()->sum('commissioni'); ?>€</strong></td>
-            <td><strong><?php echo Transazioni::find()->sum('lordo'); ?>€</strong></td>
+            <td><strong><?php echo Transazioni::find()->where(['like','ora',$result])->sum('netto'); ?>€</strong></td>
+            <td><strong><?php echo Transazioni::find()->where(['like','ora',$result])->sum('commissioni'); ?>€</strong></td>
+            <td><strong><?php echo Transazioni::find()->where(['like','ora',$result])->sum('lordo'); ?>€</strong></td>
             <td></td>
             <td></td>
             <td></td>
@@ -107,6 +130,8 @@ use app\models\Transazioni;
     <div class="totaliTransazioni">
 
       <p>Totale Spesa Fissa:  </p>
+
+
 
     </div>
 </div>

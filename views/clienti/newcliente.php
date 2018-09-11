@@ -14,6 +14,7 @@ use yii\helpers\Url;
 use yii\helpers\ArrayHelper;
 use kartik\widgets\DatePicker;
 
+// echo $nomeIntero;
 ?>
 <!-- progress bar -->
 <div class="row form-group">

@@ -250,6 +250,7 @@ class TransazioniController extends Controller
     }
 
     public function actionStampatransazionigiornaliere(){
+      Yii::$app->request->post();
       $mpdf=new \Mpdf\Mpdf([
         'format' => 'A4',
         'margin_left' => 5,
@@ -268,16 +269,16 @@ class TransazioniController extends Controller
       $mpdf->WriteHTML($this->renderPartial('listatransazionigiornaliere'));
       $mpdf->Output('listinoTransazioni.pdf', 'I');
     }
-    
+
       // When a newclient is to register
       // public function actionRegisternewclient(){
-      // 
-      // 
+      //
+      //
       //   return $this->render('create', [
       //       'model' => $model,
       //   ]);
       // }
-      
+
 
 
 }

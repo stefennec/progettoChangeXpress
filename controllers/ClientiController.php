@@ -132,6 +132,13 @@ class ClientiController extends Controller
     public function actionNewcliente()
     {
       $model = new Clienti();
+      
+      // if($nomeIntero){
+      //   return $this->render('newcliente', [
+      //       'nomeIntero' => $nomeIntero,
+      //       'model->' => $model
+      //   ]);
+      // }
        if ($model->load(Yii::$app->request->post())) {
          
          $personaCliente = Clienti::find()
