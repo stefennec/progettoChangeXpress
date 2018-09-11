@@ -22,6 +22,7 @@ use Yii;
  * @property int $idCliente
  * @property int $operatore
  * @property string $fidelityCliente
+* @property int $tipologiaTrx
  */
 class Transazioni extends \yii\db\ActiveRecord
 {
@@ -40,10 +41,11 @@ class Transazioni extends \yii\db\ActiveRecord
     {
         return [
             [['ora'], 'safe'],
-            [['valuta', 'supporto', 'tipologiaNazioneCliente', 'idCliente', 'operatore'], 'integer'],
+            [['valuta', 'supporto', 'tipologiaNazioneCliente', 'idCliente', 'operatore', 'tipologiaTrx'], 'integer'],
             [['quantita', 'cambio', 'spese', 'percentuale', 'netto', 'commissioni', 'lordo'], 'number'],
             [['fidelityCliente'], 'string', 'max' => 45],
         ];
+        // tipologiaTrx small int
     }
 
     /**
@@ -67,6 +69,7 @@ class Transazioni extends \yii\db\ActiveRecord
             'idCliente' => 'Id Cliente',
             'operatore' => 'Operatore',
             'fidelityCliente' => 'Fidelity Cliente',
+            'tipologiaTrx' => 'Tipologia transazione',
         ];
     }
 

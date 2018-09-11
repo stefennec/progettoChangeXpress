@@ -145,7 +145,13 @@ echo $form->field($model, 'idCliente')
                           'value' => '',
                         ]);
     }
-?>
+    ?>
+<?= $form->field($model, 'tipologiaTrx')
+        ->label('Tipologia transazione')
+        ->textInput(['maxlength' => true,
+                    'value' => '1',
+                    'id' => 'tipolgiaTrans']) ?>
+                    
 <div class="form-group">
       <?= Html::a("Conferma la transazione", ['createandprintacquisto'], [
                   'class' => 'btn btn-success btn-lg btn-block',
