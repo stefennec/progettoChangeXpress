@@ -51,6 +51,33 @@ $this->params['breadcrumbs'][] = $this->title;
               'method' => 'post',
               ]]) ?>
           <?php ActiveForm::end(); ?>
+
+<!-- INIZIO FORM PRIMANOTA -->
+
+          <?php
+           $form = ActiveForm::begin([
+             'options' => [
+                          'id'=>'stampa-primanota'
+                       ]
+           ]);
+
+           ?>
+           <?php echo '<label>Stampa lista Primanota</label>';
+               echo DatePicker::widget([
+                'name' => 'prima_nota',
+                 'value'=>date('Y-m-d'),
+                'options' => ['placeholder' => 'Seleziona data primanota ...'],
+                'pluginOptions' => [
+                  'format' => 'yyyy-mm-dd',
+                  'todayHighlight' => true
+                ]
+               ]); ?>
+               <?= Html::a('Stampa Primanota', ['stampaprimanota'], ['class' => 'btn btn-success',
+               'data' => [
+                 'confirm' => 'Data Corretta?',
+                 'method' => 'post',
+                 ]]) ?>
+                 <?php ActiveForm::end(); ?>
     </p>
 
     <?= GridView::widget([

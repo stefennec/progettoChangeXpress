@@ -132,14 +132,14 @@ class TransazioniController extends Controller
     public function actionCalculator($id = null){
       $modelClienti = new Clienti();
       $modelTransazioni = new Transazioni();
-      
+
     if($id){
       return $this->render('calculator', [
               'model' => $modelTransazioni,
               'idClient'=>$id,
-      ]);  
+      ]);
     // }else if($modelClienti->load(Yii::$app->request->post()) && $modelClienti->save()){
-    // 
+    //
     //       return $this->render('calculator', [
     //         'model' => $modelTransazioni,
     //         'idClient'=>$modelClienti->id,
@@ -150,7 +150,7 @@ class TransazioniController extends Controller
         ]);
       }
     }
-    
+
     public function actionChoosecalculator($id = null){
       $modelClienti = new Clienti();
       $modelTransazioni = new Transazioni();
@@ -158,7 +158,7 @@ class TransazioniController extends Controller
           return $this->render('choosecalculator', [
                   'model' => $modelTransazioni,
                   'idClient'=>$id,
-          ]);  
+          ]);
       }else{
         $modelClienti->load(Yii::$app->request->post()) && $modelClienti->save();
             return $this->render('choosecalculator', [
@@ -227,14 +227,14 @@ class TransazioniController extends Controller
               ]);
 
               $stylesheet = file_get_contents('css/stylePdf.css');
-          
+
               $mpdf->WriteHTML($stylesheet,1);
-          
+
               $mpdf->WriteHTML($this->renderPartial('ordercreatepdfacquisto', [
               'model' => $model]),2);
-          
-          
-          
+
+
+
           $mpdf->Output($idTransazione.'.pdf', 'D');/*Insert D al posto di I(visualizza in browser) per il Download */
             return $this->redirect(['view', 'id' => $model->id]);
         }
@@ -268,6 +268,28 @@ class TransazioniController extends Controller
 
       $mpdf->WriteHTML($this->renderPartial('listatransazionigiornaliere'));
       $mpdf->Output('listinoTransazioni.pdf', 'I');
+    }
+
+
+    public function actionStampaprimanota(){
+      Yii::$app->request->post();
+      $mpdf=new \Mpdf\Mpdf([
+        'format' => 'A4',
+        'margin_left' => 5,
+        'margin_right' => 5,
+        'margin_top' => 5,
+        'margin_bottom' => 5,
+        'margin_header' => 0,
+        'margin_footer' => 0,
+        'orientation' => 'P',
+      ]);
+
+      $stylesheet = file_get_contents('css/stylePdfPrimanota.css');
+
+      $mpdf->WriteHTML($stylesheet,1);
+
+      $mpdf->WriteHTML($this->renderPartial('primanota'));
+      $mpdf->Output('primanota.pdf', 'I');
     }
 
       // When a newclient is to register

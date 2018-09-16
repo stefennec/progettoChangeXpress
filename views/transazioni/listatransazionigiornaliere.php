@@ -103,7 +103,7 @@ $result=  Yii::$app->request->post('lista_transazioni_giornaliere');
          <td><?php echo $transazione->idCliente; ?></td>
 
 
-         <td><?php echo "controvalore basato su prezzo medio alla data x".$transazione->quantita*$somma = Transazioni::find()->where(['like','ora',$result])->where(['valuta'=>3])->sum('netto')/Transazioni::find()->where(['like','ora',$result])->where(['valuta'=>$transazione->valuta])->sum('quantita'); ?></td>
+         <td><?php //echo "controvalore basato su prezzo medio alla data x".$transazione->quantita*$somma = Transazioni::find()->where(['like','ora',$result])->where(['valuta'=>3])->sum('netto')/Transazioni::find()->where(['like','ora',$result])->where(['valuta'=>$transazione->valuta])->sum('quantita'); ?></td>
 
        </tr>
           <?php } ?>
@@ -131,8 +131,8 @@ $result=  Yii::$app->request->post('lista_transazioni_giornaliere');
     </table>
     <div class="totaliTransazioni">
 
-      <p>Totale Spesa Fissa: <?php echo $somma ?>  </p>
-      <p>Totale Spesa Fissa: <?php echo 1/$somma ?>  </p>
+      <p>Totale Spesa Fissa: <?php //echo $somma ?>  </p>
+      <p>Totale Spesa Fissa: <?php //echo 1/$somma ?>  </p>
 
 
 
