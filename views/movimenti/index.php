@@ -7,7 +7,7 @@ use yii\widgets\Pjax;
 /* @var $searchModel app\models\MovimentiSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Movimentis';
+$this->title = 'Movimenti';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="movimenti-index">
@@ -17,14 +17,13 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Movimenti', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Movimenta Valuta', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
 
             'id',
             'provenienza',

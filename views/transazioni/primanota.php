@@ -75,12 +75,6 @@ $result=  Yii::$app->request->post('prima_nota');
     <?php
 
     $findTransazioni = Transazioni::find()
-    // ->select('date(ora) as ora')
-     // ->where(['=','ora',date('2018-08-25 22:27:39')])
-
-     //funzionante ma manca il post e prende solo l'ora precisa.
-     // ->where(['ora'=>'2018-08-25 22:27:39'])
-
      ->where(['like','ora',$result])
 
     ->joinWith(['valute'])
@@ -90,17 +84,22 @@ $result=  Yii::$app->request->post('prima_nota');
      ?>
 
      <?php $sommaQuantita = 0;
-           $sommaControvalori = 0;?>
+           $sommaControvalori = 0;
+
+           ?>
 
      <?php foreach ($transazioni as $transazione) {
        $formatter = \Yii::$app->formatter;
 
+       $quantitaValuta= Transazioni::find()->where(['like','ora',$result])->where(['valuta'=>$transazione->valuta])->sum('quantita');
+       $controvaloreValuta = $quantitaValuta / ($quantitaAllaData = Transazioni::find()->where(['like','ora',$result])->where(['valuta'=>$transazione->valuta])->sum('quantita')/$nettoAllaData = Transazioni::find()->where(['like','ora',$result])->where(['valuta'=>$transazione->valuta])->sum('netto'));
       ?>
 
       <tr>
         <td><?php echo $transazione->valute->isoCode; ?></td>
-        <td><?php echo $quantitaValuta = Transazioni::find()->where(['like','ora',$result])->where(['valuta'=>$transazione->valuta])->sum('quantita') ?></td>
-        <td><?php echo $controvaloreValuta = $quantitaValuta / (Transazioni::find()->where(['like','ora',$result])->where(['valuta'=>$transazione->valuta])->sum('quantita')/Transazioni::find()->where(['like','ora',$result])->where(['valuta'=>$transazione->valuta])->sum('netto')) ?> </td>
+        <td><?php echo $quantitaValuta?></td>
+
+        <td><?php echo $controvaloreValuta ?> </td>
         <?php $sommaQuantita +=$quantitaValuta; ?>
         <?php $sommaControvalori +=$controvaloreValuta; ?>
 
@@ -115,14 +114,11 @@ $result=  Yii::$app->request->post('prima_nota');
       <td> <strong><?php echo $sommaQuantita ?></strong> </td>
       <td><strong>€ <?php echo $sommaControvalori ?></strong> </td>
     </tr>
-
-
-
-
-
-
-
   </table>
+
+  <p>somma della quantita di valuta acquistata fino ad ora: <?php echo $sommaQuantitaPrezzoMedio = Transazioni::find()->where(['like','ora',$result])->where(['valuta'=>5])->sum('quantita') ?></p>
+  <p>somma dei netti pagati per quella valuta fino ad ora: <?php echo $sommaNettiPrezzoMedio = Transazioni::find()->where(['like','ora',$result])->where(['valuta'=>5])->sum('netto') ?> </p>
+  <p> Prezzo medio in acquisto: <?php echo $prezzoMedioAcquisto = $sommaQuantitaPrezzoMedio/$sommaNettiPrezzoMedio; ?></p>
 </div>
 
 

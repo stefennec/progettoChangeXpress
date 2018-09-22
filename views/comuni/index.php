@@ -7,7 +7,7 @@ use yii\widgets\Pjax;
 /* @var $searchModel app\models\ComuniSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Comunis';
+$this->title = 'Lista Comuni';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="comuni-index">
@@ -17,18 +17,18 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Comuni', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Aggiungi Comune', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
-
-            'id',
+            // ['class' => 'yii\grid\SerialColumn'],
+            //
+            // 'id',
             'comune',
-            'istat',
+            // 'istat',
             'provincia',
             'prov',
             //'regione',

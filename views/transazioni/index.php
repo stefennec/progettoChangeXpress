@@ -6,12 +6,15 @@ use yii\widgets\Pjax;
 use yii\widgets\ActiveForm;
 use kartik\widgets\DatePicker;
 use app\models\Transazioni;
+use app\models\Valute;
+use app\models\Supporti;
+use app\models\TipologiaNazioni;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\TransazioniSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Transazionis';
+$this->title = 'Lista Transazioni';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="transazioni-index">
@@ -21,7 +24,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Transazioni', ['create'], ['class' => 'btn btn-success']) ?>
+
 
 
 
@@ -52,6 +55,8 @@ $this->params['breadcrumbs'][] = $this->title;
               ]]) ?>
           <?php ActiveForm::end(); ?>
 
+          <br>
+
 <!-- INIZIO FORM PRIMANOTA -->
 
           <?php
@@ -62,7 +67,7 @@ $this->params['breadcrumbs'][] = $this->title;
            ]);
 
            ?>
-           <?php echo '<label>Stampa lista Primanota</label>';
+           <?php echo '<label>Stampa Primanota</label>';
                echo DatePicker::widget([
                 'name' => 'prima_nota',
                  'value'=>date('Y-m-d'),
@@ -84,12 +89,40 @@ $this->params['breadcrumbs'][] = $this->title;
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
 
             'id',
             'ora',
-            'valuta',
-            'supporto',
+
+            ['attribute'=>'valuta',
+            'format'=>'raw',
+            'value'=> function($model,$key,$index){
+              if($model->valuta==null)
+                return "-";
+              $idValuta=$model->valuta;
+              $nomeValuta=Valute::find()
+              ->where(['id'=>$idValuta])->one();
+              if($nomeValuta)
+              return $nomeValuta->isoCode;
+              else
+              return "Stato Inesistente";
+            }],
+
+
+            ['attribute'=>'supporto',
+            'format'=>'raw',
+            'value'=> function($model,$key,$index){
+              if($model->supporto==null)
+                return "-";
+              $idSupporto=$model->supporto;
+              $nomeSupporto=Supporti::find()
+              ->where(['id'=>$idSupporto])->one();
+              if($nomeSupporto)
+              return $nomeSupporto->nome;
+              else
+              return "supporto inesistente";
+            }],
+
+
             'quantita',
             'cambio',
             'spese',
@@ -97,7 +130,21 @@ $this->params['breadcrumbs'][] = $this->title;
             'netto',
             'commissioni',
             'lordo',
-            'tipologiaNazioneCliente',
+
+            ['attribute'=>'tipologiaNazioneCliente',
+            'format'=>'raw',
+            'value'=> function($model,$key,$index){
+              if($model->tipologiaNazioneCliente==null)
+                return "-";
+              $idTipologia=$model->tipologiaNazioneCliente;
+              $nomeTipologia=TipologiaNazioni::find()
+              ->where(['id'=>$idTipologia])->one();
+              if($nomeTipologia)
+              return $nomeTipologia->tipologia;
+              else
+              return "supporto inesistente";
+            }],
+
             'idCliente',
             'operatore',
             'fidelityCliente',

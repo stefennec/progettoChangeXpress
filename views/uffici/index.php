@@ -7,7 +7,7 @@ use yii\widgets\Pjax;
 /* @var $searchModel app\models\UfficiSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Ufficis';
+$this->title = 'Lista Uffici';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="uffici-index">
@@ -17,16 +17,14 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Uffici', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Aggiungi Ufficio', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
             'nome',
             'indirizzo',
             'telefono',

@@ -8,7 +8,7 @@ use app\models\Valute;
 /* @var $searchModel app\models\CassaforteSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Cassafortes';
+$this->title = 'Cassaforte';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="cassaforte-index">
@@ -32,7 +32,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             //['class' => 'yii\grid\SerialColumn'],
 
-            'idValuta',
+            // 'idValuta',
 
             ['attribute'=>'valuta',
             'format'=>'raw',

@@ -7,7 +7,7 @@ use yii\widgets\Pjax;
 /* @var $searchModel app\models\OperatoriSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Operatoris';
+$this->title = 'Operatori';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="operatori-index">
@@ -17,16 +17,13 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Operatori', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Aggiungi nuovo operatore', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
-
-            'id',
             'user',
             'password',
 

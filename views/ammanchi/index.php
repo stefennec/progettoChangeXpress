@@ -7,7 +7,7 @@ use yii\widgets\Pjax;
 /* @var $searchModel app\models\AmmanchiSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Ammanchis';
+$this->title = 'Ammanchi';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="ammanchi-index">
@@ -17,14 +17,13 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Ammanchi', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Riporta Ammanco', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
 
             'id',
             'quantitaAmmanco',

@@ -5,8 +5,8 @@ use app\models\Valute;
 use app\models\Supporti;
 use app\models\TipologiaNazioni;
  ?>
- <?php  
- 
+ <?php
+
  ?>
  <div class="row form-group">
          <div class="col-xs-12">
@@ -33,11 +33,11 @@ use app\models\TipologiaNazioni;
                ]
    ]);
 
-   ?> 
+   ?>
 
  <?php echo
  $form->field($model, 'quantita')
-          ->label('Quantita')
+          ->label('Quantita di Valuta da Cambiare')
           ->textInput(['maxlength' => true,
                        'class' => 'form-control',
                        'placeholder'=>'Quantita Valuta',
@@ -49,7 +49,7 @@ use app\models\TipologiaNazioni;
                          ->select(['concat(isoCode,\' \',RateUfficialeAcquisto), id'])
                          ->indexBy('id')
                          ->column(),
-                       ['prompt'=>'Seleziona Valuta','class' => 'your_class', 'id' => 'activitySelector']);
+                       ['prompt'=>'Seleziona Valuta da Cambiare','class' => 'your_class', 'id' => 'activitySelector']);
  ?>
  <?php echo
    $form->field($model, 'cambio')
@@ -83,15 +83,16 @@ use app\models\TipologiaNazioni;
     }
     </script>
 
-                 <!-- Netto al Cliente -->
-<?= $form->field($model, 'commissioni')
+                 <!-- Spese da attribuire al Cliente -->
+<?= $form->field($model, 'percentuale')
+        ->label('Inserire % COMMISSIONE')
         ->textInput(['maxlength' => true,
                      'class' => 'form-control',
                      'placeholder'=>'Commissione',
                       'id' => 'commissione']) ?>
 
  <?= $form->field($model, 'spese')
-          ->label('Spese')
+          ->label('Inserire SPESA FISSA')
           ->textInput(['maxlength' => true,
                        'class' => 'form-control',
                        'placeholder'=>'Spesa Fissa',
@@ -113,13 +114,13 @@ use app\models\TipologiaNazioni;
 
 <!-- Netto al Cliente -->
 <?= $form->field($model, 'netto')
-         ->label('Results')
+         ->label('Netto da Pagare al Cliente')
          ->textInput(['maxlength' => true,
                        // 'readonly' => true,
                        'id' => 'netto-transazione']) ?>
 
 <?= $form->field($model, 'commissioni')
-        ->label('Commissione in €')
+        ->label('Commissione in € pagate dal Cliente')
         ->textInput(['maxlength' => true,
                       // 'readonly' => true,
                        'id' => 'commissione-transazione']) ?>
@@ -129,7 +130,7 @@ use app\models\TipologiaNazioni;
         ->textInput(['maxlength' => true,
                       // 'readonly' => true,
                     'id' => 'lordo-transazione']) ?>
-<?php 
+<?php
 if(isset($idClient)){
 echo $form->field($model, 'idCliente')
         ->label('Id Cliente')
@@ -151,7 +152,7 @@ echo $form->field($model, 'idCliente')
         ->textInput(['maxlength' => true,
                     'value' => '1',
                     'id' => 'tipolgiaTrans']) ?>
-                    
+
 <div class="form-group">
       <?= Html::a("Conferma la transazione", ['createandprintacquisto'], [
                   'class' => 'btn btn-success btn-lg btn-block',
