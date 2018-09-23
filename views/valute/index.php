@@ -7,7 +7,7 @@ use yii\widgets\Pjax;
 /* @var $searchModel app\models\ValuteSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Valutes';
+$this->title = 'Listino Valute';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="valute-index">
@@ -17,7 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Valute', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Aggiungi Valuta', ['create'], ['class' => 'btn btn-success']) ?>
         <?= Html::a('Stampa Listino Cambi', ['listinocambi'], ['class' => 'btn btn-primary',
         'data' => [
           'confirm' => 'Aggiornato correttamente il listino cambi?',
@@ -29,11 +29,16 @@ $this->params['breadcrumbs'][] = $this->title;
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-
-            'nome',
+            // ['class' => 'yii\grid\SerialColumn'],
+            //
+            // 'id',
             'isoCode',
+            'nome',
             'RateUfficialeAcquisto',
             'RateUfficialeVendita',
+            'differenzialeAcquisto',
+            'differenzialeVendita',
+            'checkValuta',
             //'imgBandiera',
 
             ['class' => 'yii\grid\ActionColumn'],

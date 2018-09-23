@@ -3,7 +3,24 @@
 
 }
 
+table{
+  font-size: 14px;
+}
+
+.intestazione{
+  display: inline-block;
+}
+
+.datiAzienda{
+  box-sizing: border-box;
+  width: 66%;
+  float: left;
+}
+
 .aggiornamento{
+  box-sizing: border-box;
+  width: 33%;
+  float: right;
   border: solid 2px black;
   margin-bottom: 25px;
 }
@@ -16,9 +33,37 @@
 .condizioni{
   border: solid 2px black;
   margin-top: 25px;
+  display: inline-block;
 }
 
-.condizioni p {
+.condizioni p{
+  margin-left: 25px;
+}
+
+.condizioni h4 {
   margin-left: 25px;
   font-weight: bold;
+  text-decoration: underline;
+}
+
+.condizioni ol,li{
+  font-size: 12px;
+}
+
+#titoloCondizioni{
+  font-weight: bold;
+  text-align: center;
+}
+
+.condizioneB ol{
+  list-style: none;
+}
+
+.condizioneB{
+  margin-top: -7px;
+  margin-bottom: -15px;
+}
+
+.terms{
+  margin-top: -7px;
 }

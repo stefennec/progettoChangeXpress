@@ -11,15 +11,22 @@ use app\models\Valute;
 <!-- dati documento -->
 
 <div class="containerdetail">
-  <h1>ChangeXpress & Global Service Srl</h1>
-  <!-- <img src="img/logo.jpg" alt=""> -->
-  <h2>Castello 4861 - 30122 Venezia</h2>
-  <h3>Partita IVA: 04483570273</h3>
-  <p>changexpressandglobalservice@gmail.com </p>
-  <div class="aggiornamento">
-    <p>Listino Cambio aggiornato alle: <strong><?php echo date("d/m/Y H:i:s"); ?></strong></p>
-    <p>Rate List - last update: <strong><?php echo date("d/m/Y H:i:s A"); ?></strong> </p>
+  <div class="intestazione">
+    <div class="datiAzienda">
+      <h3>ChangeXpress & Global Service Srl</h3>
+      <!-- <img src="img/logo.jpg" alt=""> -->
+      <h4>Castello 4861 - 30122 Venezia</h4>
+      <h5>Partita IVA: 04483570273</h5>
+      <p>changexpressvenezia@gmail.com </p>
+    </div>
+
+    <div class="aggiornamento">
+      <p>Listino Cambio aggiornato: <strong><?php echo date("d/m/Y H:i"); ?></strong></p>
+      <p>Rate List - last update: <strong><?php echo date("d/m/Y H:i A"); ?></strong> </p>
+    </div>
   </div>
+
+
     <table class="tabledetail" style="page-break-inside:avoid" cellspacing="5" cellpadding="3">
       <tr class="headingRow1">
         <th>Codice Valuta</th>
@@ -52,14 +59,36 @@ use app\models\Valute;
         <td><?php echo $valuta->nome; ?></td>
         <td><?php echo $valuta->RateUfficialeAcquisto; ?></td>
         <td><?php echo $valuta->RateUfficialeVendita; ?></td>
-        <td></td>
-        <td></td>
+        <td><?php echo $valuta->differenzialeAcquisto; ?></td>
+        <td><?php echo $valuta->differenzialeVendita; ?></td>
       </tr>
   <?php } ?>
     </table>
+
+    <h3 id="titoloCondizioni">Condizioni / Conditions:</h3>
+
     <div class="condizioni">
-      <p>Condizioni 1 </p>
-      <p>Condizioni 2: </p>
+      <div class="condizioniTrue">
+        <div class="condizioneA">
+          <h4>A : Percentuale % - Percentage %</h4>
+          <ol>
+            <li>Aquisto / Buy => MAX 19.90 %</li>
+            <li>Vendita / Sell => MAX 19.90 %</li>
+            <li>Carte di Credito / Cash Advance => MAX 15.90 %</li>
+          </ol>
+        </div>
+        <div class="condizioneB">
+          <h4>B : Spesa Fissa - Fix Fee </h4>
+          <ol>
+            <li>=> MAX 7.90 €</li>
+          </ol>
+        </div>
+        <div class="condizioneC">
+          <h4>C : Differenziale - Rate</h4>
+        </div>
+        <p class="terms"><small>Per maggiori informazioni chiedere allo sportello / Ask inside for more informations<small></p>
+      </div>
     </div>
+
 </div>
 </body>

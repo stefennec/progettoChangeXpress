@@ -8,7 +8,6 @@ use app\models\ValuteSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use mPDF;
 
 /**
  * ValuteController implements the CRUD actions for Valute model.
@@ -126,7 +125,6 @@ class ValuteController extends Controller
         throw new NotFoundHttpException('The requested page does not exist.');
     }
 
-
     public function actionListinocambi(){
 
         // $listino = yii::$app->request->get('listino');
@@ -135,7 +133,7 @@ class ValuteController extends Controller
           'margin_left' => 5,
           'margin_right' => 5,
           'margin_top' => 5,
-          'margin_bottom' => 5,
+          'margin_bottom' => 2,
           'margin_header' => 0,
           'margin_footer' => 0,
           'orientation' => 'P',

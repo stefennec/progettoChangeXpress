@@ -20,6 +20,12 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'RateUfficialeVendita')->textInput(['maxlength' => true]) ?>
 
+    <?= $form->field($model, 'differenzialeAcquisto')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($model, 'differenzialeVendita')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($model, 'checkValuta')->textInput(['maxlength' => true]) ?>
+
     <?= $form->field($model, 'imgBandiera')->textInput(['maxlength' => true]) ?>
 
     <div class="form-group">

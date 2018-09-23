@@ -12,6 +12,9 @@ use Yii;
  * @property string $isoCode
  * @property string $RateUfficialeAcquisto
  * @property string $RateUfficialeVendita
+ * @property string $differenzialeAcquisto
+ * @property string $differenzialeVendita
+ * @property string $checkValuta
  * @property string $imgBandiera
  */
 class Valute extends \yii\db\ActiveRecord
@@ -30,8 +33,8 @@ class Valute extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['RateUfficialeAcquisto', 'RateUfficialeVendita', 'imgBandiera'], 'required'],
-            [['RateUfficialeAcquisto', 'RateUfficialeVendita'], 'number'],
+            [['RateUfficialeAcquisto', 'RateUfficialeVendita', 'differenzialeAcquisto', 'differenzialeVendita', 'checkValuta'], 'number'],
+            [['differenzialeAcquisto', 'differenzialeVendita', 'checkValuta', 'imgBandiera'], 'required'],
             [['nome', 'imgBandiera'], 'string', 'max' => 255],
             [['isoCode'], 'string', 'max' => 3],
         ];
@@ -48,6 +51,9 @@ class Valute extends \yii\db\ActiveRecord
             'isoCode' => 'Iso Code',
             'RateUfficialeAcquisto' => 'Rate Ufficiale Acquisto',
             'RateUfficialeVendita' => 'Rate Ufficiale Vendita',
+            'differenzialeAcquisto' => 'Differenziale Acquisto',
+            'differenzialeVendita' => 'Differenziale Vendita',
+            'checkValuta' => 'Check Valuta',
             'imgBandiera' => 'Img Bandiera',
         ];
     }
@@ -59,9 +65,5 @@ class Valute extends \yii\db\ActiveRecord
     public static function find()
     {
         return new ValuteQuery(get_called_class());
-    }
-
-    public function getCassaforte(){
-      return $this->hasOne(Cassaforte::className(), ['idValuta' => 'id']);
     }
 }

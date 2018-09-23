@@ -28,6 +28,12 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'RateUfficialeVendita') ?>
 
+    <?php // echo $form->field($model, 'differenzialeAcquisto') ?>
+
+    <?php // echo $form->field($model, 'differenzialeVendita') ?>
+
+    <?php // echo $form->field($model, 'checkValuta') ?>
+
     <?php // echo $form->field($model, 'imgBandiera') ?>
 
     <div class="form-group">

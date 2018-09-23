@@ -33,6 +33,9 @@ $this->params['breadcrumbs'][] = $this->title;
             'isoCode',
             'RateUfficialeAcquisto',
             'RateUfficialeVendita',
+            'differenzialeAcquisto',
+            'differenzialeVendita',
+            'checkValuta',
             'imgBandiera',
         ],
     ]) ?>
