@@ -77,37 +77,46 @@ $result=  Yii::$app->request->post('prima_nota');
     $findTransazioni = Transazioni::find()
      ->where(['like','ora',$result])
 
-    ->joinWith(['valute'])
-    ->all();
+    ->joinWith(['valute']);
+    //->all();
+
+    $sql = $findTransazioni->createCommand()->getRawSql();
+    echo $sql;
+
+    //exit;
+
+    $findTransazioni = $findTransazioni->all();
 
     $transazioni = $findTransazioni;
      ?>
 
      <?php $sommaQuantita = 0;
            $sommaControvalori = 0;
-
+           $rigaTmp = null;
            ?>
 
      <?php foreach ($transazioni as $transazione) {
        $formatter = \Yii::$app->formatter;
-
+       $rigaTmp = $transazione;
        $quantitaValuta= Transazioni::find()->where(['like','ora',$result])->where(['valuta'=>$transazione->valuta])->sum('quantita');
        $controvaloreValuta = $quantitaValuta / ($quantitaAllaData = Transazioni::find()->where(['like','ora',$result])->where(['valuta'=>$transazione->valuta])->sum('quantita')/$nettoAllaData = Transazioni::find()->where(['like','ora',$result])->where(['valuta'=>$transazione->valuta])->sum('netto'));
       ?>
 
-      <tr>
-        <td><?php echo $transazione->valute->isoCode; ?></td>
-        <td><?php echo $quantitaValuta?></td>
 
-        <td><?php echo $controvaloreValuta ?> </td>
-        <?php $sommaQuantita +=$quantitaValuta; ?>
-        <?php $sommaControvalori +=$controvaloreValuta; ?>
-
-      </tr>
-
+      <?php $sommaQuantita +=$quantitaValuta; ?>
+      <?php $sommaControvalori +=$controvaloreValuta; ?>
 
 
     <?php } ?>
+
+    <tr>
+      <td><?php echo $rigaTmp->valute->isoCode; ?></td>
+      <td><?php echo $quantitaValuta?></td>
+
+      <td><?php echo $controvaloreValuta ?> </td>
+
+
+    </tr>
 
     <tr>
       <td></td>

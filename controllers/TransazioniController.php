@@ -216,14 +216,14 @@ class TransazioniController extends Controller
               $idTransazione = $model->id;
 
               $mpdf=new \Mpdf\Mpdf([
-                'format' => [80, 80],
+                'format' => [80, 190],
                 'margin_left' => 1,
                 'margin_right' => 1,
                 'margin_top' => 1,
                 'margin_bottom' => 1,
                 'margin_header' => 0,
                 'margin_footer' => 0,
-                'orientation' => 'P',
+                'orientation' => 'L',
               ]);
 
               $stylesheet = file_get_contents('css/stylePdf.css');
@@ -235,7 +235,7 @@ class TransazioniController extends Controller
 
 
 
-          $mpdf->Output($idTransazione.'.pdf', 'D');/*Insert D al posto di I(visualizza in browser) per il Download */
+          $mpdf->Output($idTransazione.'.pdf', 'I');/*Insert D al posto di I(visualizza in browser) per il Download */
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
