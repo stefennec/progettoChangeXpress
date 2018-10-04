@@ -77,11 +77,12 @@ $this->params['breadcrumbs'][] = $this->title;
                   'todayHighlight' => true
                 ]
                ]); ?>
-               <?= Html::a('Stampa Primanota', ['stampaprimanota'], ['class' => 'btn btn-success',
+               <?= Html::a('Stampa Primanota', ['stampaprimanota'], ['class' => 'btn btn-success','target'=>'_blank',
                'data' => [
                  'confirm' => 'Data Corretta?',
                  'method' => 'post',
-                 ]]) ?>
+               ]
+               ]) ?>
                  <?php ActiveForm::end(); ?>
     </p>
 

@@ -1,5 +1,7 @@
 <?php
 use app\models\Transazioni;
+use app\models\Valute;
+
 
 //dove dentro  a post(x) va messo il nome dell'input field
 $result=  Yii::$app->request->post('prima_nota');
@@ -99,12 +101,11 @@ $result=  Yii::$app->request->post('prima_nota');
        $formatter = \Yii::$app->formatter;
        $rigaTmp = $transazione;
        $quantitaValuta= Transazioni::find()->where(['like','ora',$result])->where(['valuta'=>$transazione->valuta])->sum('quantita');
-       $controvaloreValuta = $quantitaValuta / ($quantitaAllaData = Transazioni::find()->where(['like','ora',$result])->where(['valuta'=>$transazione->valuta])->sum('quantita')/$nettoAllaData = Transazioni::find()->where(['like','ora',$result])->where(['valuta'=>$transazione->valuta])->sum('netto'));
+       $checkValuta = Valute::find()->select('checkValuta')->where(['id'=>$transazione->valuta]);
+       $check = $checkValuta;
+       $controvaloreValuta = $quantitaValuta / $check;
       ?>
 
-
-      <?php $sommaQuantita +=$quantitaValuta; ?>
-      <?php $sommaControvalori +=$controvaloreValuta; ?>
 
 
     <?php } ?>
