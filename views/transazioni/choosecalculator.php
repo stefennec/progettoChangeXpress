@@ -34,21 +34,22 @@ use yii\widgets\ActiveForm;
   <h2>Scegli la tipologia di calcolatrice da usare:</h2>
   <br/>
 <!-- il porta l'id da un altra parte -->
-  <?= Html::a(Yii::t('app', 'Scegli la calcolatrice DI PROVA ORA'), ['transazioni/calculator', 'id' => $idClient], [
+  <?= Html::a(Yii::t('app', 'Scegli la calcolatrice ACQUISTO'), ['transazioni/calculator', 'id' => $idClient], [
       'class' => 'btn btn-success btn',
       'data' => [
           'confirm' => Yii::t('app', 'Sei sicuro di voler scegliere questa calcolatrice?'),
           'method' => 'post',
       ],
   ]) ?>
-  <!-- il porta l'id da un altra parte -->
-    <?= Html::a(Yii::t('app', 'Scegli la calcolatrice Compra'), ['transazioni/calculator', 'id' => $idClient], [
+  
+    <?= Html::a(Yii::t('app', 'Scegli la calcolatrice VENDITA'), ['transazioni/calculator-vendita', 'id' => $idClient], [
         'class' => 'btn btn-success btn',
         'data' => [
             'confirm' => Yii::t('app', 'Sei sicuro di voler scegliere questa calcolatrice?'),
             'method' => 'post',
         ],
     ]) ?>
+
     <!-- il porta l'id da un altra parte -->
       <?= Html::a(Yii::t('app', 'Scegli la calcolatrice MVC'), ['transazioni/calculator', 'id' => $idClient], [
           'class' => 'btn btn-success btn',

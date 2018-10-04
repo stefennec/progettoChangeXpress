@@ -144,11 +144,11 @@ use app\models\TipologiaNazioni;
 <?php
 if(isset($idClient)){
 echo $form->field($model, 'idCliente')
-        ->label('Id Cliente')
-        ->textInput(['maxlength' => true,
-                    'readonly' => true,
-                    'value' => $idClient,
-                  ]);
+          ->label('Id Cliente')
+          ->textInput(['maxlength' => true,
+                      'readonly' => true,
+                      'value' => $idClient,
+                    ]);
     }else{
       echo $form->field($model, 'idCliente')
               ->label('Id Cliente')

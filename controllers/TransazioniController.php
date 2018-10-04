@@ -138,12 +138,6 @@ class TransazioniController extends Controller
               'model' => $modelTransazioni,
               'idClient'=>$id,
       ]);
-    // }else if($modelClienti->load(Yii::$app->request->post()) && $modelClienti->save()){
-    //
-    //       return $this->render('calculator', [
-    //         'model' => $modelTransazioni,
-    //         'idClient'=>$modelClienti->id,
-    //       ]);
         }else{
         return $this->render('calculator', [
           'model' => $modelTransazioni,
@@ -167,37 +161,37 @@ class TransazioniController extends Controller
             ]);
           }
         }
+        
+    public function actionCalculatorVendita($id = null){
+      $modelClienti = new Clienti();
+      $modelTransazioni = new Transazioni();
 
-
-
-
-
-
-
-    public function actionCalculatorVendita()
-    {
-        $model = new Transazioni();
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
-        }
-
+      if($id){
         return $this->render('calculator-vendita', [
-            'model' => $model,
+                'model' => $modelTransazioni,
+                'idClient'=>$id,
         ]);
+      }else{
+          return $this->render('calculator-vendita', [
+            'model' => $modelTransazioni,
+          ]);
+        }
     }
 
-    public function actionCalculatorMcv()
-    {
-        $model = new Transazioni();
+    public function actionCalculatorMcv($id = null){
+      $modelClienti = new Clienti();
+      $modelTransazioni = new Transazioni();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
-        }
-
-        return $this->render('calculator-mcv', [
-            'model' => $model,
+      if($id){
+        return $this->render('calculator-mvc', [
+                'model' => $modelTransazioni,
+                'idClient'=>$id,
         ]);
+      }else{
+          return $this->render('calculator-mvc', [
+            'model' => $modelTransazioni,
+          ]);
+        }
     }
 
     public function actionCreateandprintacquisto()
