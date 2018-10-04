@@ -83,7 +83,14 @@ class Transazioni extends \yii\db\ActiveRecord
     }
 
     public function getValute()
+  {
+      return $this->hasOne(Valute::className(), ['id' => 'valuta']);
+  }
+
+  // funzione per relazione transazione - cliente
+
+  public function getClienti()
 {
-    return $this->hasOne(Valute::className(), ['id' => 'valuta']);
+    return $this->hasOne(Clienti::className(), ['id' => 'idCliente']);
 }
 }

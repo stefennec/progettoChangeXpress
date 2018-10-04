@@ -6,6 +6,7 @@ use app\models\Valute;
 //dove dentro  a post(x) va messo il nome dell'input field
 $result=  Yii::$app->request->post('prima_nota');
 
+print_r($result);
 
  ?>
 
@@ -40,9 +41,10 @@ $result=  Yii::$app->request->post('prima_nota');
 
           <tr>
             <td>classificazione B</td>
-            <td>€ <?php echo $fissaValute = Transazioni::find()->where(['like','ora',$result])->where(['valuta'=>[2,5,9,10,12,13,14,16,18,19,20,52,33,34,38,44,45,51]])->sum('spese') ?></td>
-            <td>€ <?php echo $commissioniValute = Transazioni::find()->where(['like','ora',$result])->where(['valuta'=>[2,5,9,10,12,13,14,16,18,19,20,52,33,34,38,44,45,51]])->sum('commissioni') ?></td>
+            <td>€ <?php echo $fissaValute = Transazioni::find()->where(['valuta'=>[2,5,9,10,12,13,14,16,18,19,20,52,33,34,38,44,45,51]])->where(['like','ora',$result])->sum('spese') ?></td>
+            <td>€ <?php echo $commissioniValute = Transazioni::find()->where(['valuta'=>[2,5,9,10,12,13,14,16,18,19,20,52,33,34,38,44,45,51]])->where(['like','ora',$result])->sum('commissioni') ?></td>
           </tr>
+
 
           <tr>
             <td>classificazione C</td>
@@ -85,7 +87,7 @@ $result=  Yii::$app->request->post('prima_nota');
     $sql = $findTransazioni->createCommand()->getRawSql();
     echo $sql;
 
-    //exit;
+     // exit;
 
     $findTransazioni = $findTransazioni->all();
 
@@ -94,31 +96,34 @@ $result=  Yii::$app->request->post('prima_nota');
 
      <?php $sommaQuantita = 0;
            $sommaControvalori = 0;
+           $sum=0;
            $rigaTmp = null;
            ?>
 
      <?php foreach ($transazioni as $transazione) {
        $formatter = \Yii::$app->formatter;
        $rigaTmp = $transazione;
-       $quantitaValuta= Transazioni::find()->where(['like','ora',$result])->where(['valuta'=>$transazione->valuta])->sum('quantita');
+       $quantitaValuta=Transazioni::find()->where(['valuta'=>$transazione->valuta])->where(['like','ora',$result])->sum('quantita');
+       $stampaSomma = $quantitaValuta;
+
        $checkValuta = Valute::find()->select('checkValuta')->where(['id'=>$transazione->valuta]);
-       $check = $checkValuta;
-       $controvaloreValuta = $quantitaValuta / $check;
+
+// exit
       ?>
 
 
 
-    <?php } ?>
+
 
     <tr>
-      <td><?php echo $rigaTmp->valute->isoCode; ?></td>
-      <td><?php echo $quantitaValuta?></td>
+      <td><?php echo $rigaTmp->valute->isoCode;?></td>
+      <td><?php echo $stampaSomma; ?></td>
 
-      <td><?php echo $controvaloreValuta ?> </td>
+      <td></td>
 
 
     </tr>
-
+  <?php } ?>
     <tr>
       <td></td>
       <td> <strong><?php echo $sommaQuantita ?></strong> </td>
@@ -126,9 +131,6 @@ $result=  Yii::$app->request->post('prima_nota');
     </tr>
   </table>
 
-  <p>somma della quantita di valuta acquistata fino ad ora: <?php echo $sommaQuantitaPrezzoMedio = Transazioni::find()->where(['like','ora',$result])->where(['valuta'=>5])->sum('quantita') ?></p>
-  <p>somma dei netti pagati per quella valuta fino ad ora: <?php echo $sommaNettiPrezzoMedio = Transazioni::find()->where(['like','ora',$result])->where(['valuta'=>5])->sum('netto') ?> </p>
-  <p> Prezzo medio in acquisto: <?php echo $prezzoMedioAcquisto = $sommaQuantitaPrezzoMedio/$sommaNettiPrezzoMedio; ?></p>
 </div>
 
 
