@@ -45,7 +45,7 @@ use app\models\TipologiaNazioni;
    'options' => [
                 'id'=>'acquisto-form'
              ]
- ]);
+           ]);
  ?>
    
  <?php echo

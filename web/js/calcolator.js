@@ -2,12 +2,12 @@
 document.getElementById('acquisto-form').addEventListener('submit', function(e){
 
   // Hide results
-    document.getElementById('results').style.display = 'none';
+    // document.getElementById('results').style.display = 'none';
 
   //Show loader
   // document.getElementById('loading').style.display = 'block';
 
-  setTimeout(calculateResults);
+  // setTimeout(calculateResults);
 
   e.preventDefault();
  });
@@ -17,8 +17,6 @@ document.getElementById('acquisto-form').addEventListener('submit', function(e){
 
  // calculate Result
  function calculateResults(e){
-
-
 
   console.log('calculating');
 
