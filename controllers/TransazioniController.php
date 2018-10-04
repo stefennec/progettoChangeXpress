@@ -183,12 +183,12 @@ class TransazioniController extends Controller
       $modelTransazioni = new Transazioni();
 
       if($id){
-        return $this->render('calculator-mvc', [
+        return $this->render('calculator-mcv', [
                 'model' => $modelTransazioni,
                 'idClient'=>$id,
         ]);
       }else{
-          return $this->render('calculator-mvc', [
+          return $this->render('calculator-mcv', [
             'model' => $modelTransazioni,
           ]);
         }

@@ -51,7 +51,7 @@ use yii\widgets\ActiveForm;
     ]) ?>
 
     <!-- il porta l'id da un altra parte -->
-      <?= Html::a(Yii::t('app', 'Scegli la calcolatrice MVC'), ['transazioni/calculator', 'id' => $idClient], [
+      <?= Html::a(Yii::t('app', 'Scegli la calcolatrice MVC'), ['transazioni/calculator-mcv', 'id' => $idClient], [
           'class' => 'btn btn-success btn',
           'data' => [
               'confirm' => Yii::t('app', 'Sei sicuro di voler scegliere questa calcolatrice?'),
