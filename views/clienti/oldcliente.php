@@ -25,14 +25,18 @@ use kartik\widgets\DatePicker;
               </a></li>
               <li class="active"><a href="#step-2">
                   <h4 class="list-group-item-heading">Step 2</h4>
-                  <p class="list-group-item-text">Scegliere cliente già registrato</p>
+                  <p class="list-group-item-text">Scegliere il cliente tra i precedenti clienti</p>
+              </a></li>
+              <li class="disabled"><a href="#step-2">
+                  <h4 class="list-group-item-heading">Step 3</h4>
+                  <p class="list-group-item-text">Scegliere se compare o vendere</p>
               </a></li>
                 <li class="disabled"><a href="#step-4">
-                    <h4 class="list-group-item-heading">Step 3</h4>
+                    <h4 class="list-group-item-heading">Step 4</h4>
                     <p class="list-group-item-text">Calcolare l'importo</p>
                 </a></li>
                 <li class="disabled"><a href="#step-5">
-                    <h4 class="list-group-item-heading">Step 4</h4>
+                    <h4 class="list-group-item-heading">Step 5</h4>
                     <p class="list-group-item-text">Salvare</p>
                 </a></li>
             </ul>
@@ -41,8 +45,12 @@ use kartik\widgets\DatePicker;
 <?php 
 // print_r($model);
  ?>  
+ 
 <div class="container row">
   <div class="col-xs-10">
+    <h2 class="text-left">Scegli il cliente se già precedentemente registrato:</h2>
+    <br/>
+    <br/>
     <table class="table table-striped">
         <thead>
           <tr>
@@ -84,6 +92,9 @@ use kartik\widgets\DatePicker;
         <?php } ?>
         </tbody>
       </table>
+      <h2 class="text-left">Aggiungi il cliente se nuovo: </h2>
+      <br/>
+      <br/>
       <div class="row form-group">
               <div class="col-xs-4 mx-auto">
                   <?= Html::a("Inserisci un nuovo cliente", ['clienti/newcliente'], [

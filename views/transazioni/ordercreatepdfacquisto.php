@@ -1,7 +1,6 @@
 <?php
 use app\models\Valute;
 
-
 $id=$model->id;
 $ora=$model->ora;
 $valuta=$model->valuta;
@@ -10,12 +9,6 @@ $quantita=$model->quantita;
 $cambio=$model->cambio;
 $netto=$model->netto;
 $numeroCliente=$model->idCliente;
-// echo $id;
-// echo $ora;
-// echo $valuta;
-// echo $supporto;
-// echo $quantita;
-// echo $cambio;
 
 $entireValuta=Valute::find()
   ->where(['id'=>$valuta])->one();

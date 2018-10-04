@@ -31,6 +31,8 @@ use yii\widgets\ActiveForm;
             </ul>
         </div>
 	</div>
+  <h2>Scegli la tipologia di calcolatrice da usare:</h2>
+  <br/>
 <!-- il porta l'id da un altra parte -->
   <?= Html::a(Yii::t('app', 'Scegli la calcolatrice DI PROVA ORA'), ['transazioni/calculator', 'id' => $idClient], [
       'class' => 'btn btn-success btn',

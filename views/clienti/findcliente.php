@@ -18,23 +18,23 @@ use kartik\widgets\DatePicker;
 <div class="row form-group">
         <div class="col-xs-12">
             <ul class="nav nav-pills nav-justified thumbnail setup-panel">
-              <li class="active"><a href="#step-3">
+              <li class="active"><a href="#">
                   <h4 class="list-group-item-heading">Step 1</h4>
                   <p class="list-group-item-text">Inserire nome & cognome</p>
               </a></li>
-              <li class="disabled"><a href="#step-2">
+              <li class="disabled"><a href="#">
                   <h4 class="list-group-item-heading">Step 2</h4>
                   <p class="list-group-item-text">Scegliere cliente già registrato</p>
               </a></li>
-              <li class=""><a href="#step-2">
+              <li class="disabled"><a href="#">
                   <h4 class="list-group-item-heading">Step 3</h4>
                   <p class="list-group-item-text">Scegliere se compare o vendere</p>
               </a></li>
-                <li class="disabled"><a href="#step-4">
+                <li class="disabled"><a href="#">
                     <h4 class="list-group-item-heading">Step 4</h4>
                     <p class="list-group-item-text">Calcolare l'importo</p>
                 </a></li>
-                <li class="disabled"><a href="#step-5">
+                <li class="disabled"><a href="#">
                     <h4 class="list-group-item-heading">Step 5</h4>
                     <p class="list-group-item-text">Salvare</p>
                 </a></li>
@@ -46,7 +46,9 @@ use kartik\widgets\DatePicker;
   <div class="row">
     <div class="col-md-12 mx-auto">
       <div class="card card-body text-center mt-5">
-        <h1 class="text-left">Inserisci il nome e cognome del cliente:</h1>
+        <h2 class="text-left">Inserisci il nome e cognome del cliente:</h2>
+        <br/>
+        </br/>
         <div class="row">
           <div class="form">
             <?php $form = ActiveForm::begin(); ?>

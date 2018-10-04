@@ -20,16 +20,24 @@ use kartik\widgets\DatePicker;
 <div class="row form-group">
         <div class="col-xs-12">
             <ul class="nav nav-pills nav-justified thumbnail setup-panel">
-                <li class="active"><a href="#step-1">
-                    <h4 class="list-group-item-heading">Step 1</h4>
-                    <p class="list-group-item-text">Inserire il documento</p>
-                </a></li>
-                <li class="disabled"><a href="#step-2">
-                    <h4 class="list-group-item-heading">Step 2</h4>
+              <li class="disabled"><a href="#step-3">
+                  <h4 class="list-group-item-heading">Step 1</h4>
+                  <p class="list-group-item-text">Inserire nome & cognome</p>
+              </a></li>
+              <li class="active"><a href="#step-2">
+                  <h4 class="list-group-item-heading">Step 2</h4>
+                  <p class="list-group-item-text">Inserire i dati del nuovo cliente</p>
+              </a></li>
+              <li class="disabled"><a href="#step-2">
+                  <h4 class="list-group-item-heading">Step 3</h4>
+                  <p class="list-group-item-text">Scegliere se compare o vendere</p>
+              </a></li>
+                <li class="disabled"><a href="#step-4">
+                    <h4 class="list-group-item-heading">Step 4</h4>
                     <p class="list-group-item-text">Calcolare l'importo</p>
                 </a></li>
-                <li class="disabled"><a href="#step-3">
-                    <h4 class="list-group-item-heading">Step 3</h4>
+                <li class="disabled"><a href="#step-5">
+                    <h4 class="list-group-item-heading">Step 5</h4>
                     <p class="list-group-item-text">Salvare</p>
                 </a></li>
             </ul>
@@ -40,7 +48,8 @@ use kartik\widgets\DatePicker;
   <div class="row">
     <div class="col-md-12 mx-auto">
       <div class="card card-body text-center mt-5">
-        <h1>Registrazione Cliente</h1>
+        <h2>Registrazione Nuovo Cliente</h2>
+        <br/>
         <div class="row">
           <div class="form">
             
