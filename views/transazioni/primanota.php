@@ -85,7 +85,7 @@ print_r($result);
 
     $sql = $findTransazioni->createCommand()->getRawSql();
     echo $sql;
-    
+
      // exit;
 
     $findTransazioni = $findTransazioni->all();
@@ -97,14 +97,16 @@ print_r($result);
            $sommaControvalori = 0;
            $sum=0;
            $rigaTmp = null;
-          
+
+// INIZIO FOREACH
+
    foreach ($transazioni as $transazione) {
-       $formatter = \Yii::$app->formatter;
+       // $formatter = \Yii::$app->formatter;
        $rigaTmp = $transazione;
        $quantitaValuta=Transazioni::find()
                           ->where(['valuta'=>$transazione->valuta])
                           ->where(['like','ora',$result])
-                          ->sum('quantita');    
+                          ->sum('quantita');
        $stampaSomma = $quantitaValuta;
        $checkValuta = Valute::find()
                         ->select('checkValuta')
@@ -112,8 +114,8 @@ print_r($result);
 // exit
       ?>
     <tr>
-      <td><?php echo $rigaTmp->valute->isoCode;?></td>
-      <td><?php echo $stampaSomma; ?></td>
+      <td><?php  echo $rigaTmp->valute->isoCode;?></td>
+      <td><?php echo $quantitaValuta; ?></td>
       <td></td>
     </tr>
   <?php } ?>
