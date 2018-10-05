@@ -4,7 +4,7 @@
 
 $this->title = 'ChangeXpress';
 ?>
-<div class="site-index">
+<div class="site-index" style="background-color:white;">
 
     <div class="body-content">
 

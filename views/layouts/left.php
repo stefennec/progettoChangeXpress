@@ -29,9 +29,9 @@
             [
                 'options' => ['class' => 'sidebar-menu tree', 'data-widget'=> 'tree'],
                 'items' => [
-                    ['label' => 'Menu Yii2', 'options' => ['class' => 'header']],
-                    ['label' => 'Gii', 'icon' => 'file-code-o', 'url' => ['/gii']],
-                    ['label' => 'Debug', 'icon' => 'dashboard', 'url' => ['/debug']],
+                    // ['label' => 'Menu Yii2', 'options' => ['class' => 'header']],
+                    // ['label' => 'Gii', 'icon' => 'file-code-o', 'url' => ['/gii']],
+                    // ['label' => 'Debug', 'icon' => 'dashboard', 'url' => ['/debug']],
                     ['label' => 'Login', 'url' => ['site/login'], 'visible' => Yii::$app->user->isGuest],
                     //Menù Calcolatrice
                     ['label' => 'Start new Transition', 'url' => ['/clienti/findcliente']],
@@ -40,7 +40,7 @@
                     ['label' => 'Calcolatore MCV', 'url' => ['/transazioni/calculator-mcv']],
                     //Form clienti
                     ['label' => 'Clienti', 'url' => ['/clienti/newcliente']],
-                    
+
 
                     //Conteggio Cassaforte
                     ['label' => 'Conteggio Euro', 'url' => ['/cassaforte/euro']],
@@ -54,22 +54,22 @@
 
                           ['label' => 'Tagli Euro', 'url' => ['/tagli-euro/index']],
                           ['label' => 'Valute', 'url' => ['/valute/index']],
-                          ['label' => 'Uffici', 'url' => ['/uffici/index']],
-                          ['label' => 'Banche', 'url' => ['/banche/index']],
+                          // ['label' => 'Uffici', 'url' => ['/uffici/index']],
+                          // ['label' => 'Banche', 'url' => ['/banche/index']],
                           ['label' => 'Transazioni', 'url' => ['/transazioni/index']],
-                          ['label' => 'Movimenti', 'url' => ['/movimenti/index']],
+                          // ['label' => 'Movimenti', 'url' => ['/movimenti/index']],
                           ['label' => 'Tipologia Nazioni', 'url' => ['/tipologia-nazioni/index']],
                           ['label' => 'Enti', 'url' => ['/enti/index']],
                           ['label' => 'Documenti', 'url' => ['/documenti/index']],
-                          ['label' => 'Operatori', 'url' => ['/operatori/index']],
+                          // ['label' => 'Operatori', 'url' => ['/operatori/index']],
                           ['label' => 'Supporti', 'url' => ['/supporti/index']],
                           ['label' => 'Registrazione Clienti', 'url' => ['/clienti/index']],
-                          ['label' => 'Ammanchi', 'url' => ['/ammanchi/index']],
-                          ['label' => 'Cassa1', 'url' => ['/cassa1/index']],
-                          ['label' => 'Cassa2', 'url' => ['/cassa2/index']],
-                          ['label' => 'Cassaforte', 'url' => ['/cassaforte/index']],
-                          ['label' => 'Comuni', 'url' => ['/comuni/index']],
-                          ['label' => 'Transazioni Cliente', 'url' => ['/transazioni-clienti/index']],
+                          // ['label' => 'Ammanchi', 'url' => ['/ammanchi/index']],
+                          // ['label' => 'Cassa1', 'url' => ['/cassa1/index']],
+                          // ['label' => 'Cassa2', 'url' => ['/cassa2/index']],
+                          // ['label' => 'Cassaforte', 'url' => ['/cassaforte/index']],
+                          // ['label' => 'Comuni', 'url' => ['/comuni/index']],
+                          // ['label' => 'Transazioni Cliente', 'url' => ['/transazioni-clienti/index']],
 
                         ],
                     ],

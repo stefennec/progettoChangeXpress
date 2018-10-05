@@ -26,7 +26,13 @@ $this->params['breadcrumbs'][] = $this->title;
     <p>
 
 
-
+      <!--  -->
+      <!--  -->
+      <!--  -->
+          <!-- FORM LISTA TRANSAZIONI -->
+      <!--  -->
+      <!--  -->
+      <!--  -->
 
 
           <?php
@@ -52,6 +58,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'data' => [
               'confirm' => 'Data Corretta?',
               'method' => 'post',
+              'target'=>'blank',
               ]]) ?>
           <?php ActiveForm::end(); ?>
 
@@ -77,7 +84,7 @@ $this->params['breadcrumbs'][] = $this->title;
                   'todayHighlight' => true
                 ]
                ]); ?>
-               <?= Html::a('Stampa Primanota', ['stampaprimanota'], ['class' => 'btn btn-success','target'=>'_blank',
+               <?= Html::a('Stampa Primanota',['stampaprimanota'], ['class' => 'btn btn-success',
                'data' => [
                  'confirm' => 'Data Corretta?',
                  'method' => 'post',
@@ -85,6 +92,13 @@ $this->params['breadcrumbs'][] = $this->title;
                ]) ?>
                  <?php ActiveForm::end(); ?>
     </p>
+<!--  -->
+<!--  -->
+<!--  -->
+    <!-- GRIDVIEW -->
+<!--  -->
+<!--  -->
+<!--  -->
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,

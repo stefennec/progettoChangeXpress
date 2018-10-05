@@ -18,7 +18,7 @@ use app\models\TipologiaNazioni;
               </a></li>
               <li class="disabled"><a href="#step-2">
                   <h4 class="list-group-item-heading">Step 3</h4>
-                  <p class="list-group-item-text">Scegliere se compare o vendere</p>
+                  <p class="list-group-item-text">Scegliere se comprare o vendere</p>
               </a></li>
                 <li class="active"><a href="#step-4">
                     <h4 class="list-group-item-heading">Step 4</h4>
@@ -31,14 +31,14 @@ use app\models\TipologiaNazioni;
             </ul>
         </div>
 	</div>
-  
+
   <div class="container">
        <div class="row">
          <div class="col-md-6 mx-auto">
            <div class="card card-body text-center mt-5">
               <h2>Calcolatrice Acquisto</h2>
   <br/>
-  
+
 <?php
 
  $form = ActiveForm::begin([
@@ -47,7 +47,7 @@ use app\models\TipologiaNazioni;
              ]
            ]);
  ?>
-   
+
  <?php echo
  $form->field($model, 'quantita')
           ->label('Quantita di Valuta da Cambiare')
@@ -177,7 +177,7 @@ echo $form->field($model, 'idCliente')
 
 
     <?php ActiveForm::end(); ?>
-    
+
           </div>
         </div>
       </div>

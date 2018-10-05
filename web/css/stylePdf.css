@@ -18,10 +18,11 @@
       margin-left: 20px;
     }
 
-    .dati{
+    .datiTransazione{
       margin-top: 25px;
-      margin-left: 25px;
+      margin-left: 50px;
       display: inline-block;
+      position: relative;
     }
 
   .logoRicevuta{
@@ -35,12 +36,13 @@
     font-size: 12px;
   }
 
-  .operazione{
+  .datiUfficio{
     margin-left: 20px;
   }
 
-  .operazione p{
-    margin-top: 20px;
+  .datiUfficio p{
+    margin-top: 5px;
+    margin-bottom: 0;
 
   }
 
