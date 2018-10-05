@@ -220,18 +220,27 @@ class TransazioniController extends Controller
                 'orientation' => 'L',
               ]);
 
-              $stylesheet = file_get_contents('css/stylePdf.css');
+              // $stylesheet = file_get_contents('css/stylePdf.css');
 
+              $stylesheet = file_get_contents('css/stylePdf.css');
               $mpdf->WriteHTML($stylesheet,1);
 
               $mpdf->WriteHTML($this->renderPartial('ordercreatepdfacquisto', [
               'model' => $model]),2);
 
+        //save in folder
+        $mpdf->Output("pdf/".$idTransazione.'.pdf', "I");// $mpdf->Output($location.$idTransazione.'.pdf');/*Insert D al posto di I(visualizza in browser) per il Download */
 
 
-          $mpdf->Output($idTransazione.'.pdf', 'I');/*Insert D al posto di I(visualizza in browser) per il Download */
-            return $this->redirect(['view', 'id' => $model->id]);
-        }
+        // This will need to be the path relative to the root of your app.
+        // $filePath = '/web/pdf';
+        // // Might need to change '@app' for another alias
+        // $completePath = Yii::getAlias('@app'.$filePath.'/'.$idTransazione.'.pdf');
+        // 
+        // return Yii::$app->response->sendFile($completePath);
+        
+           return $this->redirect(['view', 'id' => $model->id]);
+      }
 
         //se il model è vuoto torna all'indice
         $searchModel = new TransazioniSearch();

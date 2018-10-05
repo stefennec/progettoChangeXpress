@@ -2,216 +2,181 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use app\models\Valute;
+use app\models\Supporti;
 use app\models\TipologiaNazioni;
-
-
-  $form = ActiveForm::begin(); ?>
-
-<div class="container">
-     <div class="row">
-       <div class="col-md-6 mx-auto">
-         <div class="card card-body text-center mt-5">
-           <h1 class="heading display-5 pb-3">MCV - Cash Advance</h1>
-           <form id="mcv-form">
-             <div class="form-group">
-               <div class="input-group">
+ ?>
+<div class="row form-group">
+        <div class="col-xs-12">
+            <ul class="nav nav-pills nav-justified thumbnail setup-panel">
+              <li class="disabled"><a href="#step-3">
+                  <h4 class="list-group-item-heading">Step 1</h4>
+                  <p class="list-group-item-text">Inserire nome & cognome</p>
+              </a></li>
+              <li class="disabled"><a href="#step-2">
+                  <h4 class="list-group-item-heading">Step 2</h4>
+                  <p class="list-group-item-text">Scegliere cliente già registrato</p>
+              </a></li>
+              <li class="disabled"><a href="#step-2">
+                  <h4 class="list-group-item-heading">Step 3</h4>
+                  <p class="list-group-item-text">Scegliere se compare o vendere</p>
+              </a></li>
+                <li class="active"><a href="#step-4">
+                    <h4 class="list-group-item-heading">Step 4</h4>
+                    <p class="list-group-item-text">Calcolare l'importo da scambiare</p>
+                </a></li>
+                <li class="disabled"><a href="#step-5">
+                    <h4 class="list-group-item-heading">Step 5</h4>
+                    <p class="list-group-item-text">Stampare i pdf</p>
+                </a></li>
+            </ul>
+        </div>
+	</div>
+  <div class="container">
+       <div class="row">
+         <div class="col-md-6 mx-auto">
+           <div class="card card-body text-center mt-5">
+              <h2>Calcolatrice MCV</h2>
+  <br/>
+  
 <?php
-$time=date_default_timezone_set('Europe/Rome');
 
-$data=time();
-$data=date('H:i:s', $data)
+ $form = ActiveForm::begin([
+   'options' => [
+                'id'=>'mcv-form'
+             ]
+           ]);
+ ?>
+ <?php echo
+ $form->field($model, 'quantita')
+          ->label('Quantita di Valuta da Cambiare')
+          ->textInput(['maxlength' => true,
+                       'class' => 'form-control',
+                       'placeholder'=>'Quantita Valuta',
+                        'id' => 'quantitaMcv']) ?>
 
+ <?= $form->field($model, 'valuta')
+         ->label(false)
+         ->dropdownList(Valute::find()
+                         ->select(['concat(isoCode,\' \',RateUfficialeAcquisto), id'])
+                         ->indexBy('id')
+                         ->column(),
+                       ['prompt'=>'Seleziona Valuta da Cambiare','class' => 'your_class', 'id' => 'activitySelector']);
+ ?>
+ <?php echo
+   $form->field($model, 'cambio')
+            ->label('Rate applicato')
+            ->textInput(['maxlength' => true,
+                         'class' => 'form-control',
+                         'placeholder'=>'Rate Applicato',
+                          'id' => 'rateMcv']) ?>
+
+  <!-- qui inizia il js per prendersi i tassi di cambio in automatico -->
+      <script>
+    // Variabli iniziali
+    var selectorValuta = document.getElementById('activitySelector');
+
+    // funzione che scatena gli eventi
+    loadEventListeners();
+
+    // function for loadAllEvent
+    function loadEventListeners(){
+    selectorValuta.addEventListener("change", function(e) {
+
+    var entireValue = selectorValuta.options[selectorValuta.selectedIndex].innerHTML;
+
+    var str = entireValue;
+    var slug = str.split(' ').pop();
+    // slug=parseFloat(slug).toFixed(10,5);
+
+        document.getElementById('rateMcv').value=slug;
+        // console.log(slug);
+      });
+    }
+    </script>
+
+                 <!-- Spese da attribuire al Cliente -->
+<?= $form->field($model, 'percentuale')
+        ->label('Inserire % COMMISSIONE')
+        ->textInput(['maxlength' => true,
+                     'class' => 'form-control',
+                     'placeholder'=>'Commissione',
+                      'id' => 'percentualeMcv']) ?>
+
+ <?= $form->field($model, 'spese')
+          ->label('Inserire SPESA FISSA')
+          ->textInput(['maxlength' => true,
+                       'class' => 'form-control',
+                       'placeholder'=>'Spesa Fissa',
+                        'id' => 'spesaMcv']) ?>
+
+ <?= $form->field($model, 'tipologiaNazioneCliente')
+         ->label('Area Cliente:')
+         ->dropdownList(TipologiaNazioni::find()
+                         ->select(['tipologia', 'id'])
+                         ->indexBy('id')
+                         ->column(),
+                       ['prompt'=>'Seleziona Area Cliente']);
 ?>
-              <!-- quantita -->
-              <div class="input-group">
-                    <?php
-                    // echo
-                    //   $form->field($model, 'ora')
-                    //             ->label('Ora')
-                    //             ->textInput(['maxlength' => true,
-                    //                         'value' => $data,
-                    //                         'placeholder'=>'Quantita Valuta',
-                    //                           'id' => 'ora'])
-                                               ?>
-                 <!-- Netto al Cliente -->
-                 <?php echo
-                 $form->field($model, 'netto')
-                          ->label('Spese')
-                          ->textInput(['maxlength' => true,
-                                       'class' => 'form-control',
-                                       'placeholder'=>'Quantita Valuta',
-                                        'id' => 'quantitaMcv']) ?>
-               </div>
 
-             </div>
-                 <!-- <span class="input-group-addon">$</span> -->
-                 <!-- <input type="number" class="form-control" id="quantita" placeholder="quantitaValuta"> -->
-               </div>
-             </div>
-
-            <div class="transazioni-form">
+<div class="form-group">
+  <input type="button" onclick="calculateResultsMcv()"  value="Calcola il cambio"  class="btn btn-success">
+</div>
 
 
+<!-- Netto al Cliente -->
+<?= $form->field($model, 'netto')
+         ->label('Netto da Pagare al Cliente')
+         ->textInput(['maxlength' => true,
+                       // 'readonly' => true,
+                       'id' => 'nettoMcv']) ?>
 
+<?= $form->field($model, 'commissioni')
+        ->label('Commissione in € pagate dal Cliente')
+        ->textInput(['maxlength' => true,
+                      // 'readonly' => true,
+                       'id' => 'commissioneMcv']) ?>
 
-            <?= $form->field($model, 'valuta')
-                    ->label(false)
-                    ->dropdownList(Valute::find()
-                                    ->select(['isoCode', 'id','nome', 'RateUfficialeAcquisto'])->where(['id'=>54])
-                                    ->select(['concat(isoCode,\' \',RateUfficialeAcquisto), id'])->where(['id'=>54])
-                                    ->indexBy('id')
-                                    ->column(),
-                                  ['prompt'=>'Seleziona Valuta','class' => 'your_class', 'id' => 'activitySelector']);
-            ?>
-            <div class="form-group">
-               <?php echo
-                 $form->field($model, 'cambio')
-                          ->label('Rate applicato')
-                          ->textInput(['maxlength' => true,
-                                       'class' => 'form-control',
-                                       'placeholder'=>'Rate Applicato',
-                                        'id' => 'rateMcv']) ?>
-             </div>
-            <div class="form-group">
-            <?php echo
-                 $form->field($model, 'percentuale')
-                          ->label('Commissione Applicata')
-                          ->textInput(['maxlength' => true,
-                                       'class' => 'form-control',
-                                       'placeholder'=>'Percentuale di commissione',
-                                        'id' => 'commissioneMcv']) ?>
-             </div>
-              <script>
+<?= $form->field($model, 'lordo')
+        ->label('Lordo')
+        ->textInput(['maxlength' => true,
+                      // 'readonly' => true,
+                    'id' => 'lordoMcv']) ?>
+<?php
+if(isset($idClient)){
+echo $form->field($model, 'idCliente')
+          ->label('Id Cliente')
+          ->textInput(['maxlength' => true,
+                      'readonly' => true,
+                      'value' => $idClient,
+                    ]);
+    }else{
+      echo $form->field($model, 'idCliente')
+              ->label('Id Cliente')
+              ->textInput(['maxlength' => true,
+                          'readonly' => false,
+                          'value' => '',
+                        ]);
+    }
+    ?>
+<?= $form->field($model, 'tipologiaTrx')
+        ->label('Tipologia transazione')
+        ->textInput(['maxlength' => true,
+                    'value' => '3',
+                    'id' => 'tipolgiaTrans']) ?>
 
-
-
-
-
-          // Variabli iniziali
-          var selectorValuta = document.getElementById('activitySelector');
-
-          // funzione che scatena gli eventi
-          loadEventListeners();
-
-          // function for loadAllEvent
-          function loadEventListeners(){
-            selectorValuta.addEventListener("change", function(m) {
-
-            var entireValue = selectorValuta.options[selectorValuta.selectedIndex].innerHTML;
-
-            var str = entireValue;
-            var slug = str.split(' ').pop();
-            // slug=parseFloat(slug).toFixed(10,5);
-
-
-          document.getElementById('rateMcv').value=slug;
-          console.log(slug);
-
-          });
-          }
-        </script>
-             <!-- dove sparare il valore della valuta -->
-
-
-
-        <div class="form-group">
-             <div class="input-group">
-                 <!-- Netto al Cliente -->
-                 <?= $form->field($model, 'valuta')
-                          ->textInput(['maxlength' => true,
-                                       'class' => 'form-control',
-                                       'placeholder'=>'Valuta-Sarà only read',
-                                        'id' => 'valutaCodice']) ?>
-
-               </div>
-
-             <div class="form-group">
-             <div class="input-group">
-                 <!-- Netto al Cliente -->
-                 <?= $form->field($model, 'spese')
-                          ->label('Spese')
-                          ->textInput(['maxlength' => true,
-                                       'class' => 'form-control',
-                                       'placeholder'=>'Spesa Fissa',
-                                        'id' => 'spesaMcv']) ?>
-
-               </div>
-
-             </div>
-             <div class="form-group">
-               <?= $form->field($model, 'tipologiaNazioneCliente')
-                       ->label('Area Cliente:')
-                       ->dropdownList(TipologiaNazioni::find()
-                                       ->select(['tipologia', 'id'])
-                                       ->indexBy('id')
-                                       ->column(),
-                                     ['prompt'=>'Seleziona Area Cliente']);
-              ?>
-             </div>
-             <div class="form-group">
-               <input type="submit" value="Calcola il cambio" class="btn btn-success">
-             </div>
-             <div class="form-group">
-               <input type="button" value="Calcola il cambio" onclick="calculateResultsMcv()" class="btn btn-success">
-             </div>
-           </form>
-           <!-- LOADER -->
-
-           <!-- RESULTS -->
-
-               <div class="input-group">
-                 <!-- Netto al Cliente -->
-                 <?= $form->field($model, 'netto')
-                          ->label('Results')
-                          ->textInput(['maxlength' => true,
-                                        'id' => 'nettoTransazioneMcv']) ?>
-
-               </div>
-
-            <div class="input-group">
-                 <!-- Commissioni -->
-                 <?= $form->field($model, 'commissioni')
-                          ->label('Commissione in €')
-                          ->textInput(['maxlength' => true,
-                                         'id' => 'commissioneTransazioneMcv']) ?>
-               </div>
-
-               <div class="input-group">
-                 <!-- Lordo -->
-                 <?= $form->field($model, 'lordo')
-                          ->label('Lordo')
-                          ->textInput(['maxlength' => true,
-                                      'id' => 'lordoTransazioneMcv']) ?>
-               </div>
-
-               <!-- id cliente -->
-               <?= $form->field($model, 'idCliente')
-                          ->label('Il nome del cliente')
-                          ->textInput(['maxlength' => true,
-                                      'id' => '']) ?>
-               </div>
-
-               <!-- operatore -->
-               <?= $form->field($model, 'operatore')
-                          ->label('Il num operatore')
-                          ->textInput(['maxlength' => true,
-                                      'id' => '']) ?>
-               </div>
-
-               <!-- Cliente -->
-               <?= $form->field($model, 'fidelityCliente')
-                          ->label('/')
-                          ->textInput(['maxlength' => true,
-                                      'id' => '']) ?>
-               </div>
-
-             <div class="form-group">
-                <?= Html::a('Salva & Stampa', ['create', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-                </div>
-                <?php ActiveForm::end(); ?>
-            </div>
-           </div>
-         </div>
-       </div>
-     </div>
-   </div>
+<div class="form-group">
+      <?= Html::a("Conferma la transazione", ['createandprintacquisto'], [
+                  'class' => 'btn btn-success btn-lg btn-block',
+                  // 'target'=>'_blank',
+                  'data' => [
+                      'confirm' => 'Sei sicuro di confermare la transazione?',
+                      'method' => 'post',
+                  ],
+              ]) ?>
+              
+<?php ActiveForm::end(); ?>
+    
+          </div>
+        </div>
+      </div>
+    </div>
