@@ -43,7 +43,6 @@ if(isFinite(monthlyMcv)) {
     commissioneTransazioneMcv.value  = commissioneTransazioneCalculed;
     lordoTransazioneMcv.value  = lordoTransazioneCalculed;
     
-
       } else {
         showError('Please check your number');
       }
