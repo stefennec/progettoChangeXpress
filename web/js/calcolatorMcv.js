@@ -37,7 +37,6 @@ if(isFinite(monthlyMcv)) {
     lordoTransazioneCalculed = monthlyMcv.toFixed(2);//al max 2 decimali
     
      console.log(nettoTransazioneCalculed);
-    // 
     // console.log(nettoTransazioneCalculed);
     nettoTransazioneMcv.value = nettoTransazioneCalculed;
     commissioneTransazioneMcv.value  = commissioneTransazioneCalculed;
