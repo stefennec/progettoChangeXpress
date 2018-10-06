@@ -37,7 +37,7 @@ use app\models\TipologiaNazioni;
            <div class="card card-body text-center mt-5">
               <h2>Calcolatrice MCV</h2>
   <br/>
-  
+
 <?php
 
  $form = ActiveForm::begin([
@@ -58,6 +58,7 @@ use app\models\TipologiaNazioni;
          ->label(false)
          ->dropdownList(Valute::find()
                          ->select(['concat(isoCode,\' \',RateUfficialeAcquisto), id'])
+                         ->where(['id'=>54])
                          ->indexBy('id')
                          ->column(),
                        ['prompt'=>'Seleziona Valuta da Cambiare','class' => 'your_class', 'id' => 'activitySelector']);
@@ -137,7 +138,7 @@ use app\models\TipologiaNazioni;
                        'id' => 'commissioneMcv']) ?>
 
 <?= $form->field($model, 'lordo')
-        ->label('Lordo')
+        ->label('Lordo - Addebito Sulla Carta')
         ->textInput(['maxlength' => true,
                       // 'readonly' => true,
                     'id' => 'lordoMcv']) ?>
@@ -173,9 +174,9 @@ echo $form->field($model, 'idCliente')
                       'method' => 'post',
                   ],
               ]) ?>
-              
+
 <?php ActiveForm::end(); ?>
-    
+
           </div>
         </div>
       </div>

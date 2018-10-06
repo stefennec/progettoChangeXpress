@@ -28,13 +28,13 @@ $result=  Yii::$app->request->post('lista_transazioni_giornaliere');
 
 
 
-    <table class="tabledetail" style="page-break-inside:avoid" cellspacing="5" cellpadding="3">
+    <table class="tabledetail" style="page-break-inside:" cellspacing="5" cellpadding="3">
       <tr class="headingRow1">
         <th>Ora</th>
         <th>Numero</th>
         <th>#</th>
         <th>Valuta</th>
-        <th>Supporto</th>
+        <th>Buy/Sell/Mcv</th>
         <th>Quantità</th>
         <th>Cambio</th>
         <th>Spese</th>
@@ -44,7 +44,6 @@ $result=  Yii::$app->request->post('lista_transazioni_giornaliere');
         <th>Lordo</th>
         <th>Fidelity</th>
         <th>Cliente</th>
-        <th>Operatore</th>
       </tr>
 
       <!-- inizio ciclo -->
@@ -91,7 +90,7 @@ $result=  Yii::$app->request->post('lista_transazioni_giornaliere');
          <td><?php echo $i; ?></td>
          <!-- per visualizzare il nome della valuta al posto del numero each dell loop deve richiamare il model a cui transazioni è relazionato e poi questo deve richiamare il valore che si desidera -->
          <td><?php echo $transazione->valute->isoCode; ?></td>
-         <td><?php echo $transazione->supporto; ?></td>
+         <td><?php echo $transazione->tipologiaTrx; ?></td>
          <td><?php echo $transazione->quantita; ?></td>
          <td><?php echo $transazione->cambio; ?></td>
          <td><?php echo $transazione->spese; ?></td>

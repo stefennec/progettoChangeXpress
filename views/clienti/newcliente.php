@@ -43,7 +43,7 @@ use kartik\widgets\DatePicker;
             </ul>
         </div>
 	</div>
-  
+
 <div class="container">
   <div class="row">
     <div class="col-md-12 mx-auto">
@@ -52,11 +52,11 @@ use kartik\widgets\DatePicker;
         <br/>
         <div class="row">
           <div class="form">
-            
+
             <?php $form = ActiveForm::begin(); ?>
             <div class="col-md-6">
               <div class="form-group">
-                
+
       <!-- Name New cliente -->
                 <?php echo $form->field($model, 'nomeCliente')
                 ->textInput(['maxlength' => true, 'readonly' => false])
@@ -123,13 +123,11 @@ use kartik\widgets\DatePicker;
               // ])
 
 
-               DatePicker::widget([
-                  'model' => $model,
-                  'attribute' => 'scadenzaDoc',
-                  'options' => ['placeholder' => 'Inserire data scadenza documento ...'],
+               $form->field($model, 'scadenzaDoc')->widget(DatePicker::classname(), [
+                  'options' => ['placeholder' => 'scadenza documento ...'],
                   'pluginOptions' => [
                       'autoclose'=>true,
-                      'format' => 'dd/mm/yyyy'
+                      'format' => 'yyyy-mm-dd'
                   ]
               ]);
 
@@ -161,7 +159,7 @@ use kartik\widgets\DatePicker;
                  'options' => ['placeholder' => 'Inserire data di Nascita ...'],
                  'pluginOptions' => [
                      'autoclose'=>true,
-                     'format' => 'dd/mm/yyyy'
+                     'format' => 'yyyy-mm-dd'
                  ]
              ]);
               ?>

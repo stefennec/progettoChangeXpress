@@ -58,8 +58,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'data' => [
               'confirm' => 'Data Corretta?',
               'method' => 'post',
-              'target'=>'blank',
-              ]]) ?>
+            ],'linkOptions' => ['target'=>'_blank'],]) ?>
           <?php ActiveForm::end(); ?>
 
           <br>

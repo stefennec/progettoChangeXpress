@@ -14,15 +14,17 @@
     }
 
     .intestazione{
+      display: inline-block;
       margin-top: 35px;
       margin-left: 20px;
     }
 
     .datiTransazione{
-      margin-top: 25px;
+      margin-top: 10%;
       margin-left: 50px;
       display: inline-block;
       position: relative;
+      float: right;
     }
 
   .logoRicevuta{
