@@ -26,24 +26,24 @@ document.getElementById('mcv-form').addEventListener('submit', function(e){
        tassoRateMcv = parseFloat(rateMcv.value);
        commissionePercentualeMcv = parseFloat(commissioneMcv.value);
        spesaFissaMcv = parseFloat(spesaMcv);
-       
+
 
        monthlyMcv = (quantitaValutaMcv*tassoRateMcv);
-       // console.log(commissioneVendita);
+
+       console.log(commissionePercentualeMcv);
+       
 if(isFinite(monthlyMcv)) {
-  
+
     commissioneTransazioneCalculed = (monthlyMcv * (percentualeMcv/100)).toFixed(2);
     nettoTransazioneCalculed = (monthlyMcv - (monthlyMcv * percentualeMcv/100) - spesaMcv).toFixed(2);
     lordoTransazioneCalculed = monthlyMcv.toFixed(2);//al max 2 decimali
-    
+
      console.log(nettoTransazioneCalculed);
-    // 
+    //
     // console.log(nettoTransazioneCalculed);
     nettoTransazioneMcv.value = nettoTransazioneCalculed;
     commissioneTransazioneMcv.value  = commissioneTransazioneCalculed;
     lordoTransazioneMcv.value  = lordoTransazioneCalculed;
-    
-
       } else {
         showError('Please check your number');
       }

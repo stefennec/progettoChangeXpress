@@ -38,6 +38,8 @@
 
   .datiUfficio{
     margin-left: 20px;
+    float: left;
+    display: inline-block;
   }
 
   .datiUfficio p{
@@ -59,4 +61,16 @@
     display: inline;
     margin-top:  5px;
     margin-left: 25px;
+  }
+
+  .valori{
+    box-sizing: border-box;
+    float: left;
+    width: 50%;
+  }
+
+  .datiCliente{
+    box-sizing: border-box;
+    float: right;
+    width: 50%;
   }
