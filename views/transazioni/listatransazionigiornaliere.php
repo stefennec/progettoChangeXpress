@@ -144,7 +144,7 @@ $result=  Yii::$app->request->post('lista_transazioni_giornaliere');
   </div>
 </div>
 
-    <!-- parziale acquisti -->
+    <!-- PARZIALE ACQUISTI -->
     <div class="totaliTransazioni">
       <h4 class="headingMcv">Acquisti</h4>
       <?php
@@ -174,7 +174,7 @@ $result=  Yii::$app->request->post('lista_transazioni_giornaliere');
        </table>
     </div>
 
-<!-- parziale vendite -->
+<!-- PARZIALE VENDITE  -->
 
     <div class="totaliTransazioni">
       <h4 class="headingMcv">Vendite</h4>
@@ -210,7 +210,7 @@ $result=  Yii::$app->request->post('lista_transazioni_giornaliere');
     <!--  -->
     <!--  -->
 
-    <!-- parziale mcv -->
+    <!-- PARZIALE MCV -->
 
     <div class="totaliTransazioni">
       <h4 class="headingMcv">Carte di Credito - Cash Advance</h4>
@@ -264,4 +264,7 @@ $result=  Yii::$app->request->post('lista_transazioni_giornaliere');
       </table>
     </div>
 </div>
+
+
+
 </body>
