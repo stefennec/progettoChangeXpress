@@ -10,6 +10,8 @@ $quantita=$model->quantita;
 $cambio=$model->cambio;
 $netto=$model->netto;
 $numeroCliente=$model->idCliente;
+$tipologia=$model->tipologiaTrx;
+$lordoTrx=$model->lordo;
 
 $entireValuta=Valute::find()
   ->where(['id'=>$valuta])->one();
@@ -26,8 +28,21 @@ $nomeValuta=$entireValuta->isoCode;
     </div>
     <div class="datiTransazione">
       <p id="invisibile" style="color:white">Testo invisibile</p>
-      <p>In: <strong><?php echo $nomeValuta.' '.$quantita; ?></strong> </p>
-      <p>Out: <strong> <?php echo 'EURO: '.$netto; ?> </strong></p>
+      <?php
+      if ($tipologia==2) {
+        echo "<p>In: <strong>  EURO: ".$quantita."</strong></p>
+              <p>Out: <strong>".$nomeValuta.' '.$netto."</strong> </p>";
+      }
+      if ($tipologia==3) {
+        echo "<p>In: <strong>".$nomeValuta.' '.$lordoTrx."</strong> </p>
+        <p>Out: EURO <strong>".$netto."</strong></p>";
+      }
+      if ($tipologia==1) {
+        echo "<p>In: <strong>".$nomeValuta.' '.$quantita."</strong> </p>
+        <p>Out: EURO <strong>".$netto."</strong></p>";
+      }
+
+        ?>
     </div>
   </div>
 
@@ -67,8 +82,21 @@ $nomeValuta=$entireValuta->isoCode;
     </div>
     <div class="datiTransazione">
       <p id="invisibile" style="color:white">Testo invisibile</p>
-      <p>In: <strong><?php echo $nomeValuta.' '.$quantita; ?></strong> </p>
-      <p>Out: <strong> <?php echo 'EURO: '.$netto; ?> </strong></p>
+      <?php
+      if ($tipologia==2) {
+        echo "<p>In: <strong>  EURO: ".$quantita."</strong></p>
+              <p>Out: <strong>".$nomeValuta.' '.$netto."</strong> </p>";
+      }
+      if ($tipologia==3) {
+        echo "<p>In: <strong>".$nomeValuta.' '.$lordoTrx."</strong> </p>
+        <p>Out: EURO <strong>".$netto."</strong></p>";
+      }
+      if ($tipologia==1) {
+        echo "<p>In: <strong>".$nomeValuta.' '.$quantita."</strong> </p>
+        <p>Out: EURO <strong>".$netto."</strong></p>";
+      }
+
+        ?>
     </div>
   </div>
 

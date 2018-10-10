@@ -30,7 +30,7 @@ use kartik\widgets\DatePicker;
               </a></li>
               <li class="disabled"><a href="#step-2">
                   <h4 class="list-group-item-heading">Step 3</h4>
-                  <p class="list-group-item-text">Scegliere se compare o vendere</p>
+                  <p class="list-group-item-text">Scegliere se comprare o vendere</p>
               </a></li>
                 <li class="disabled"><a href="#step-4">
                     <h4 class="list-group-item-heading">Step 4</h4>
@@ -94,7 +94,7 @@ use kartik\widgets\DatePicker;
               <div class="form-group">
       <!-- Nazionalita -->
                   <?= $form->field($model, 'nazionalita')
-                          ->label('Nazione di Residenza')
+                          ->label('Nazione di Residenza:')
                           ->dropdownList(Stati::getStati(),
                                         ['prompt'=>'Seleziona Stato', 'id_stati' => 'cat-id']);
                  ?>
@@ -103,7 +103,7 @@ use kartik\widgets\DatePicker;
               <div class="form-group">
       <!-- tipo di documento -->
                 <?= $form->field($model, 'tipoDocumento')
-                        ->label('Tipologia Documento')
+                        ->label('Tipologia Documento:')
                         ->dropdownList(Documenti::find()
                                         ->select(['nome', 'id'])
                                         ->indexBy('id')
@@ -113,7 +113,7 @@ use kartik\widgets\DatePicker;
               </div>
               <div class="form-group">
         <!-- Data di scadenza documento -->
-                <label for="">Data di Scadenza Documento:</label>
+
                 <?=
               //   $form->field($model, 'scadenzaDoc')
               //   ->label('Scadenza Documento:')
@@ -192,7 +192,7 @@ use kartik\widgets\DatePicker;
               <div class="form-group">
       <!-- Ente -->
                   <?= $form->field($model, 'ente')
-                          ->label('Ente documento')
+                          ->label('Ente documento:')
                           ->dropdownList(Enti::find()
                                           ->select(['nome', 'id'])
                                           ->indexBy('id')
