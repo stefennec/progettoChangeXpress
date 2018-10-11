@@ -54,10 +54,10 @@ use app\models\TipologiaNazioni;
           ->textInput(['maxlength' => true,
                        'class' => 'form-control',
                        'placeholder'=>'Quantita Valuta',
-                        'id' => 'quantita']) ?>
+                       'id' => 'quantita']) ?>
 
  <?= $form->field($model, 'valuta')
-         ->label(false)
+         ->label('Tipologia Value')
          ->dropdownList(Valute::find()
                          ->select(['concat(isoCode,\' \',RateUfficialeAcquisto), id'])
                          ->indexBy('id')

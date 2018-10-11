@@ -42,6 +42,7 @@ class Transazioni extends \yii\db\ActiveRecord
         return [
             [['ora'], 'safe'],
             [['valuta', 'supporto', 'tipologiaNazioneCliente', 'idCliente', 'operatore', 'tipologiaTrx'], 'integer'],
+            ['valuta', 'required', 'message' => 'Scegliere la value'],
             [['quantita', 'cambio', 'spese', 'percentuale', 'netto', 'commissioni', 'lordo'], 'number'],
             [['fidelityCliente'], 'string', 'max' => 45],
         ];
