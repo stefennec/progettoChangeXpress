@@ -41,15 +41,15 @@ print_r($result);
 
           <tr>
             <td>classificazione B</td>
-            <td>€ <?php echo $fissaValute = Transazioni::find()->where(['valuta'=>[2,5,9,10,12,13,14,16,18,19,20,52,33,34,38,44,45,51]])->andWhere(['like','ora',$result])->sum('spese') ?></td>
-            <td>€ <?php echo $commissioniValute = Transazioni::find()->where(['valuta'=>[2,5,9,10,12,13,14,16,18,19,20,52,33,34,38,44,45,51]])->andWhere(['like','ora',$result])->sum('commissioni') ?></td>
+            <td>€ <?php echo $fissaValute = Transazioni::find()->where(['like','ora',$result])->andWhere(['tipologiaTrx'=>[1,2]])->sum('spese') ?></td>
+            <td>€ <?php echo $commissioniValute = Transazioni::find()->where(['like','ora',$result])->andWhere(['tipologiaTrx'=>[1,2]])->sum('commissioni') ?></td>
           </tr>
 
 
           <tr>
             <td>classificazione C</td>
-            <td>€ <?php echo $fissaMcv = Transazioni::find()->where(['like','ora',$result])->andWhere(['valuta'=>54])->sum('spese') ?></td>
-            <td>€ <?php echo $commissioneMcv = Transazioni::find()->where(['like','ora',$result])->andWhere(['valuta'=>54])->sum('commissioni') ?></td>
+            <td>€ <?php echo $fissaMcv = Transazioni::find()->where(['like','ora',$result])->andWhere(['tipologiaTrx'=>[3]])->sum('spese') ?></td>
+            <td>€ <?php echo $commissioneMcv = Transazioni::find()->where(['like','ora',$result])->andWhere(['tipologiaTrx'=>[3]])->sum('commissioni') ?></td>
           </tr>
 
           <tr>
@@ -69,64 +69,81 @@ print_r($result);
 <div class="ripartizione">
   <p> <small>Movimenti di acquisto valuta</small>  </p>
 
-  <table class="tabledetail" id="tableAcquisti" style="page-break-inside:avoid" cellspacing="5" cellpadding="3">
+  <table>
     <tr>
       <th>Valuta</th>
-      <th>Quantita</th>
+      <th>Quantità</th>
       <th>Controvalore EURO</th>
     </tr>
 
     <?php
-
-    $findTransazioni = Transazioni::find()
+    // query per la primanota acquisti
+    $findTransazioniAcquisti = Transazioni::find()
                          ->where(['like','ora',$result])
+                         ->andWhere(['tipologiaTrx'=>1])
                          ->joinWith(['valute']);
                          //->all();
 
-    $sql = $findTransazioni->createCommand()->getRawSql();
+    $sql = $findTransazioniAcquisti->createCommand()->getRawSql();
     echo $sql;
+    // exit;
+    $findTransazioniAcquisti = $findTransazioniAcquisti->all();
 
-     // exit;
+    $transazioniAcquisti = $findTransazioniAcquisti;
+     //inizio ciclo valute prima nota
 
-    $findTransazioni = $findTransazioni->all();
+     // SEGUE GRUPPO ARRAY DOVE CARICO LE VALUTE GIORNALIERE
 
-    $transazioni = $findTransazioni;
-     ?>
+     $nomeValuta = [];
+     $sommaQuantitaValuta = [];
+     // eventualmente gestire il controvalore con un altro array vuoto
+     $rigaValuta = null;
 
-     <?php $sommaQuantita = 0;
-           $sommaControvalori = 0;
-           $sum=0;
-           $rigaTmp = null;
+     // INIZIO DEL FOREACH GRANDE
 
-// INIZIO FOREACH
-
-   foreach ($transazioni as $transazione) {
-       // $formatter = \Yii::$app->formatter;
-       $rigaTmp = $transazione;
-       $quantitaValuta=Transazioni::find()
-                          ->where(['valuta'=>$transazione->valuta])
+     foreach ($transazioniAcquisti as $transazioneAcquisto) {
+       $valutaAcquisto = $transazioneAcquisto->valute->isoCode;
+       $sommaAcquisto = Transazioni::find()
+                          ->where(['valuta'=>$transazioneAcquisto->valuta])
                           ->andWhere(['like','ora',$result])
                           ->sum('quantita');
-       $stampaSomma = $quantitaValuta;
-       $checkValuta = Valute::find()
-                        ->select('checkValuta')
-                        ->where(['id'=>$transazione->valuta]);
-// exit
+
+// IF PER VEDERE SE CI SONO DUPLICATI DEL NOME VALUTA
+
+             if(!in_array($valutaAcquisto, $nomeValuta))
+                 {?>
+                   <tr>
+                     <td><?php echo $valutaAcquisto;
+                     array_push($nomeValuta,$valutaAcquisto); ?>
+                   </td>
+
+                 <?php }; ?>
+
+         <!-- IF PER VEDERE SE CI SONO DUPLICATI DELLA SOMMA QUANTITA -->
+
+          <?php if (!in_array($sommaAcquisto, $sommaQuantitaValuta)) {
+            ?>
+              <td><?php echo $sommaAcquisto;
+              array_push($sommaQuantitaValuta,$sommaAcquisto); ?></td>
+          <?php  } ?>
+
+             <td></td>
+           </tr>"
+
+
+
+
+  <?php   }
+
+
+
+
       ?>
-    <tr>
-      <td><?php  echo $rigaTmp->valute->isoCode;?></td>
-      <td><?php echo $quantitaValuta; ?></td>
-      <td></td>
-    </tr>
-  <?php } ?>
-    <tr>
-      <td></td>
-      <td> <strong><?php echo $sommaQuantita ?></strong> </td>
-      <td><strong>€ <?php echo $sommaControvalori ?></strong> </td>
-    </tr>
+
   </table>
 
 </div>
+
 
 
 
