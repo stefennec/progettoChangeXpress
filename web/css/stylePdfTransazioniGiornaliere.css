@@ -41,3 +41,17 @@ th{
   margin-left: 25px;
   font-weight: bold;
 }
+
+.divisore td{
+  border-top: 2px solid black;
+}
+
+.headingMcv{
+  margin-left: 25px;
+  text-transform: uppercase;
+}
+
+.tabelleParziali{
+  margin: 0 25 25 25;
+
+}

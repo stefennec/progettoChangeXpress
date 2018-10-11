@@ -37,7 +37,7 @@ use app\models\TipologiaNazioni;
            <div class="card card-body text-center mt-5">
               <h2>Calcolatrice Vendita</h2>
   <br/>
-  
+
 <?php
 
  $form = ActiveForm::begin([
@@ -57,7 +57,7 @@ use app\models\TipologiaNazioni;
  <?= $form->field($model, 'valuta')
          ->label(false)
          ->dropdownList(Valute::find()
-                         ->select(['concat(isoCode,\' \',RateUfficialeAcquisto), id'])
+                         ->select(['concat(isoCode,\' \',RateUfficialeVendita), id'])
                          ->indexBy('id')
                          ->column(),
                        ['prompt'=>'Seleziona Valuta da Cambiare','class' => 'your_class', 'id' => 'activitySelector']);
@@ -88,7 +88,7 @@ use app\models\TipologiaNazioni;
     var slug = str.split(' ').pop();
     // slug=parseFloat(slug).toFixed(10,5);
 
-        document.getElementById('rate').value=slug;
+        document.getElementById('rateVendita').value=slug;
         console.log(slug);
       });
     }
@@ -172,9 +172,9 @@ echo $form->field($model, 'idCliente')
                       'method' => 'post',
                   ],
               ]) ?>
-              
+
 <?php ActiveForm::end(); ?>
-    
+
           </div>
         </div>
       </div>

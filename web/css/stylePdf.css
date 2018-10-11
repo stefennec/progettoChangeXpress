@@ -14,15 +14,17 @@
     }
 
     .intestazione{
+      display: inline-block;
       margin-top: 35px;
       margin-left: 20px;
     }
 
     .datiTransazione{
-      margin-top: 25px;
+      margin-top: 10%;
       margin-left: 50px;
       display: inline-block;
       position: relative;
+      float: right;
     }
 
   .logoRicevuta{
@@ -38,6 +40,8 @@
 
   .datiUfficio{
     margin-left: 20px;
+    float: left;
+    display: inline-block;
   }
 
   .datiUfficio p{
@@ -59,4 +63,16 @@
     display: inline;
     margin-top:  5px;
     margin-left: 25px;
+  }
+
+  .valori{
+    box-sizing: border-box;
+    float: left;
+    width: 50%;
+  }
+
+  .datiCliente{
+    box-sizing: border-box;
+    float: right;
+    width: 50%;
   }

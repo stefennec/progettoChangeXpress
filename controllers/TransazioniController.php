@@ -161,7 +161,7 @@ class TransazioniController extends Controller
             ]);
           }
         }
-        
+
     public function actionCalculatorVendita($id = null){
       $modelClienti = new Clienti();
       $modelTransazioni = new Transazioni();
@@ -236,9 +236,9 @@ class TransazioniController extends Controller
         // $filePath = '/web/pdf';
         // // Might need to change '@app' for another alias
         // $completePath = Yii::getAlias('@app'.$filePath.'/'.$idTransazione.'.pdf');
-        // 
+        //
         // return Yii::$app->response->sendFile($completePath);
-        
+
            return $this->redirect(['view', 'id' => $model->id]);
       }
 
@@ -268,9 +268,11 @@ class TransazioniController extends Controller
       $stylesheet = file_get_contents('css/stylePdfTransazioniGiornaliere.css');
 
       $mpdf->WriteHTML($stylesheet,1);
+      $mpdf->setFooter('{PAGENO}');
 
       $mpdf->WriteHTML($this->renderPartial('listatransazionigiornaliere'));
       $mpdf->Output('listinoTransazioni.pdf', 'I');
+
     }
 
 

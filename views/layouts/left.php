@@ -14,7 +14,7 @@
         </div>
 
         <!-- search form -->
-        <form action="#" method="get" class="sidebar-form">
+        <!-- <form action="#" method="get" class="sidebar-form">
             <div class="input-group">
                 <input type="text" name="q" class="form-control" placeholder="Search..."/>
               <span class="input-group-btn">
@@ -22,7 +22,7 @@
                 </button>
               </span>
             </div>
-        </form>
+        </form> -->
         <!-- /.search form -->
 
         <?= dmstr\widgets\Menu::widget(
@@ -34,7 +34,7 @@
                     // ['label' => 'Debug', 'icon' => 'dashboard', 'url' => ['/debug']],
                     ['label' => 'Login', 'url' => ['site/login'], 'visible' => Yii::$app->user->isGuest],
                     //Menù Calcolatrice
-                    ['label' => 'Start new Transition', 'url' => ['/clienti/findcliente']],
+                    ['label' => 'Nuova Transazione', 'url' => ['/clienti/findcliente']],
                     ['label' => 'Calcolatore Acquisto', 'url' => ['/transazioni/calculator']],
                     ['label' => 'Calcolatore Vendita', 'url' => ['/transazioni/calculator-vendita']],
                     ['label' => 'Calcolatore MCV', 'url' => ['/transazioni/calculator-mcv']],

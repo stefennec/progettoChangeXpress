@@ -41,15 +41,15 @@ print_r($result);
 
           <tr>
             <td>classificazione B</td>
-            <td>€ <?php echo $fissaValute = Transazioni::find()->where(['valuta'=>[2,5,9,10,12,13,14,16,18,19,20,52,33,34,38,44,45,51]])->where(['like','ora',$result])->sum('spese') ?></td>
-            <td>€ <?php echo $commissioniValute = Transazioni::find()->where(['valuta'=>[2,5,9,10,12,13,14,16,18,19,20,52,33,34,38,44,45,51]])->where(['like','ora',$result])->sum('commissioni') ?></td>
+            <td>€ <?php echo $fissaValute = Transazioni::find()->where(['valuta'=>[2,5,9,10,12,13,14,16,18,19,20,52,33,34,38,44,45,51]])->andWhere(['like','ora',$result])->sum('spese') ?></td>
+            <td>€ <?php echo $commissioniValute = Transazioni::find()->where(['valuta'=>[2,5,9,10,12,13,14,16,18,19,20,52,33,34,38,44,45,51]])->andWhere(['like','ora',$result])->sum('commissioni') ?></td>
           </tr>
 
 
           <tr>
             <td>classificazione C</td>
-            <td>€ <?php echo $fissaMcv = Transazioni::find()->where(['like','ora',$result])->where(['valuta'=>54])->sum('spese') ?></td>
-            <td>€ <?php echo $commissioneMcv = Transazioni::find()->where(['like','ora',$result])->where(['valuta'=>54])->sum('commissioni') ?></td>
+            <td>€ <?php echo $fissaMcv = Transazioni::find()->where(['like','ora',$result])->andWhere(['valuta'=>54])->sum('spese') ?></td>
+            <td>€ <?php echo $commissioneMcv = Transazioni::find()->where(['like','ora',$result])->andWhere(['valuta'=>54])->sum('commissioni') ?></td>
           </tr>
 
           <tr>
@@ -105,7 +105,7 @@ print_r($result);
        $rigaTmp = $transazione;
        $quantitaValuta=Transazioni::find()
                           ->where(['valuta'=>$transazione->valuta])
-                          ->where(['like','ora',$result])
+                          ->andWhere(['like','ora',$result])
                           ->sum('quantita');
        $stampaSomma = $quantitaValuta;
        $checkValuta = Valute::find()
